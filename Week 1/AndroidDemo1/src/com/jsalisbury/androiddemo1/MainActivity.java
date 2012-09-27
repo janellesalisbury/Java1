@@ -25,15 +25,26 @@ public class MainActivity extends Activity {
         TextView tv = new TextView(this);
         tv.setText("This is my updated project one");
         
-        ll.addView(tv);
+        //ll.addView(tv);
         
         EditText et = new EditText(this);
-        ll.addView(et);
+        et.setText("Enter your text here");
+        //ll.addView(et);
         
         Button b = new Button(this);
+        b.setText("Enter");
         ll.addView(b);
         
-        setContentView(ll);
+        LinearLayout form = new LinearLayout(this);
+        form.setOrientation(LinearLayout.HORIZONTAL);
+        form.setLayoutParams(lp);
+        
+        form.addView(et);
+        form.addView(b);
+        
+        ll.addView(form);
+        
+       setContentView(ll);
         
         
     }
