@@ -29,11 +29,20 @@ public class MainActivity extends Activity {
         
         EditText et = new EditText(this);
         et.setHint("Please enter info here");
-        ll.addView(ll);
+        //ll.addView(et);
         
         Button b = new Button(this);
         b.setText("Enter");
-        ll.addView(b);
+        //ll.addView(b);
+        
+        LinearLayout form = new LinearLayout(this);
+        form.setOrientation (LinearLayout.HORIZONTAL);
+        form.setLayoutParams(lp);
+        
+        form.addView(et);
+        form.addView(b);
+        
+        ll.addView(form);        
         
         
         setContentView(ll);
