@@ -3,6 +3,8 @@ package com.janellesalisbury.uidemo;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,6 +26,15 @@ public class MainActivity extends Activity {
         tv.setText("This is my project.");
         
         ll.addView(tv);
+        
+        EditText et = new EditText(this);
+        et.setHint("Please enter info here");
+        ll.addView(ll);
+        
+        Button b = new Button(this);
+        b.setText("Enter");
+        ll.addView(b);
+        
         
         setContentView(ll);
         
