@@ -1,4 +1,7 @@
 package com.salisburyjanelle_javaweek2;
+// Java Week 2 Application Project
+//Janelle Salisbury 
+//Grocery List Application
 
 import android.os.Bundle;
 import android.app.Activity;
