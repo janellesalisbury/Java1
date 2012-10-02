@@ -55,6 +55,11 @@ public class MainActivity extends Activity {
         Button b = new Button(this);
         b.setText("Add to List");
         
+        secondHeader = new TextView(this);
+        secondHeader.setText("Coupon Deals");
+        secondHeader.setTextColor(Color.BLACK);
+        secondHeader.setBackgroundColor(Color.MAGENTA);
+        
         b.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -66,20 +71,21 @@ public class MainActivity extends Activity {
 			}
 		});
         
-       
-       secondHeader = new TextView(this);
-       secondHeader.setText("Coupon Deals");
-       secondHeader.setTextColor(Color.BLACK);
-       secondHeader.setBackgroundColor(Color.MAGENTA);
-       
-        
-        
-      
         ll.addView(mainHeader);
         ll.addView(foodItems);
-        ll.addView(et);
-        ll.addView(b);
-        ll.addView(secondHeader);
+        //ll.addView(et);
+        //ll.addView(b);
+       
+        LinearLayout form = new LinearLayout(this);
+        form.setOrientation(LinearLayout.VERTICAL);
+        
+        form.setLayoutParams(lp);
+        form.addView(et);
+        form.addView(b);
+        form.addView(secondHeader);
+        
+        
+         ll.addView(form);
         
         setContentView(ll);
         
