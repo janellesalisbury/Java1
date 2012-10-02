@@ -6,12 +6,22 @@ package com.salisburyjanelle_javaweek2;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
+	LinearLayout ll;
+	LinearLayout.LayoutParams lp;
+	TextView mainHeader;
+	
+	
+	
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        
         
     }
 
