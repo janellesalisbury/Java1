@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Color;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -19,6 +20,7 @@ public class MainActivity extends Activity {
 	TextView foodItems;
 	EditText et;
 	int itemCount;
+	TextView secondHeader;
 	
 	
 	
@@ -41,23 +43,43 @@ public class MainActivity extends Activity {
         mainHeader.setTextColor(Color.BLACK);
         
         foodItems = new TextView(this);
-        String foods[] = {getString(R.string.item1), getString(R.string.item2), getString(R.string.item3)};
+        String foods[] = {getString(R.string.item1), getString(R.string.item2), getString(R.string.item3), getString(R.string.item4)};
         itemCount = foods.length;
+        for (int i=0; i<itemCount; i++){
+        foodItems.append((foods[i] + "\n'"));
         
+        }
         et = new EditText(this);
         et.setHint("Enter food you wish to purchase here");
         
         Button b = new Button(this);
         b.setText("Add to List");
         
-        
+        b.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				String entry = et.getText().toString();
+				foodItems.append(entry + "\r\n");
+				
+				
+			}
+		});
         
        
+       secondHeader = new TextView(this);
+       secondHeader.setText("Coupon Deals");
+       secondHeader.setTextColor(Color.BLACK);
+       secondHeader.setBackgroundColor(Color.MAGENTA);
        
         
         
       
         ll.addView(mainHeader);
+        ll.addView(foodItems);
+        ll.addView(et);
+        ll.addView(b);
+        ll.addView(secondHeader);
         
         setContentView(ll);
         

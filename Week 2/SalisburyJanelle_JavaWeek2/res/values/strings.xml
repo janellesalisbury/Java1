@@ -4,6 +4,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">SalisburyJanelle_JavaWeek2</string>
-   
+    <string name="item1">Cheerios</string>
+    <string name="item2">Machintosh Apples</string>
+    <string name="item3">Cream of Wheat</string>
+    <string name="item4">Milk</string>
 
 </resources>
