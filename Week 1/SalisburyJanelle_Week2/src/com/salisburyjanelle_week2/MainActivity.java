@@ -29,7 +29,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         ll = new LinearLayout(this);
-        ll.setOrientation(LinearLayout.VERTICAL);
         lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         ll.setLayoutParams(lp);
         

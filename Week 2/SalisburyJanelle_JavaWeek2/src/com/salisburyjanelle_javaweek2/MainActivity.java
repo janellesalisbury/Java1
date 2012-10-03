@@ -3,8 +3,12 @@ package com.salisburyjanelle_javaweek2;
 //Janelle Salisbury 
 //Grocery List Application
 
+import java.util.ArrayList;
+
 import com.salisburyjanelle.lib.TextForms;
 
+
+import android.R.string;
 import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Color;
@@ -23,41 +27,55 @@ public class MainActivity extends Activity {
 	TextView mainHeader;
 	TextView foodItems;
 	int itemCount;
+	TextView foodTv;
+	EditText et;
 	
  @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        //LinearLayout from TextForms.java
         LinearLayout ll = new LinearLayout(this);
         ll.setOrientation(LinearLayout.VERTICAL);
         
+        //main title header for app
         mainHeader = new TextView(this);
         mainHeader.setText("Grocery Buddy");
         mainHeader.setBackgroundColor(Color.CYAN);
+        
         
         foodItems = new TextView(this);
         String food[] = {getString(R.string.item1), getString(R.string.item2), getString(R.string.item3), getString(R.string.item4)};
         itemCount = food.length;
         for(int i=0; i<itemCount; i++){
         	foodItems.append((food[i] + "\n"));
+        
         	
         }
       
        
         LinearLayout formEntry = TextForms.singleEntryWithButton(this, "Add item you wish to purchase", "Add Item");
         Button foodItem = (Button)formEntry.findViewById(2);
+        foodTv = new TextView(this);
         
         foodItem.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				EditText food = (EditText) v.getTag();
+				EditText food = (EditText)v.getTag();
+				
+			
+			
+				
+				
+				
 				
 				
 			}
 		});
         ll.addView(mainHeader);
         ll.addView(foodItems);
+        ll.addView(foodTv);
         ll.addView(formEntry);
         setContentView(ll);
         
