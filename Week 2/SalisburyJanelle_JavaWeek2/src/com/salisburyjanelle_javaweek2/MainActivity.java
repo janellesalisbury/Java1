@@ -7,11 +7,10 @@ package com.salisburyjanelle_javaweek2;
 
 import java.util.ArrayList;
 import com.salisburyjanelle.lib.*;
-import com.salisburyjanelle.lib.Grocery;
-import com.salisburyjanelle.lib.Items;
 import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -25,12 +24,15 @@ public class MainActivity extends Activity {
 	LinearLayout.LayoutParams lp;
 	TextView mainHeader;
 	EditText et;
+	TextView foodTv;
+	int itemCount;
+	
 	
  @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        //LinearLayout from TextForms.java
+    
         LinearLayout ll = new LinearLayout(this);
         ll.setOrientation(LinearLayout.VERTICAL);
         
@@ -39,28 +41,32 @@ public class MainActivity extends Activity {
         mainHeader.setText("Grocery Buddy");
         mainHeader.setBackgroundColor(Color.CYAN);
         
+        //just a mock up of the list that would be pulled using the array (this is in resources for now)
+        foodTv = new TextView(this);
+        String food[] = {getString(R.string.item1), getString(R.string.item2), getString(R.string.item3), getString(R.string.item4)};
+        itemCount = food.length;
+        for(int i=0; i<itemCount; i++){
+        	foodTv.append((food[i] + "\n"));
+        }
         
- 
+        //LinearLayout from TextForms.java class
         LinearLayout formEntry = TextForms.singleEntryWithButton(this, "Add item you wish to purchase", "Add Item");
         Button foodItem = (Button)formEntry.findViewById(2);
         
-        
+        //onclick to add items to food list
         foodItem.setOnClickListener(new View.OnClickListener() {
-			
+			//log works properly
 			@Override
 			public void onClick(View v) {
-				EditText grocery = (EditText)v.getTag();
+				EditText food = (EditText)v.getTag();
+				Log.i("Button clicked:", food.getText().toString());
 				
 			
 			
-				
-				
-				
-				
-				
-			}
+				}
 		});
         
+        //ArrayList capturing interface for grocery item and category
         ArrayList<Grocery> grocery = new ArrayList<Grocery>();
         grocery.add(new Items("Milk", "Dairy"));
         grocery.add(new Items("Mac Apples", "Fruits"));
@@ -68,8 +74,10 @@ public class MainActivity extends Activity {
         grocery.add(new Items("Asparagus", "Vegetable"));
         grocery.add(new Items("Wheat Bread", "Grains"));
         
+        // coupon pulled from API eventually
         
         ll.addView(mainHeader);
+        ll.addView(foodTv);
         ll.addView(formEntry);
         setContentView(ll);
         
