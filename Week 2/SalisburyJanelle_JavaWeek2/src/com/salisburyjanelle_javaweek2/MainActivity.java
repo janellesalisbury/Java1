@@ -5,10 +5,10 @@ package com.salisburyjanelle_javaweek2;
 
 
 
-import com.salisburyjanelle.lib.TextForms;
-
-
-
+import java.util.ArrayList;
+import com.salisburyjanelle.lib.*;
+import com.salisburyjanelle.lib.Grocery;
+import com.salisburyjanelle.lib.Items;
 import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Color;
@@ -24,9 +24,6 @@ public class MainActivity extends Activity {
 	LinearLayout ll;
 	LinearLayout.LayoutParams lp;
 	TextView mainHeader;
-	TextView foodItems;
-	int itemCount;
-	TextView foodTv;
 	EditText et;
 	
  @Override
@@ -43,27 +40,16 @@ public class MainActivity extends Activity {
         mainHeader.setBackgroundColor(Color.CYAN);
         
         
-        foodItems = new TextView(this);
-        String food[] = {getString(R.string.item1), getString(R.string.item2), getString(R.string.item3), getString(R.string.item4)};
-        itemCount = food.length;
-        for(int i=0; i<itemCount; i++){
-        	foodItems.append((food[i] + "\n"));
-           
-        
-        
-        	
-        }    
-      
-       
+ 
         LinearLayout formEntry = TextForms.singleEntryWithButton(this, "Add item you wish to purchase", "Add Item");
         Button foodItem = (Button)formEntry.findViewById(2);
-        foodTv = new TextView(this);
+        
         
         foodItem.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				EditText food = (EditText)v.getTag();
+				EditText grocery = (EditText)v.getTag();
 				
 			
 			
@@ -74,9 +60,16 @@ public class MainActivity extends Activity {
 				
 			}
 		});
+        
+        ArrayList<Grocery> grocery = new ArrayList<Grocery>();
+        grocery.add(new Items("Milk", "Dairy"));
+        grocery.add(new Items("Mac Apples", "Fruits"));
+        grocery.add(new Items("Pork Loin", "Meats"));
+        grocery.add(new Items("Asparagus", "Vegetable"));
+        grocery.add(new Items("Wheat Bread", "Grains"));
+        
+        
         ll.addView(mainHeader);
-        ll.addView(foodItems);
-        ll.addView(foodTv);
         ll.addView(formEntry);
         setContentView(ll);
         
