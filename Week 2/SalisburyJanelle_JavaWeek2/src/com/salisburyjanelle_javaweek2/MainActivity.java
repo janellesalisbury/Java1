@@ -42,12 +42,6 @@ public class MainActivity extends Activity {
         mainHeader.setBackgroundColor(Color.CYAN);
         
         //just a mock up of the list that would be pulled using the array (this is in resources for now)
-        foodTv = new TextView(this);
-        String food[] = {getString(R.string.item1), getString(R.string.item2), getString(R.string.item3), getString(R.string.item4)};
-        itemCount = food.length;
-        for(int i=0; i<itemCount; i++){
-        	foodTv.append((food[i] + "\n"));
-        }
         
         //LinearLayout from TextForms.java class
         LinearLayout formEntry = TextForms.singleEntryWithButton(this, "Add item you wish to purchase", "Add Item");
@@ -59,20 +53,13 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				EditText food = (EditText)v.getTag();
-				Log.i("Button clicked:", food.getText().toString());
+				
 				
 			
 			
 				}
 		});
         
-        //ArrayList capturing interface for grocery item and category
-        ArrayList<Grocery> grocery = new ArrayList<Grocery>();
-        grocery.add(new Items("Milk", "Dairy"));
-        grocery.add(new Items("Mac Apples", "Fruits"));
-        grocery.add(new Items("Pork Loin", "Meats"));
-        grocery.add(new Items("Asparagus", "Vegetable"));
-        grocery.add(new Items("Wheat Bread", "Grains"));
         
         // coupon pulled from API eventually
         

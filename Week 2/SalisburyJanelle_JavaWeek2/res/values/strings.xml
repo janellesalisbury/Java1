@@ -4,9 +4,71 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">SalisburyJanelle_JavaWeek2</string>
-    <string name="item1">Cheerios</string>
-    <string name="item2">Machintosh Apples</string>
-    <string name="item3">Cream of Wheat</string>
-    <string name="item4">Milk</string>
+    <string name="meat_pork">Pork</string>
+    <string name="meat_hamburger">Hamburger</string>
+    <string name="meat_chickenbreast">Chicken Breast</string>
+    <string name="meat_turkeybreast">Turkey Breast</string>
+    <string name="dairy_cheeseslices">Cheese Slices</string>
+    <string name="dairy_milk">Milk</string>
+    <string name="dairy_butter">Butter</string>
+    <string name="dairy_eggs">Eggs</string>
+    <string name="produce_asparagus">Asparagus</string>
+    <string name="produce_greenbeans">Green Beans</string>
+    <string name="produce_mushrooms">Mushrooms</string>
+    <string name="produce_lettuce">Lettuce</string>
+    <string name="fruit_apples">Apples</string>
+    <string name="fruit_bananas">Bananas</string>
+    <string name="fruit_cherries">Cherries</string>
+    <string name="fruit_blueberries">Blueberries</string>
+    <string name="grain_wheatbread">Wheat Bread</string>
+    <string name="grain_whitebread">White Bread</string>
+    <string name="grain_saltines">Saltines</string>
+    <string name="grain_creamofwheat">Cream of Wheat</string>
+    <string name="types_meat">Meat</string>
+    <string name="types_dairy">Dairy</string>
+    <string name="types_produce">Produce</string>
+    <string name="types_fruits">Fruits</string>
+    <string name="types_grain">Grain</string>
+    
+    
+    <string-array name = "meat_array">
+        <item>@string/meat_pork</item>
+        <item>@string/meat_hamburger</item>
+        <item>@string/meat_chickenbreast</item>
+        <item>@string/meat_turkeybreast</item>
+    </string-array>
+    <string-array name = "dairy_array">
+        <item>@string/dairy_cheeseslices</item>
+        <item>@string/dairy_milk</item>
+        <item>@string/dairy_butter</item>
+        <item>@string/dairy_eggs</item>
+    </string-array>
+    <string-array name = "produce_array">
+        <item>@string/produce_asparagus</item>
+        <item>@string/produce_greenbeans</item>
+        <item>@string/produce_mushrooms</item>
+        <item>@string/produce_lettuce</item>
+    </string-array>
+    <string-array name = "fruit_array">
+        <item>@string/fruit_apples</item>
+        <item>@string/fruit_bananas</item>
+        <item>@string/fruit_cherries</item>
+        <item>@string/fruit_blueberries</item>
+    </string-array>
+    <string-array name = "grain_array">
+        <item>@string/grain_wheatbread</item>
+        <item>@string/grain_whitebread</item>
+        <item>@string/grain_saltines</item>
+        <item>@string/grain_creamofwheat</item>
+    </string-array>
+    <string-array name = "types_array">
+       <item>@string/types_meat</item> 
+       <item>@string/types_dairy</item>
+       <item>@string/types_produce</item>
+       <item>@string/types_fruits</item>
+       <item>@string/types_grain</item>
+        
+        
+    </string-array>
 
 </resources>
