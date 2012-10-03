@@ -3,16 +3,15 @@ package com.salisburyjanelle_javaweek2;
 //Janelle Salisbury 
 //Grocery List Application
 
-import java.util.ArrayList;
+
 
 import com.salisburyjanelle.lib.TextForms;
 
 
-import android.R.string;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -49,9 +48,11 @@ public class MainActivity extends Activity {
         itemCount = food.length;
         for(int i=0; i<itemCount; i++){
         	foodItems.append((food[i] + "\n"));
+           
+        
         
         	
-        }
+        }    
       
        
         LinearLayout formEntry = TextForms.singleEntryWithButton(this, "Add item you wish to purchase", "Add Item");
