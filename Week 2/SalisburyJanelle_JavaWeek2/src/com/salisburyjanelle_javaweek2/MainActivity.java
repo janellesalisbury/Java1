@@ -7,24 +7,57 @@ import com.salisburyjanelle.lib.TextForms;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 public class MainActivity extends Activity {
 	LinearLayout ll;
 	LinearLayout.LayoutParams lp;
-
+	TextView mainHeader;
+	TextView foodItems;
+	int itemCount;
 	
-	
-	
-
-    @Override
+ @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
         LinearLayout ll = new LinearLayout(this);
+        ll.setOrientation(LinearLayout.VERTICAL);
+        
+        mainHeader = new TextView(this);
+        mainHeader.setText("Grocery Buddy");
+        mainHeader.setBackgroundColor(Color.CYAN);
+        
+        foodItems = new TextView(this);
+        String food[] = {getString(R.string.item1), getString(R.string.item2), getString(R.string.item3), getString(R.string.item4)};
+        itemCount = food.length;
+        for(int i=0; i<itemCount; i++){
+        	foodItems.append((food[i] + "\n"));
+        	
+        }
+      
+       
         LinearLayout formEntry = TextForms.singleEntryWithButton(this, "Add item you wish to purchase", "Add Item");
+        Button foodItem = (Button)formEntry.findViewById(2);
+        
+        foodItem.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				EditText food = (EditText) v.getTag();
+				
+				
+			}
+		});
+        ll.addView(mainHeader);
+        ll.addView(foodItems);
         ll.addView(formEntry);
         setContentView(ll);
         
