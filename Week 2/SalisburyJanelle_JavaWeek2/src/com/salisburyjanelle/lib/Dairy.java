@@ -30,5 +30,5 @@ public class Dairy implements Grocery {
 		// TODO Auto-generated method stub
 		return this.getCategory();
 	}
-
 }
+

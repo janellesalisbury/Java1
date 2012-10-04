@@ -64,15 +64,20 @@ public class MainActivity extends Activity {
         coupon = new TextView(this);
         coupon.setText("This is where the coupon will pop up if there is one!");
         
-        
+        //logging out enum values for food type names
         String dairyEnum = FoodType.DAIRY.toString();
         String meatEnum = FoodType.MEAT.toString();
         String produceEnum = FoodType.PRODUCE.toString();
+        String fruitsEnum = FoodType.FRUITS.toString();
+        String grainsEnum = FoodType.GRAINS.toString();
         
         
         String[] enumArray = {
         		dairyEnum,
-        		meatEnum
+        		meatEnum,
+        		produceEnum,
+        		fruitsEnum,
+        		grainsEnum
         };
         
         for (int i=0; i<enumArray.length; i++){

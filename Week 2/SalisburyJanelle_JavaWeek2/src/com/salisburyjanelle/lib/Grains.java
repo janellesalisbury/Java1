@@ -28,5 +28,4 @@ public class Grains implements Grocery {
 		// TODO Auto-generated method stub
 		return getCategory();
 	}
-
 }
