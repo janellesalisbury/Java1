@@ -5,8 +5,10 @@ package com.salisburyjanelle_javaweek2;
 
 
 
-import java.util.ArrayList;
+
 import com.salisburyjanelle.lib.*;
+import com.salisburyjanelle.lib.FoodType;
+import com.salisburyjanelle.lib.Grocery;
 import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Color;
@@ -26,6 +28,7 @@ public class MainActivity extends Activity {
 	EditText et;
 	TextView foodTv;
 	int itemCount;
+	TextView coupon;
 	
 	
  @Override
@@ -41,7 +44,7 @@ public class MainActivity extends Activity {
         mainHeader.setText("Grocery Buddy");
         mainHeader.setBackgroundColor(Color.CYAN);
         
-        //just a mock up of the list that would be pulled using the array (this is in resources for now)
+        
         
         //LinearLayout from TextForms.java class
         LinearLayout formEntry = TextForms.singleEntryWithButton(this, "Add item you wish to purchase", "Add Item");
@@ -53,6 +56,21 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				EditText food = (EditText)v.getTag();
+				Log.i("Button Clicked", food.getText().toString());
+				
+				//String meat = FoodType.MEAT.toString();
+				//String dairy = FoodType.DAIRY.toString();
+				//String produce = FoodType.PRODUCE.toString();
+				//String grain = FoodType.GRAINS.toString();
+				//String fruit = FoodType.FRUITS.toString();
+				//String[]listArray = {meat, dairy, produce, fruit, grain};
+				
+				//if (FoodType.MEAT.toString() == "meat"){
+					//for(int i = 0; i<listArray.length; i++){
+						//String s = listArray[i];
+						//Log.i("Your Food Type is", s);
+					//}
+				//}
 				
 				
 			
@@ -62,9 +80,15 @@ public class MainActivity extends Activity {
         
         
         // coupon pulled from API eventually
+        coupon = new TextView(this);
+        coupon.setText("This is where the coupon will pop up if there is one!");
+        
+        
+        
         
         ll.addView(mainHeader);
         ll.addView(foodTv);
+        ll.addView(coupon);
         ll.addView(formEntry);
         setContentView(ll);
         
