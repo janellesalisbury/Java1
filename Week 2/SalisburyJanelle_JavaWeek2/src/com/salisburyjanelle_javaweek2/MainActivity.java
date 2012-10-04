@@ -49,16 +49,15 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				
-				
+				// button to enter food to the list of items
 				
 			
 			
 				}
 		});
         
-        String[] whatever ={
-        	
-        };
+         
+        
         
         // coupon pulled from API eventually
         coupon = new TextView(this);
