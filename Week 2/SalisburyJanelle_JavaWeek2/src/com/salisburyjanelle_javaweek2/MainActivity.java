@@ -1,14 +1,6 @@
 package com.salisburyjanelle_javaweek2;
-// Java Week 2 Application Project
-//Janelle Salisbury 
-//Grocery List Application
 
-
-
-
-import com.salisburyjanelle.lib.*;
-import com.salisburyjanelle.lib.FoodType;
-import com.salisburyjanelle.lib.Grocery;
+import com.salisburyjanelle.lib.TextForms;
 import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Color;
@@ -19,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.salisburyjanelle.lib.FoodType;
 
 
 public class MainActivity extends Activity {
@@ -55,22 +48,7 @@ public class MainActivity extends Activity {
 			//log works properly
 			@Override
 			public void onClick(View v) {
-				EditText food = (EditText)v.getTag();
-				Log.i("Button Clicked", food.getText().toString());
 				
-				//String meat = FoodType.MEAT.toString();
-				//String dairy = FoodType.DAIRY.toString();
-				//String produce = FoodType.PRODUCE.toString();
-				//String grain = FoodType.GRAINS.toString();
-				//String fruit = FoodType.FRUITS.toString();
-				//String[]listArray = {meat, dairy, produce, fruit, grain};
-				
-				//if (FoodType.MEAT.toString() == "meat"){
-					//for(int i = 0; i<listArray.length; i++){
-						//String s = listArray[i];
-						//Log.i("Your Food Type is", s);
-					//}
-				//}
 				
 				
 			
@@ -78,13 +56,29 @@ public class MainActivity extends Activity {
 				}
 		});
         
+        String[] whatever ={
+        	
+        };
         
         // coupon pulled from API eventually
         coupon = new TextView(this);
         coupon.setText("This is where the coupon will pop up if there is one!");
         
         
+        String dairyEnum = FoodType.DAIRY.toString();
+        String meatEnum = FoodType.MEAT.toString();
+        String produceEnum = FoodType.PRODUCE.toString();
         
+        
+        String[] enumArray = {
+        		dairyEnum,
+        		meatEnum
+        };
+        
+        for (int i=0; i<enumArray.length; i++){
+        	String logEnumStr = enumArray[i];
+        	Log.i("SHOW LOGGED ENUM: ", logEnumStr);
+        }
         
         ll.addView(mainHeader);
         ll.addView(foodTv);

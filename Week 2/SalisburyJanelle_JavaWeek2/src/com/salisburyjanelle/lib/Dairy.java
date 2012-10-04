@@ -1,17 +1,20 @@
 package com.salisburyjanelle.lib;
 
-public class Meat implements Grocery {
+
+
+
+public class Dairy implements Grocery {
 	String name;
 
-//	private FoodType category = FoodType.MEAT;
+	//private FoodType category = FoodType.DAIRY;
 	
-	public Meat(String name){
+	public Dairy(String name){
 		setName(name);
-	
 	}
 
 	@Override
 	public boolean setName(String name) {
+		// TODO Auto-generated method stub
 		this.name = name;
 		return true;
 	}
