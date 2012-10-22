@@ -10,12 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ListView;
+//import android.widget.ListView;
 import android.widget.TextView;
 import com.salisburyjanelle.lib.FoodType;
-import android.widget.ArrayAdapter; 
-import java.util.ArrayList;
-import java.util.Arrays;
+//import android.widget.ArrayAdapter; 
+//import java.util.ArrayList;
+//import java.util.Arrays;
 
 
 
@@ -28,8 +28,8 @@ public class MainActivity extends Activity {
 	TextView foodTv;
 	int itemCount;
 	TextView coupon;
-	private ListView mainListView ;  
-	private ArrayAdapter<String> listAdapter ;  
+	//private ListView mainListView ;  
+	//private ArrayAdapter<String> listAdapter ;  
 	    
 	
 	
