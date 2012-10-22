@@ -21,6 +21,11 @@ public final class R {
         public static final int activity_main=0x7f050000;
     }
     public static final class string {
+        public static final int Brake Pads=0x7f030004;
+        public static final int Calipers=0x7f030005;
+        public static final int Head Gasket=0x7f030006;
+        public static final int Lug Nuts=0x7f030007;
+        public static final int Radiator=0x7f030008;
         public static final int app_name=0x7f030000;
         public static final int hello_world=0x7f030001;
         public static final int menu_settings=0x7f030002;

@@ -4,5 +4,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">JanelleSalisbury/Week1Project</string>
+    <string name="Brake Pads">Brake Pads</string>
+    <string name="Calipers">Calipers</string>
+    <string name="Head Gasket">Head Gasket</string>
+    <string name="Lug Nuts">Lug Nuts</string>
+    <string name="Radiator">Radiator</string>
 
 </resources>
