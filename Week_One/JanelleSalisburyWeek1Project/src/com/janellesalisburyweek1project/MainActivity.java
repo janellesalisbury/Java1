@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Color;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -17,6 +19,7 @@ public class MainActivity extends Activity {
 	TextView titleTV;
 	TextView inventoriedTV;
 	TextView partsneededTV;
+	TextView parts;
 	EditText et;
 	int itemCount;
 	int itemCount2;
@@ -35,7 +38,7 @@ public class MainActivity extends Activity {
         header = new TextView(this);
         header.setText("Restoration Rolodex");
         header.setBackgroundColor(Color.RED);
-        header.setTextColor(Color.WHITE);
+        header.setTextColor(Color.BLACK);
         ll.addView(header);
         titleTV = new TextView(this);
         
@@ -43,16 +46,9 @@ public class MainActivity extends Activity {
         header = new TextView(this);
         header.setText("Parts Inventory");
         header.setBackgroundColor(Color.CYAN);
-        header.setTextColor(Color.WHITE);
+        header.setTextColor(Color.BLACK);
         ll.addView(header);
         inventoriedTV = new TextView(this);
-        
-        
-        
-        
-        
-        
-        
         
         //Loop of parts from resources
         String [] parts = {getString(R.string.item1), getString(R.string.item2), getString(R.string.item3), getString(R.string.item4), getString(R.string.item5)};
@@ -61,6 +57,36 @@ public class MainActivity extends Activity {
         	titleTV.append((parts[i] + "\n"));
         }
         ll.addView(titleTV);
+        
+      //set up section two header
+        partsneededTV = new TextView(this);
+        partsneededTV.setText("Parts to be Ordered");
+        partsneededTV.setBackgroundColor(Color.CYAN);
+        partsneededTV.setTextColor(Color.BLACK);
+        ll.addView(partsneededTV);
+        
+        //add editText and button with onclick listener
+        et = new EditText(this);
+        et.setHint("Enter part here");
+        
+        Button b = new Button(this);
+        b.setText("Add Part");
+        
+        b.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				String entry = et.getText().toString();
+				partsneededTV.append(entry + "\r\n");
+				
+			}
+		});
+        
+        LinearLayout form = new LinearLayout(this);
+        form.setOrientation(LinearLayout.HORIZONTAL);
+        		
+        
         
         
         setContentView (ll);
