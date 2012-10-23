@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
 	TextView titleTV;
 	TextView inventoriedTV;
 	TextView partsneededTV;
-	TextView parts;
+	TextView addedpartTV;
 	EditText et;
 	int itemCount;
 	int itemCount2;
@@ -65,6 +65,12 @@ public class MainActivity extends Activity {
         partsneededTV.setTextColor(Color.BLACK);
         ll.addView(partsneededTV);
         
+        //set up textview for parts added
+        addedpartTV = new TextView(this);
+        ll.addView(addedpartTV);
+        
+        
+        
         //add editText and button with onclick listener
         et = new EditText(this);
         et.setHint("Enter part here");
@@ -78,17 +84,19 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String entry = et.getText().toString();
-				partsneededTV.append(entry + "\r\n");
+				addedpartTV.append(entry + "\r\n");
 				
 			}
 		});
         
         LinearLayout form = new LinearLayout(this);
         form.setOrientation(LinearLayout.HORIZONTAL);
-        		
+        form.setLayoutParams(lp);
+        form.addView(et);
+        form.addView(b);
         
         
-        
+        ll.addView(form);		
         setContentView (ll);
         
         
