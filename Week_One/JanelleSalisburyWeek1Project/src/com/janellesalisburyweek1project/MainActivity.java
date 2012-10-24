@@ -72,7 +72,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String entry = et.getText().toString();
-				
+				titleTV.append(entry+"\r\n");
 				
 			}
 		});
