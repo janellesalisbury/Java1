@@ -19,10 +19,9 @@ public class MainActivity extends Activity {
 	TextView titleTV;
 	TextView inventoriedTV;
 	TextView partsneededTV;
-	TextView addedpartTV;
 	EditText et;
 	int itemCount;
-	int itemCount2;
+	int addeditemcount;
 	
 	 @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,26 +49,15 @@ public class MainActivity extends Activity {
         ll.addView(header);
         inventoriedTV = new TextView(this);
         
-        //Loop of parts from resources
-        String [] parts = {getString(R.string.item1), getString(R.string.item2), getString(R.string.item3), getString(R.string.item4), getString(R.string.item5)};
+        //Loop of parts 
+        String [] parts = {"Brake Pads", "Calipers", "Head Gasket", "Lug Nuts", "Radiator", "Intake Manifold", "Gear Shaft"};
         itemCount = parts.length;
         for(int i=0; i < itemCount; i++){
         	titleTV.append((parts[i] + "\n"));
         }
         ll.addView(titleTV);
         
-      //set up section two header
-        partsneededTV = new TextView(this);
-        partsneededTV.setText("Parts to be Ordered");
-        partsneededTV.setBackgroundColor(Color.CYAN);
-        partsneededTV.setTextColor(Color.BLACK);
-        ll.addView(partsneededTV);
-        
-        //set up textview for parts added
-        addedpartTV = new TextView(this);
-        ll.addView(addedpartTV);
-        
-        
+      
         
         //add editText and button with onclick listener
         et = new EditText(this);
@@ -84,7 +72,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String entry = et.getText().toString();
-				addedpartTV.append(entry + "\r\n");
+				
 				
 			}
 		});

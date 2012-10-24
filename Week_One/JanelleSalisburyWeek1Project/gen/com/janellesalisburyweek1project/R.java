@@ -22,13 +22,15 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f030000;
+        public static final int brakepads=0x7f030004;
+        public static final int calipers=0x7f030005;
+        public static final int gearshaft=0x7f030009;
+        public static final int headgasket=0x7f030006;
         public static final int hello_world=0x7f030001;
-        public static final int item1=0x7f030004;
-        public static final int item2=0x7f030005;
-        public static final int item3=0x7f030006;
-        public static final int item4=0x7f030007;
-        public static final int item5=0x7f030008;
+        public static final int intakemanifold=0x7f03000a;
+        public static final int lugnuts=0x7f030007;
         public static final int menu_settings=0x7f030002;
+        public static final int radiator=0x7f030008;
         public static final int title_activity_main=0x7f030003;
     }
     public static final class style {
