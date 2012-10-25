@@ -2,6 +2,8 @@ package com.janellesalisburyweek1project;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.view.Menu;
 import android.view.View;
@@ -22,6 +24,7 @@ public class MainActivity extends Activity {
 	EditText et;
 	int itemCount;
 	int addeditemcount;
+	AlertDialog alert;
 	
 	 @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,8 @@ public class MainActivity extends Activity {
         }
         ll.addView(titleTV);
         
-      
+        //declare alert
+        alert = new AlertDialog.Builder(this).create();
         
         //add editText and button with onclick listener
         et = new EditText(this);
@@ -72,8 +76,37 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				String entry = et.getText().toString();
-				titleTV.append(entry+"\r\n");
+				if (entry.length() <= 0){
+					//error alert
+					alert.setTitle("Error");
+					alert.setMessage("Please enter a part here");
+					alert.setButton("OK", new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(final DialogInterface dialog, final int which) {
+							// TODO Auto-generated method stub
+							
+						}
+					});
+					alert.show();
+				}else{
+					titleTV.append(entry+"\r\n");
+					//success alert
+					alert.setTitle("Success");
+					alert.setMessage("Item successfully added");
+					alert.setButton("OK", new DialogInterface.OnClickListener() {
+						
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							// TODO Auto-generated method stub
+							
+						}
+					});
+					alert.show();
+						
+							
 				
+				}
 			}
 		});
         
