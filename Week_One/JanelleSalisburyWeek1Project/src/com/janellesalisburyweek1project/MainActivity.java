@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
         ll.addView(header);
         inventoriedTV = new TextView(this);
         
-        //Loop of parts 
+        //Loop of parts
         String [] parts = {"Brake Pads", "Calipers", "Head Gasket", "Lug Nuts", "Radiator", "Intake Manifold", "Gear Shaft"};
         itemCount = parts.length;
         for(int i=0; i < itemCount; i++){
@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
 		});
         
         LinearLayout form = new LinearLayout(this);
-        form.setOrientation(LinearLayout.HORIZONTAL);
+        form.setOrientation(LinearLayout.VERTICAL);
         form.setLayoutParams(lp);
         form.addView(et);
         form.addView(b);
