@@ -47,10 +47,12 @@ public class MainActivity extends Activity {
         
         //edit text field/button
         et = new EditText(this);
-        et.setHint("enter zip here");
+        et.setHint("enter state here");
         
         Button b = new Button(this);
         b.setText("Retrieve");
+        
+        //retrieve info from resources which will be filled by api later
         
         //text view to display each element in censusRecord class
         totalPopTV = new TextView(this);
@@ -88,12 +90,7 @@ public class MainActivity extends Activity {
 				percentMenTV.setText(Float.toString(myCensusRecord.getPercentMen()));
 				percentWomenTV.setText(Float.toString(myCensusRecord.getPercentMen()));
 				
-				//show text
-				ll.addView(totalMenTV);
-				ll.addView(totalPopTV);
-				ll.addView(totalWomenTV);
-				ll.addView(percentMenTV);
-				ll.addView(percentWomenTV);
+				
 	
 			}
 		});
@@ -107,7 +104,12 @@ public class MainActivity extends Activity {
         form.setLayoutParams(lp);
         form.addView(et);
         form.addView(b);
-        
+      //show text
+		ll.addView(totalMenTV);
+		ll.addView(totalPopTV);
+		ll.addView(totalWomenTV);
+		ll.addView(percentMenTV);
+		ll.addView(percentWomenTV);
         
         
         

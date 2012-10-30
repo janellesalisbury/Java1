@@ -5,5 +5,17 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">JavaWeekTwo_JanelleSalisbury</string>
     <string name= "APIDeveloperKey">e44eee8f8d8583f1b0854a96fcbe580d59164a54</string>
+    <string name= "state01">Alabama</string>
+    <string name= "state02">Alaska</string>
+    <string name= "state10">Georgia</string>
+    <string name= "state15">Iowa</string>
+    <string name= "state30">New Jersey</string>
+    <string name= "state50">Wyoming</string>
+    <string name= "totalPop01">Alabamas Total Population is 4,802,735</string>
+    <string name= "totalPop02">Alaskas Total Population is 710,231</string>
+    <string name= "totalPop10">Georgias Total Population is 9,687,660</string>
+    <string name= "totalPop15">Iowas Total Population is 3,046,350</string>
+    <string name= "totalPop30">New Jerseys Total Population is 8,791,894</string>
+    <string name= "totalPop50">Wyomings Total Population is 563,626</string>
 
 </resources>
