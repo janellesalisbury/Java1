@@ -3,9 +3,9 @@ package com.javaweektwo_janellesalisbury;
 public class CensusRecord {
 	
 	//private variables
-	private int totalPopulation;
-	private int totalMen;
-	private int totalWomen;
+	private Integer totalPopulation;
+	private Integer totalMen;
+	private Integer totalWomen;
 	private String location;
 
 	
@@ -18,7 +18,7 @@ public class CensusRecord {
 		//user sets private values by using setters
 	}
 	
-	//parameterized constructor
+	//full parameterized constructor
 	CensusRecord(int myTotalPopulation, int myTotalMen, int myTotalWomen, String myLocation){
 		this.totalPopulation = myTotalPopulation;
 		this.totalMen = myTotalMen;
@@ -26,10 +26,19 @@ public class CensusRecord {
 		this.location = myLocation;
 	}
 	
-	
+	//uses api to fill data
+	CensusRecord(String myLocation, String APIDeveloperKey){
+		//turn zip into state
+		//state name into numerical code from api
+		//call api using state/developer key
+		//results returned
+		//parse results 
+		//assign private variables based on parsing
+		
+	}
 	
 	//get/set information
-	public int getTotalPopulation() {
+	public Integer getTotalPopulation() {
 		return totalPopulation;
 	}
 
@@ -37,7 +46,7 @@ public class CensusRecord {
 		this.totalPopulation = totalPopulation;
 	}
 
-	public int getTotalMen() {
+	public Integer getTotalMen() {
 		return totalMen;
 	}
 
@@ -45,7 +54,7 @@ public class CensusRecord {
 		this.totalMen = totalMen;
 	}
 
-	public int getTotalWomen() {
+	public Integer getTotalWomen() {
 		return totalWomen;
 	}
 

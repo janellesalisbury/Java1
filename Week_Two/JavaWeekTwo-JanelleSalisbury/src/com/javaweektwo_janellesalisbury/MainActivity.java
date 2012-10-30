@@ -18,6 +18,11 @@ public class MainActivity extends Activity {
 	LinearLayout.LayoutParams lp;
 	TextView mainTitle;
 	TextView header;
+	TextView totalPopTV;
+	TextView totalMenTV;
+	TextView totalWomenTV;
+	TextView percentMenTV;
+	TextView percentWomenTV;
 	EditText et;
 	
 	 @Override
@@ -30,6 +35,9 @@ public class MainActivity extends Activity {
         lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
         ll.setLayoutParams(lp);
         
+        //get developer key from resources
+        //final String APIDeveloperKey  = new CensusRecord(getString(R.string.APIDeveloperKey));
+        
         //set up title header
         header = new TextView(this);
         header.setText("United States Census Information");
@@ -39,19 +47,59 @@ public class MainActivity extends Activity {
         
         //edit text field/button
         et = new EditText(this);
-        et.setHint("hint here");
+        et.setHint("enter zip here");
         
         Button b = new Button(this);
         b.setText("Retrieve");
+        
+        //text view to display each element in censusRecord class
+        totalPopTV = new TextView(this);
+        totalMenTV = new TextView(this);
+        totalWomenTV = new TextView(this);
+        percentMenTV = new TextView(this);
+        percentWomenTV = new TextView(this);
         
         b.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				//get zip code from text entry
+				String zipCode = et.getText().toString();
 				
+				
+				
+				//replace this with API records at later time
+				//make empty census record
+				CensusRecord myCensusRecord = new CensusRecord();
+				myCensusRecord.setLocation(zipCode);
+				myCensusRecord.setTotalPopulation(100000);
+				myCensusRecord.setTotalMen(50000);
+				myCensusRecord.setTotalWomen(50000);
+				
+				//replace with api data
+				//CensusRecord myCensusRecord = new CensusRecord(zipCode, APIDeveloperKey);
+				
+				
+				//update text views for data
+				totalPopTV.setText(myCensusRecord.getTotalPopulation().toString());
+				totalMenTV.setText(myCensusRecord.getTotalMen().toString());
+				totalWomenTV.setText(myCensusRecord.getTotalWomen().toString());
+				percentMenTV.setText(Float.toString(myCensusRecord.getPercentMen()));
+				percentWomenTV.setText(Float.toString(myCensusRecord.getPercentMen()));
+				
+				//show text
+				ll.addView(totalMenTV);
+				ll.addView(totalPopTV);
+				ll.addView(totalWomenTV);
+				ll.addView(percentMenTV);
+				ll.addView(percentWomenTV);
+	
 			}
 		});
+        
+        
+       
         
         LinearLayout form = new LinearLayout(this);
         form.setOrientation(LinearLayout.HORIZONTAL);

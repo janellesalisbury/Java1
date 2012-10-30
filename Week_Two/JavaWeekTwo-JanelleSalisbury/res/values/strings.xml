@@ -4,5 +4,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">JavaWeekTwo_JanelleSalisbury</string>
+    <string name= "APIDeveloperKey">e44eee8f8d8583f1b0854a96fcbe580d59164a54</string>
 
 </resources>
