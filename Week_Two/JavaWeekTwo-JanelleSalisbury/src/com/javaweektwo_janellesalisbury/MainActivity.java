@@ -4,7 +4,11 @@ import com.jsalisbury.lib.SetLayout;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import com.jsalisbury.lib.SetLayout;
 
@@ -31,6 +35,20 @@ public class MainActivity extends Activity {
         //set up new linear layout
         LinearLayout ll = new LinearLayout(this);
     	LinearLayout stateEntry = SetLayout.singleEntryWithButton(this, "Enter State Here", "Retrieve Data");
+    	
+    	Button retrieveButton = (Button) stateEntry.findViewById(2);
+    	
+    	retrieveButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				EditText name = (EditText) v.getTag();
+				
+				//Log out user input
+				Log.i("Button Clicked:", name.getText().toString());
+				
+			}
+		});
     	
     	ll.addView(stateEntry);
     	setContentView(ll);
