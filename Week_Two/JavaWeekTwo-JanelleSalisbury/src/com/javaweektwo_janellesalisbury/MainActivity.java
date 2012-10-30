@@ -1,8 +1,12 @@
 package com.javaweektwo_janellesalisbury;
 
+import com.jsalisbury.lib.SetLayout;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.widget.LinearLayout;
+import com.jsalisbury.lib.SetLayout;
 
 
 
@@ -10,8 +14,6 @@ import android.view.Menu;
 
 
 public class MainActivity extends Activity {
-	
-	
 	
 //	TextView mainTitle;
 //	TextView header;
@@ -27,7 +29,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         //set up new linear layout
-      
+        LinearLayout ll = new LinearLayout(this);
+    	LinearLayout stateEntry = SetLayout.singleEntryWithButton(this, "Enter State Here", "Retrieve Data");
+    	
+    	ll.addView(stateEntry);
+    	setContentView(ll);
         
         //get developer key from resources
         //final String APIDeveloperKey  = new CensusRecord(getString(R.string.APIDeveloperKey));
