@@ -61,6 +61,26 @@ public class CensusRecord {
 		this.location = location;
 	}
 
+	public float getPercentMen(){	
+		float manPercent; 
+		try{
+			manPercent = (this.totalMen/this.totalPopulation)*100;
+		}catch(ArithmeticException error){
+			manPercent = 0;
+		}
+		return manPercent;
+	}
+	
+	public float getPercentWomen(){
+		float ladyPercent;
+		try{
+			ladyPercent = (this.totalWomen/this.totalPopulation)*100;
+		}catch(ArithmeticException error){
+			ladyPercent = 0;
+		}
+		return ladyPercent;
+		
+	}
 	
 	public String toString()
 	{
