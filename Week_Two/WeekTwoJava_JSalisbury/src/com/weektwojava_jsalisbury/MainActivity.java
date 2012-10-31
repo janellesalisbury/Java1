@@ -33,12 +33,32 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				EditText name = (EditText) v.getTag();
-				String stateinfo = "API data will be searched by state entered";
-				//Log out user input
-				Log.i("Button Clicked:", stateinfo);
+				
+				//pulling enum data and logging it to LogCat (temporary until I can figure out something)
+		    	String al = States.ALABAMA.toString();
+		    	String ak = States.ALASKA.toString();
+		    	String ga = States.GEORGIA.toString();
+		    	String ia = States.IOWA.toString();
+		    	String nj = States.NEWJERSEY.toString();
+		    	String wy = States.WYOMING.toString();
+		    	String[] statesArray = {al, ak, ga, ia, nj, wy};
+		    	
+		    	// compare data from enum and list out
+		    	if(States.ALASKA.toString() == "Alaska"){
+		    		for(int i=0; i<statesArray.length; i++){
+		    		String a = statesArray[i];
+		    		Log.i("State Names", a);
+		    	}
+		    		}else{
+		    	String err = "Whoops! Cant find state";
+		    	Log.i("Sorry", err);
+		    		
+				
+				
 				
 			}
-		});
+		}
+	});
     	
    
     	
