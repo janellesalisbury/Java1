@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -20,6 +21,8 @@ import com.jsalisbury.lib.SetLayout;
 
 public class MainActivity extends Activity {
 	
+	LinearLayout LL;
+	LinearLayout.LayoutParams lp;
 	TextView stateTV;
 	int itemCount;
 //	TextView totalPopTV;
@@ -41,16 +44,15 @@ public class MainActivity extends Activity {
     	
     	Button retrieveButton = (Button) stateEntry.findViewById(2);
     	
-    	
-        //button onClick
+    	//button onClick
     	retrieveButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				EditText name = (EditText) v.getTag();
-				
+				String stateinfo = "API data will be searched by state entered";
 				//Log out user input
-				Log.i("Button Clicked:", name.getText().toString());
+				Log.i("Button Clicked:", stateinfo);
 				
 			}
 		});
@@ -58,10 +60,31 @@ public class MainActivity extends Activity {
     	ll.addView(stateEntry);
     	setContentView(ll);
     	
+    	//new linearlayout for textview
+    	LinearLayout LL = new LinearLayout(this);
+    	LL.setOrientation(LinearLayout.VERTICAL);
+    	lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+    	ll.setLayoutParams(lp);
+    	
+    	stateTV = new TextView(this);
+    	String [] stateInfo = {getString(R.string.al_name), getString(R.string.al_pop), getString(R.string.al_men), getString(R.string.al_women)};
+    	itemCount = stateInfo.length;
+    	for(int i = 0; i<itemCount; i++){
+    		stateTV.append((stateInfo[i] + "\n"));
+    	}
+    	LL.addView(stateTV);
     	
     	
     	
-        //get developer key from resources
+    	
+    	
+        
+    	
+    	
+    	
+    	
+    	
+    	//get developer key from resources
         //final String APIDeveloperKey  = new CensusRecord(getString(R.string.APIDeveloperKey));
         
         
