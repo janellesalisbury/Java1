@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import com.salisbury.lib.*;
+import com.weektwojava_jsalisbury.*;
 
 
 public class MainActivity extends Activity {
