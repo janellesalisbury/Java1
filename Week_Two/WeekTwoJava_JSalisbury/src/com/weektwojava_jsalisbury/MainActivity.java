@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import com.salisbury.lib.*;
 
+
 public class MainActivity extends Activity {
 
     @Override
@@ -44,28 +45,18 @@ public class MainActivity extends Activity {
     	ll.addView(stateEntry);
     	setContentView(ll);
     	
-    	
-   }	
+   } 	
+   	
  
-    
-    	
-    	
-    	
-        
-    	
-    	
-    	
-    	
-    	
     	//get developer key from resources
         //final String APIDeveloperKey  = new CensusRecord(getString(R.string.APIDeveloperKey));
         
         
         
         
-        //retrieve info from resources which will be filled by api later
         
-        //text view to display each element in censusRecord class
+        
+       // new text view for api data to be added later
 //        totalPopTV = new TextView(this);
 //        totalMenTV = new TextView(this);
 //        totalWomenTV = new TextView(this);
