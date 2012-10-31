@@ -25,22 +25,34 @@ public final class R {
     }
     public static final class string {
         public static final int APIDeveloperKey=0x7f040004;
+        public static final int ak_men=0x7f040012;
+        public static final int ak_name=0x7f040006;
+        public static final int ak_pop=0x7f04000c;
+        public static final int ak_women=0x7f040018;
+        public static final int al_men=0x7f040011;
+        public static final int al_name=0x7f040005;
+        public static final int al_pop=0x7f04000b;
+        public static final int al_women=0x7f040017;
         public static final int app_name=0x7f040000;
+        public static final int ga_men=0x7f040013;
+        public static final int ga_name=0x7f040007;
+        public static final int ga_pop=0x7f04000d;
+        public static final int ga_women=0x7f040019;
         public static final int hello_world=0x7f040001;
+        public static final int ia_men=0x7f040014;
+        public static final int ia_name=0x7f040008;
+        public static final int ia_pop=0x7f04000e;
+        public static final int ia_women=0x7f04001a;
         public static final int menu_settings=0x7f040002;
-        public static final int state01=0x7f040005;
-        public static final int state02=0x7f040006;
-        public static final int state10=0x7f040007;
-        public static final int state15=0x7f040008;
-        public static final int state30=0x7f040009;
-        public static final int state50=0x7f04000a;
+        public static final int nj_men=0x7f040015;
+        public static final int nj_name=0x7f040009;
+        public static final int nj_pop=0x7f04000f;
+        public static final int nj_women=0x7f04001b;
         public static final int title_activity_main=0x7f040003;
-        public static final int totalPop01=0x7f04000b;
-        public static final int totalPop02=0x7f04000c;
-        public static final int totalPop10=0x7f04000d;
-        public static final int totalPop15=0x7f04000e;
-        public static final int totalPop30=0x7f04000f;
-        public static final int totalPop50=0x7f040010;
+        public static final int wy_men=0x7f040016;
+        public static final int wy_name=0x7f04000a;
+        public static final int wy_pop=0x7f040010;
+        public static final int wy_women=0x7f04001c;
     }
     public static final class style {
         public static final int AppTheme=0x7f050000;
