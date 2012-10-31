@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.jsalisbury.lib.SetLayout;
 
 
@@ -19,8 +20,8 @@ import com.jsalisbury.lib.SetLayout;
 
 public class MainActivity extends Activity {
 	
-//	TextView mainTitle;
-//	TextView header;
+	TextView stateTV;
+	int itemCount;
 //	TextView totalPopTV;
 //	TextView totalMenTV;
 //	TextView totalWomenTV;
@@ -32,12 +33,16 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        //set up new linear layout
+         //set up new linear layout 
         LinearLayout ll = new LinearLayout(this);
+        
+        //add button and edit text from setLayout class
     	LinearLayout stateEntry = SetLayout.singleEntryWithButton(this, "Enter State Here", "Retrieve Data");
     	
     	Button retrieveButton = (Button) stateEntry.findViewById(2);
     	
+    	
+        //button onClick
     	retrieveButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -52,7 +57,10 @@ public class MainActivity extends Activity {
     	
     	ll.addView(stateEntry);
     	setContentView(ll);
-        
+    	
+    	
+    	
+    	
         //get developer key from resources
         //final String APIDeveloperKey  = new CensusRecord(getString(R.string.APIDeveloperKey));
         
