@@ -25,11 +25,14 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        TextView resourceTV;
-        int itemCount;
+        TextView stateNameTV;
+        TextView statePopTV;
+        TextView stateWomenTV;
+       
         
         //set up new linear layout 
         LinearLayout ll = new LinearLayout(this);
+        ll.setOrientation(LinearLayout.VERTICAL);
     		
         //add button and edit text from setLayout class
     	LinearLayout stateEntry = SetLayouts.singleEntryWithButton(this, "Enter State Here", "Retrieve Data");
@@ -64,19 +67,19 @@ public class MainActivity extends Activity {
 		    	}
 		}
 	});
-    	//Resource information to be pulled from api later
-    	resourceTV = new TextView(this);
-    	String[] stateInfo = {getString(R.string.al_name), getString(R.string.al_pop), getString(R.string.al_women)};
-    	//resourceTV.setText(R.string.al_name);
-    	itemCount = stateInfo.length;
-    	for(int i=0; i<itemCount; i++){
-    	resourceTV.append((stateInfo[i] + "\n"));
-    	}
+    	
+    	//pulling resources using text view
+    	stateNameTV = new TextView(this);
+    	stateNameTV.setText(R.string.al_name);
     	
     	
+    	//population text view
+    	statePopTV = new TextView(this);
+    	statePopTV.setText(R.string.al_pop);
     	
-    	
-    	
+    	//state percentage text view
+    	stateWomenTV = new TextView(this);
+    	stateWomenTV.setText(R.string.al_women);
     	
     	
     	//Array list of states for drop down list
@@ -89,9 +92,11 @@ public class MainActivity extends Activity {
     	records.add(new CensusRecords("New_Jersey", 8791894, 51.3f));
     	records.add(new CensusRecords("Wyoming", 563626, 49.0f));
     	
-    	
-    	ll.addView(resourceTV);
+    	//layout all widget groupings in order of appearance 
     	ll.addView(stateEntry);
+    	ll.addView(stateNameTV);
+    	ll.addView(statePopTV);
+    	ll.addView(stateWomenTV);
     	setContentView(ll);
     	
    } 	
