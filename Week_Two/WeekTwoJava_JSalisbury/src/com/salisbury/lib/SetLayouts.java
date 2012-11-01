@@ -1,10 +1,13 @@
 package com.salisbury.lib;
 
+import com.weektwojava_jsalisbury.States;
+
 import android.content.Context;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+
 
 
 public class SetLayouts {
@@ -15,6 +18,7 @@ public class SetLayouts {
 			ll.setLayoutParams(lp);
 		
 			
+			                
 			EditText et = new EditText(context);
 			lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f);
 			et.setHint(hint);
