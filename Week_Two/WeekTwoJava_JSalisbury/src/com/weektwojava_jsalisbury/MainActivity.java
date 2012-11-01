@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
 import com.salisbury.lib.*;
 import com.weektwojava_jsalisbury.StateInfo;
 import com.weektwojava_jsalisbury.CensusRecords;
@@ -22,6 +24,9 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        TextView resourceTV;
+        int itemCount;
         
         //set up new linear layout 
         LinearLayout ll = new LinearLayout(this);
@@ -60,7 +65,13 @@ public class MainActivity extends Activity {
 		}
 	});
     	//Resource information to be pulled from api later
-    	
+    	resourceTV = new TextView(this);
+    	String[] stateInfo = {getString(R.string.al_name), getString(R.string.al_pop), getString(R.string.al_women)};
+    	//resourceTV.setText(R.string.al_name);
+    	itemCount = stateInfo.length;
+    	for(int i=0; i<itemCount; i++){
+    	resourceTV.append((stateInfo[i] + "\n"));
+    	}
     	
     	
     	
@@ -78,7 +89,8 @@ public class MainActivity extends Activity {
     	records.add(new CensusRecords("New_Jersey", 8791894, 51.3f));
     	records.add(new CensusRecords("Wyoming", 563626, 49.0f));
     	
-  
+    	
+    	ll.addView(resourceTV);
     	ll.addView(stateEntry);
     	setContentView(ll);
     	
@@ -93,53 +105,7 @@ public class MainActivity extends Activity {
         
         
         
-       // new text view for api data to be added later
-//        totalPopTV = new TextView(this);
-//        totalMenTV = new TextView(this);
-//        totalWomenTV = new TextView(this);
-//        percentMenTV = new TextView(this);
-//        percentWomenTV = new TextView(this);
-        
-        
-				
-				
-				//replace this with API records at later time
-				//make empty census record
-//				CensusRecord myCensusRecord = new CensusRecord();
-//				myCensusRecord.setLocation(zipCode);
-//				myCensusRecord.setTotalPopulation(100000);
-//				myCensusRecord.setTotalMen(50000);
-//				myCensusRecord.setTotalWomen(50000);
-				
-				//replace with api data
-				//CensusRecord myCensusRecord = new CensusRecord(zipCode, APIDeveloperKey);
-				
-				
-				//update text views for data
-//				totalPopTV.setText(myCensusRecord.getTotalPopulation().toString());
-//				totalMenTV.setText(myCensusRecord.getTotalMen().toString());
-//				totalWomenTV.setText(myCensusRecord.getTotalWomen().toString());
-//				percentMenTV.setText(Float.toString(myCensusRecord.getPercentMen()));
-//				percentWomenTV.setText(Float.toString(myCensusRecord.getPercentMen()));
-//				
-				
-	
-		//	}
-		//});
-        
-        
        
-        
-        
-      //show text
-//		ll.addView(totalMenTV);
-//		ll.addView(totalPopTV);
-//		ll.addView(totalWomenTV);
-//		ll.addView(percentMenTV);
-//		ll.addView(percentWomenTV);
-//        
-        
-        
 
     
     @Override

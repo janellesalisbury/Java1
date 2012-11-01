@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
+
 public class SetLayouts {
 	
 		public static LinearLayout singleEntryWithButton(Context context, String hint, String buttonText){
@@ -24,6 +25,7 @@ public class SetLayouts {
 			b.setText(buttonText);
 			b.setId(2);
 			b.setTag(et);
+		
 			
 			ll.addView(et);
 			ll.addView(b);
