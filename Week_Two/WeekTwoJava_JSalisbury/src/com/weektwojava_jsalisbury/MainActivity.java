@@ -49,14 +49,10 @@ public class MainActivity extends Activity {
 		    		String a = statesArray[i];
 		    		Log.i("State Names", a);
 		    	}
-		    		}else{
-		    	String err = "Whoops! Cant find state";
-		    	Log.i("Sorry", err);
-		    		
-				
-				
-				
-			}
+		    	}else{
+		    		String err = "Can't find states information";
+		    		Log.i("Sorry", err);
+		    	}
 		}
 	});
     	
