@@ -59,12 +59,24 @@ public class MainActivity extends Activity {
 		    	}
 		}
 	});
+    	//Resource information to be pulled from api later
     	
-    	//Array list of state
+    	
+    	
+    	
+    	
+    	
+    	
+    	
+    	//Array list of states for drop down list
+    	//TODO: use this to make combo box
     	ArrayList<StateInfo>records = new ArrayList<StateInfo>();
     	records.add(new CensusRecords("Alabama", 4802735, 51.5f));
     	records.add(new CensusRecords("Alaska", 710231, 48.1f));
     	records.add(new CensusRecords("Georgia", 9687660, 51.1f));
+    	records.add(new CensusRecords("Iowa", 3046350, 50.4f));
+    	records.add(new CensusRecords("New_Jersey", 8791894, 51.3f));
+    	records.add(new CensusRecords("Wyoming", 563626, 49.0f));
     	
   
     	ll.addView(stateEntry);

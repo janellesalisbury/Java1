@@ -24,7 +24,7 @@ public class CensusRecords implements StateInfo {
 	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
-		return null;
+		return name;
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class CensusRecords implements StateInfo {
 	@Override
 	public double getPopulation() {
 		// TODO Auto-generated method stub
-		return 0;
+		return population;
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class CensusRecords implements StateInfo {
 	@Override
 	public float getPercentW() {
 		// TODO Auto-generated method stub
-		return 0;
+		return percentW;
 	}
 
 }
