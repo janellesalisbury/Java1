@@ -16,12 +16,6 @@
     <string name= "ia_pop">Iowas Total Population is 3,046,350</string>
     <string name= "nj_pop">New Jerseys Total Population is 8,791,894</string>
     <string name= "wy_pop">Wyomings Total Population is 563,626</string>
-    <string name= "al_men">48.5%</string>
-    <string name= "ak_men">51.9%</string>
-    <string name= "ga_men">48.9%</string>
-    <string name= "ia_men">49.6%</string>
-    <string name= "nj_men">48.7%</string>
-    <string name= "wy_men">51%</string>
     <string name= "al_women">51.5%</string>
     <string name= "ak_women">48.1%</string>
     <string name= "ga_women">51.1%</string>

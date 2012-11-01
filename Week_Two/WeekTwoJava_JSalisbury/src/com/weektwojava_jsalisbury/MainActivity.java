@@ -1,5 +1,7 @@
 package com.weektwojava_jsalisbury;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
@@ -9,7 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import com.salisbury.lib.*;
-import com.weektwojava_jsalisbury.*;
+import com.weektwojava_jsalisbury.StateInfo;
+import com.weektwojava_jsalisbury.CensusRecords;
+import com.weektwojava_jsalisbury.StateInfo;
 
 
 public class MainActivity extends Activity {
@@ -56,7 +60,11 @@ public class MainActivity extends Activity {
 		}
 	});
     	
-   
+    	//Array list of state
+    	ArrayList<StateInfo>records = new ArrayList<StateInfo>();
+    	records.add(new CensusRecords("Alabama", 4802735, 51.5f));
+    	records.add(new CensusRecords("Alaska", 710231, 48.1f));
+    	records.add(new CensusRecords("Georgia", 9687660, 51.1f));
     	
   
     	ll.addView(stateEntry);
