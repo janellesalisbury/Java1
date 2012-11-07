@@ -2,7 +2,6 @@ package com.salisbury.libs;
 
 import android.content.Context;
 import android.widget.GridLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class StateDisplays extends GridLayout{
@@ -17,7 +16,7 @@ public class StateDisplays extends GridLayout{
 		
 		_context = context;
 		
-		this.setColumnCount(3);
+		this.setColumnCount(2);
 		
 		TextView nameLabel = new TextView(_context);
 		nameLabel.setText("State Name:");

@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+
 public class MainActivity extends Activity {
 	
 	Context _context;
@@ -51,6 +52,9 @@ public class MainActivity extends Activity {
         _appLayout.addView(_state);
         
         _appLayout.setOrientation(LinearLayout.VERTICAL);
+        
+        
+       
         
         setContentView(_appLayout);
         
