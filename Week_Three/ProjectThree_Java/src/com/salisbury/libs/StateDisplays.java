@@ -2,6 +2,7 @@ package com.salisbury.libs;
 
 import android.content.Context;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class StateDisplays extends GridLayout{
@@ -14,7 +15,7 @@ public class StateDisplays extends GridLayout{
 	public StateDisplays(Context context){
 		super(context);
 		
-		_context = _context;
+		_context = context;
 		
 		this.setColumnCount(3);
 		
@@ -32,8 +33,10 @@ public class StateDisplays extends GridLayout{
 		
 		this.addView(nameLabel);
 		this.addView(_name);
+		
 		this.addView(populationLabel);
 		this.addView(_population);
+		
 		this.addView(percentWomenLabel);
 		this.addView(_percentWomen);
 		

@@ -1,6 +1,7 @@
 package com.projectthree_java;
 
 import com.salisbury.libs.SearchForm;
+import com.salisbury.libs.StateDisplays;
 
 import android.view.View.OnClickListener;
 import android.os.Bundle;
@@ -10,7 +11,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 
 public class MainActivity extends Activity {
@@ -18,6 +18,7 @@ public class MainActivity extends Activity {
 	Context _context;
 	LinearLayout _appLayout;
 	SearchForm _search;
+	StateDisplays _state;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,18 +30,28 @@ public class MainActivity extends Activity {
         _search = new SearchForm(_context, "Enter State", "Search Now");
         
         //ADD SEARCH HANDLER
-        EditText searchField = _search.getField();
         Button searchButton = _search.getButton();
         
         searchButton.setOnClickListener(new OnClickListener(){
-        	
+        	@Override
         	public void onClick(View v){
         		//GET STATE INFORMATION
         		Log.i("Click Handler", _search.getField().getText().toString());
         	}
         });
         
+        //ADD STATE DISPLAY
+        _state = new StateDisplays(_context);
+        
+        
+        
+        //ADD VIEWS
+        
         _appLayout.addView(_search);
+        _appLayout.addView(_state);
+        
+        _appLayout.setOrientation(LinearLayout.VERTICAL);
+        
         setContentView(_appLayout);
         
     }
