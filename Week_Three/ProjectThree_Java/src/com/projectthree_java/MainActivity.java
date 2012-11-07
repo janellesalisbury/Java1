@@ -1,5 +1,6 @@
 package com.projectthree_java;
 
+import com.salisbury.libs.Favorites;
 import com.salisbury.libs.SearchForm;
 import com.salisbury.libs.StateDisplays;
 
@@ -21,6 +22,7 @@ public class MainActivity extends Activity {
 	LinearLayout _appLayout;
 	SearchForm _search;
 	StateDisplays _state;
+	Favorites _favorites;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,17 +47,16 @@ public class MainActivity extends Activity {
         //ADD STATE DISPLAY
         _state = new StateDisplays(_context);
         
+        //ADD FAVORITES 
+        _favorites = new Favorites(_context);
         
         
-        //ADD VIEWS
+         //ADD VIEWS
         
         _appLayout.addView(_search);
         _appLayout.addView(_state);
-        
+        _appLayout.addView(_favorites);        
         _appLayout.setOrientation(LinearLayout.VERTICAL);
-        
-        
-       
         
         setContentView(_appLayout);
         
