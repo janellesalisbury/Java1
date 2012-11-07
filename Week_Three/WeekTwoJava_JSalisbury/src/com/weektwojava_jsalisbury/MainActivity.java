@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -31,9 +32,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         
         
-        TextView stateNameTV;
-        TextView statePopTV;
-        TextView stateWomenTV;
+        TextView _name;
+        TextView _population;
+        TextView _percentWomen;
+        Context _context;
        
         
         //set up new linear layout 
@@ -73,18 +75,7 @@ public class MainActivity extends Activity {
 		}
 	});
     	
-    	//pulling resources using text view
-    	stateNameTV = new TextView(this);
-    	stateNameTV.setText(R.string.al_name);
     	
-    	
-    	//population text view
-    	statePopTV = new TextView(this);
-    	statePopTV.setText(R.string.al_pop);
-    	
-    	//state percentage text view
-    	stateWomenTV = new TextView(this);
-    	stateWomenTV.setText(R.string.al_women);
     	
     	
     	//list of results from records that will be pulled from API and displayed on screen to user (next week)
@@ -98,9 +89,7 @@ public class MainActivity extends Activity {
     	
     	//layout all widget groupings in order of appearance 
     	ll.addView(stateEntry);
-		ll.addView(stateNameTV);
-    	ll.addView(statePopTV);
-    	ll.addView(stateWomenTV);
+		
     	
     	setContentView(ll);
     	
