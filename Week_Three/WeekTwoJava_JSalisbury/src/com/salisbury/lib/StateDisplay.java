@@ -14,7 +14,7 @@ public class StateDisplay extends GridLayout {
 	public StateDisplay(Context context){
 		super (context);
 		
-		_context = _context;
+		_context = context;
 		
 		this.setColumnCount(2);
 		TextView nameLabel = new TextView(_context);

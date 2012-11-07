@@ -12,33 +12,30 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
+
 
 
 import com.salisbury.lib.*;
 import com.weektwojava_jsalisbury.States;
 import com.weektwojava_jsalisbury.StateInfo;
 import com.weektwojava_jsalisbury.CensusRecords;
+import com.salisbury.lib.StateDisplay;
+
 
 
 
 public class MainActivity extends Activity {
 	
+	StateDisplay _state;
+	Context _context;
 	
-   
-
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
         
-        TextView _name;
-        TextView _population;
-        TextView _percentWomen;
-        Context _context;
-       
-        
-        //set up new linear layout 
+         //set up new linear layout 
         LinearLayout ll = new LinearLayout(this);
         ll.setOrientation(LinearLayout.VERTICAL);
    		
@@ -75,8 +72,8 @@ public class MainActivity extends Activity {
 		}
 	});
     	
-    	
-    	
+    	//ADD STATE DISPLAY
+    	_state = new StateDisplay(_context);
     	
     	//list of results from records that will be pulled from API and displayed on screen to user (next week)
     	ArrayList<StateInfo>records = new ArrayList<StateInfo>();
@@ -89,6 +86,9 @@ public class MainActivity extends Activity {
     	
     	//layout all widget groupings in order of appearance 
     	ll.addView(stateEntry);
+    	ll.addView(_state);
+    	
+    	ll.setOrientation(LinearLayout.VERTICAL);
 		
     	
     	setContentView(ll);
