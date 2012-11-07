@@ -13,7 +13,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
 import com.salisbury.lib.*;
+import com.weektwojava_jsalisbury.States;
 import com.weektwojava_jsalisbury.StateInfo;
 import com.weektwojava_jsalisbury.CensusRecords;
 
@@ -21,27 +23,12 @@ import com.weektwojava_jsalisbury.CensusRecords;
 
 public class MainActivity extends Activity {
 	
-	Context _context;
-    LinearLayout _appLayout;
-    SearchForm _search;
+	
+   
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        _context = this;
-        _appLayout = new LinearLayout(this);
-        
-        _search = new SearchForm(_context, "Enter State", "Retrieve");
-        
-        //ADD SEARCH HANDLER
-        EditText searchField = _search.getField();
-        Button searchButton = _search.getButton();
-        
-        _appLayout.addView(_search);
-        setContentView(_appLayout);
-        
-        
         
         
         TextView stateNameTV;
@@ -52,9 +39,9 @@ public class MainActivity extends Activity {
         //set up new linear layout 
         LinearLayout ll = new LinearLayout(this);
         ll.setOrientation(LinearLayout.VERTICAL);
-    		
+   		
         //add button and edit text from setLayout class
-    	LinearLayout stateEntry = SetLayouts.singleEntryWithButton(this, "Enter State Here", "Retrieve Data");
+        LinearLayout stateEntry = SetLayouts.singleEntryWithButton(this, "Enter State Here", "Retrieve Data");
     	
     	Button retrieveButton = (Button) stateEntry.findViewById(2);
     	
