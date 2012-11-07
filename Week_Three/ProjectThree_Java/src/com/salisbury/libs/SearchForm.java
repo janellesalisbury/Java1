@@ -2,44 +2,35 @@ package com.salisbury.libs;
 
 import android.content.Context;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+
 
 
 public class SearchForm extends LinearLayout{
 	
-	EditText _searchField;
-	Button _searchButton;
-
+	Spinner _stateList;
+	Button _search;
+	Context _context;
+	LayoutParams lp;
 	
-	
-	public SearchForm(Context context, String hint, String buttonText){
+	public SearchForm(Context context){
 		super(context);
+		_context = context;
 		
-		LayoutParams lp;
 		
-		_searchField = new EditText(context);
+		_stateList = new Spinner(_context);
 		lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f);
-		_searchField.setHint(hint);
-		_searchField.setLayoutParams(lp);
+		_stateList.setLayoutParams(lp);
 		
-		_searchButton = new Button(context);
-		_searchButton.setText(buttonText);
+		_search = new Button(_context);
+		_search.setText("Search");
 		
-		
-		this.addView(_searchField);		
-		this.addView(_searchButton);
+		this.addView(_stateList);
+		this.addView(_search);
 		
 		lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		this.setLayoutParams(lp);
-	}
-	public EditText getField(){
-		return _searchField;
-	}
-	public Button getButton(){
-		return _searchButton;
-		
-		
 		
 	}
 

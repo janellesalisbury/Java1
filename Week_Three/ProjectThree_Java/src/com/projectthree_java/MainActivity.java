@@ -1,6 +1,6 @@
 package com.projectthree_java;
 
-import com.salisbury.libs.Favorites;
+
 import com.salisbury.libs.SearchForm;
 import com.salisbury.libs.StateDisplays;
 
@@ -22,7 +22,7 @@ public class MainActivity extends Activity {
 	LinearLayout _appLayout;
 	SearchForm _search;
 	StateDisplays _state;
-	Favorites _favorites;
+	
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,31 +31,17 @@ public class MainActivity extends Activity {
         _context = this;
         _appLayout = new LinearLayout(this);
         
-        _search = new SearchForm(_context, "Enter State", "Search Now");
-        
-        //ADD SEARCH HANDLER
-        Button searchButton = _search.getButton();
-        
-        searchButton.setOnClickListener(new OnClickListener(){
-        	@Override
-        	public void onClick(View v){
-        		//GET STATE INFORMATION
-        		Log.i("Click Handler", _search.getField().getText().toString());
-        	}
-        });
+        //ADD SEARCH FORM
+        _search = new SearchForm(_context);
         
         //ADD STATE DISPLAY
         _state = new StateDisplays(_context);
         
-        //ADD FAVORITES 
-        _favorites = new Favorites(_context);
         
         
          //ADD VIEWS
-        
         _appLayout.addView(_search);
-        _appLayout.addView(_state);
-        _appLayout.addView(_favorites);        
+        _appLayout.addView(_state);        
         _appLayout.setOrientation(LinearLayout.VERTICAL);
         
         setContentView(_appLayout);
