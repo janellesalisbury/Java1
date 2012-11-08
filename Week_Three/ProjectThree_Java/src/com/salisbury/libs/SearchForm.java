@@ -116,5 +116,9 @@ public class SearchForm extends LinearLayout{
 	public Button getButton(){
 		return _searchButton;
 	}
+	public Object getSelectedItem() {
+		// TODO Auto-generated method stub
+		return _states;
+	}
 
 }

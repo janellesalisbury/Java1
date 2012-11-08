@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 
 
 
@@ -43,7 +44,7 @@ public class MainActivity extends Activity {
         	@Override
         	public void onClick(View v){
         		//Get state information 
-        		//Log.i("Click Handler", _search.getField().getText().toString());
+        		getInfo(_search.getSelectedItem().toString());
         	}
         });
         
@@ -71,5 +72,8 @@ public class MainActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
+    }
+    private void getInfo(String state){
+    	Log.i("CLICK", state);
     }
 }
