@@ -3,6 +3,7 @@ package com.projectthree_java;
 
 import com.salisbury.libs.SearchForm;
 import com.salisbury.libs.StateDisplays;
+import com.salisbury.libs.WebStuff;
 
 import android.view.View.OnClickListener;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ public class MainActivity extends Activity {
 	LinearLayout _appLayout;
 	SearchForm _search;
 	StateDisplays _state;
+	Boolean connected = false;
 	
 
     @Override
@@ -33,6 +35,23 @@ public class MainActivity extends Activity {
         
         //ADD SEARCH FORM
         _search = new SearchForm(_context);
+        
+        //ADD CLICK EVENT HANDLER
+        Button searchButton = _search.getButton();
+        
+        searchButton.setOnClickListener(new OnClickListener(){
+        	@Override
+        	public void onClick(View v){
+        		//Get state information 
+        		//Log.i("Click Handler", _search.getField().getText().toString());
+        	}
+        });
+        
+        //DETECT NETWORK CONNECTIVITY
+        connected = WebStuff.getConnectionStatus(_context);
+        if(connected){
+        	Log.i("NETWORK CONNECTION", WebStuff.getConnectionType(_context));
+        }
         
         //ADD STATE DISPLAY
         _state = new StateDisplays(_context);

@@ -10,7 +10,7 @@ import android.widget.Spinner;
 public class SearchForm extends LinearLayout{
 	
 	Spinner _stateList;
-	Button _search;
+	Button _searchButton;
 	Context _context;
 	LayoutParams lp;
 	
@@ -23,15 +23,19 @@ public class SearchForm extends LinearLayout{
 		lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f);
 		_stateList.setLayoutParams(lp);
 		
-		_search = new Button(_context);
-		_search.setText("Search");
+		_searchButton = new Button(_context);
+		_searchButton.setText("Search");
 		
 		this.addView(_stateList);
-		this.addView(_search);
+		this.addView(_searchButton);
 		
 		lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		this.setLayoutParams(lp);
 		
+	}
+
+	public Button getButton(){
+		return _searchButton;
 	}
 
 }
