@@ -2,7 +2,7 @@ package com.projectthree_java;
 
 public interface IStateInfo {
 	
-	//set state name
+		//set state name
 		public boolean setName(String name);
 		
 		//get state name
@@ -14,11 +14,13 @@ public interface IStateInfo {
 		//get population
 		public double getPopulation();
 		
-		//set percent women
-		public boolean setPercentW(float percentW);
+		//set total in jail
+		public boolean setTotaljail(double jail);
 		
-		//get percent women
-		public float getPercentW();
+		//get total in jail
+		public double getTotalJail();
+
+		
 		
 
 }

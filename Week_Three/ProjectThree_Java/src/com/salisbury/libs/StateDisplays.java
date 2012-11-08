@@ -8,7 +8,7 @@ public class StateDisplays extends GridLayout{
 	
 	TextView _name;
 	TextView _population;
-	TextView _percentWomen;
+	TextView _popJailed;
 	Context _context;
 	
 	public StateDisplays(Context context){
@@ -26,9 +26,9 @@ public class StateDisplays extends GridLayout{
 		populationLabel.setText("Population:");
 		_population = new TextView(_context);
 		
-		TextView percentWomenLabel = new TextView(_context);
-		percentWomenLabel.setText("Percentage of Women:");
-		_percentWomen = new TextView(_context);
+		TextView populationJailedLabel = new TextView(_context);
+		populationJailedLabel.setText("Incarcerated Population:");
+		_popJailed = new TextView(_context);
 		
 		this.addView(nameLabel);
 		this.addView(_name);
@@ -36,8 +36,8 @@ public class StateDisplays extends GridLayout{
 		this.addView(populationLabel);
 		this.addView(_population);
 		
-		this.addView(percentWomenLabel);
-		this.addView(_percentWomen);
+		this.addView(populationJailedLabel);
+		this.addView(_popJailed);
 		
 		
 		
