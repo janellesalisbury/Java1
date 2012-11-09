@@ -45,7 +45,8 @@ public class MainActivity extends Activity {
         
         _context = this;
         _appLayout = new LinearLayout(this);
-        _history = new HashMap<String, String>();
+        _history = getHistory();
+        Log.i("HISTORY READ",_history.toString());
         
         //ADD SEARCH FORM
         _search = new SearchForm(_context);
@@ -106,6 +107,19 @@ public class MainActivity extends Activity {
     		finalURL = null;
     	}
     }
+    @SuppressWarnings({ "unchecked", "unused" })
+	private HashMap<String, String> getHistory(){
+    	Object stored = FileStuff.readObjectFile(_context, "history", false);
+    	
+    	HashMap<String, String> history;
+    	if(stored == null){
+    		Log.i("HISTORY", "NO HISTORY FILE FOUND");
+    		history = new HashMap<String, String>();
+    	}else{
+    		history = (HashMap<String, String>) stored;
+    	}
+    	return history;
+    }
     private class StateRequest extends AsyncTask<URL, Void, String>{
     	@Override
     	protected String doInBackground(URL...urls){
@@ -115,6 +129,7 @@ public class MainActivity extends Activity {
     		}
     		return response;
     	}
+    	
     	@Override
     	protected void onPostExecute(String result){
     		Log.i("URL RESPONSE", result);
