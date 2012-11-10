@@ -3,11 +3,10 @@ package com.projectthree_java;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.HashMap;
 
+import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import com.salisbury.libs.FileStuff;
 import com.salisbury.libs.SearchForm;
@@ -24,8 +23,6 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 
 
@@ -58,7 +55,7 @@ public class MainActivity extends Activity {
         	@Override
         	public void onClick(View v){
         		//Get state information 
-        		getInfo(_search.getSelectedItem().toString());
+        		getInfo(_search.getNumber().toString());
         	}
         });
         
@@ -88,18 +85,11 @@ public class MainActivity extends Activity {
         return true;
     }
     private void getInfo(String state){
-    	String baseURL = "http://api.census.gov/data/2010/sf1?key=e44eee8f8d8583f1b0854a96fcbe580d59164a54&get=P0010001,NAME&for=state:*";
-    	String yql = " http://api.census.gov/data/2010/acs5?key=e44eee8f8d8583f1b0854a96fcbe580d59164a54&get=B02001_001E,NAME&for=state:06";
-    	String qs;
-    	try{
-    		qs = URLEncoder.encode(yql, "UTF-8");
-    	}catch(Exception e){
-    		Log.e("BAD URL", "ENCODING PROBLEM");
-    		qs = "";
-    	}
+    	String baseURL = "http://api.census.gov/data/2010/sf1?key=e44eee8f8d8583f1b0854a96fcbe580d59164a54&get=P0030001,P0030002,P0030003,P0030004,P0030006&for=state:"+state;
+    	Log.i("GET INFO CALL", baseURL);
     	URL finalURL;
     	try{
-    		finalURL = new URL(baseURL + "?q=" + qs + "format=json");
+    		finalURL = new URL(baseURL);
     		StateRequest sr = new StateRequest();
     		sr.execute(finalURL);
     	}catch(MalformedURLException e){
@@ -107,7 +97,7 @@ public class MainActivity extends Activity {
     		finalURL = null;
     	}
     }
-    @SuppressWarnings({ "unchecked", "unused" })
+    @SuppressWarnings({ "unchecked" })
 	private HashMap<String, String> getHistory(){
     	Object stored = FileStuff.readObjectFile(_context, "history", false);
     	
@@ -134,17 +124,10 @@ public class MainActivity extends Activity {
     	protected void onPostExecute(String result){
     		Log.i("URL RESPONSE", result);
     		try{
-    			JSONObject json = new JSONObject(result);
-    			JSONObject results = json.getJSONObject("query").getJSONObject("results").getJSONObject("row");
-    			if(results.getString("").compareTo("N/A") ==0){
-    				Toast toast = Toast.makeText(_context, "INVALID STATE", Toast.LENGTH_SHORT);
-    				toast.show();
-    			}else{
-    				Toast toast = Toast.makeText(_context, "VALID STATE" + results.getString("state"), Toast.LENGTH_SHORT);
-    				toast.show();
-    				_history.put(results.getString("state"), results.toString());
-    				FileStuff.storeObjectFile(_context, "temp", results.toString(), true);
-    			}
+    			JSONArray json = new JSONArray(result);
+    			JSONArray results = json.getJSONArray(1);
+    			Log.i("JSON Array", results.toString());
+    			StateDisplays.updateData(results);
     		}catch(JSONException e){
     			Log.e("JSON", "JSON OBJECT EXPECTION");
     		

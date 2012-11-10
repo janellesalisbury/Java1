@@ -21,12 +21,13 @@ public class SearchForm extends LinearLayout{
 	Button _searchButton;
 	Context _context;
 	LayoutParams lp;
+	String _stateNumber;
 	ArrayList<String> _states = new ArrayList<String>();
 	
 	public SearchForm(Context context){
 		super(context);
 		_context = context;
-		
+		_stateNumber = null;
 		_states.add("Select State");
 		_stateList = new Spinner(_context);
 		lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f);
@@ -39,6 +40,8 @@ public class SearchForm extends LinearLayout{
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View v, int pos, long id){
 				Log.i("STATE SELECTED", parent.getItemAtPosition(pos).toString());
+				Log.i("STATE SELECTED NUMBER", Integer.toString(pos));
+				_stateNumber = Integer.toString(pos);
 			}
 			
 			@Override
@@ -119,6 +122,10 @@ public class SearchForm extends LinearLayout{
 	public Object getSelectedItem() {
 		// TODO Auto-generated method stub
 		return _states;
+	}
+	public String getNumber() {
+		// TODO Auto-generated method stub
+		return _stateNumber;
 	}
 
 }
