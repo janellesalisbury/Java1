@@ -14,6 +14,7 @@ import android.util.Log;
 
 public class FileStuff {
 	
+	@SuppressWarnings("resource")
 	public static Boolean storeStringFile(Context context, String filename, String content, Boolean external){
 		try{
 			File file;
@@ -32,6 +33,7 @@ public class FileStuff {
 		}
 		return true;
 	}
+	@SuppressWarnings("resource")
 	public static Boolean storeObjectFile(Context context, String filename, Object content, Boolean external){
 		try{
 			File file;
@@ -54,6 +56,7 @@ public class FileStuff {
 		return true;
 	}
 	
+	@SuppressWarnings("resource")
 	public static String readStringFile(Context context, String filename, Boolean external){
 		String content = "";
 		try{
@@ -86,6 +89,7 @@ public class FileStuff {
 		return content;
 		}
 	
+	@SuppressWarnings("resource")
 	public static Object readObjectFile(Context context, String filename, Boolean external){
 		Object content = new Object();
 		try{

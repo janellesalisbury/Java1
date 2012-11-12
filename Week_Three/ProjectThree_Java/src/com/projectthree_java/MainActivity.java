@@ -42,7 +42,8 @@ public class MainActivity extends Activity {
         
         _context = this;
         _appLayout = new LinearLayout(this);
-        _history = getHistory();
+        _history = new HashMap<String, String>();
+        
         Log.i("HISTORY READ",_history.toString());
         
         //ADD SEARCH FORM
@@ -135,3 +136,4 @@ public class MainActivity extends Activity {
     	}
     }
 }
+  
