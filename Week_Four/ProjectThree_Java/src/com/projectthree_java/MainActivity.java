@@ -130,8 +130,9 @@ public class MainActivity extends Activity {
     			Log.i("JSON Array", results.toString());
     			StateDisplays.updateData(results);
     			String state = _search.getNumber().toString();
-    			_history.put(result, results.toString());
+    			_history.put(state, results.toString());
     			FileStuff.storeObjectFile(_context, "history", _history, false);
+    			FileStuff.storeObjectFile(_context, "temp", results.toString(), true);
     
     		}catch(JSONException e){
     			Log.e("JSON", "JSON OBJECT EXPECTION");
