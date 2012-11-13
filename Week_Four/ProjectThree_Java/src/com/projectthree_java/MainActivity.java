@@ -8,6 +8,7 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import com.salisbury.libs.Bookmarks;
 import com.salisbury.libs.FileStuff;
 import com.salisbury.libs.SearchForm;
 import com.salisbury.libs.StateDisplays;
@@ -34,6 +35,7 @@ public class MainActivity extends Activity {
 	StateDisplays _state;
 	Boolean connected = false;
 	HashMap<String, String> _history;
+	Bookmarks _bookmark;
 	
 
     @Override
@@ -43,6 +45,7 @@ public class MainActivity extends Activity {
         _context = this;
         _appLayout = new LinearLayout(this);
         _history = new HashMap<String, String>();
+       
         
         Log.i("HISTORY READ",_history.toString());
         
@@ -69,11 +72,15 @@ public class MainActivity extends Activity {
         //ADD STATE DISPLAY
         _state = new StateDisplays(_context);
         
+        //ADD BOOKMARKS	
+        
+        _bookmark = new Bookmarks(_context);
         
         
          //ADD VIEWS
         _appLayout.addView(_search);
-        _appLayout.addView(_state);        
+        _appLayout.addView(_state); 
+        _appLayout.addView(_bookmark);
         _appLayout.setOrientation(LinearLayout.VERTICAL);
         
         setContentView(_appLayout);
@@ -85,6 +92,8 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
+    
+    //INFO CALL TO RETRIEVE STATE DATA
     private void getInfo(String state){
     	String baseURL = "http://api.census.gov/data/2010/sf1?key=e44eee8f8d8583f1b0854a96fcbe580d59164a54&get=P0030001,P0030002,P0030003,P0030004,P0030006&for=state:"+state;
     	Log.i("GET INFO CALL", baseURL);
@@ -121,6 +130,7 @@ public class MainActivity extends Activity {
     		return response;
     	}
     	
+    	//create the read/write to storage here
     	@Override
     	protected void onPostExecute(String result){
     		Log.i("URL RESPONSE", result);
