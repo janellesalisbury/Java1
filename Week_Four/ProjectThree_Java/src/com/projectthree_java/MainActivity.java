@@ -16,11 +16,13 @@ import com.salisbury.libs.SearchForm;
 import com.salisbury.libs.StateDisplays;
 import com.salisbury.libs.WebStuff;
 
+import android.R.color;
 import android.view.View.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -28,6 +30,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 
 
 
@@ -77,13 +80,29 @@ public class MainActivity extends Activity {
         _state = new StateDisplays(_context);
         
         //ADD BOOKMARKS	
-        _bookmark = new Bookmarks(_context);
+        ArrayList<String>bkmk = new ArrayList<String>(Arrays.<String>asList(FileStuff.readStringFile(_context, "bookmarks", true)));
+        _bookmark = new Bookmarks(_context, bkmk);
+        _bookmark._list.setOnItemSelectedListener(new OnItemSelectedListener (){
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View v, int pos, long id){
+					
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+				
+			}
+        	
+        });
         
         
          //ADD VIEWS
         _appLayout.addView(_search);
         _appLayout.addView(_state); 
         _appLayout.addView(_bookmark);
+        _appLayout.setBackgroundColor(Color.LTGRAY);
         _appLayout.setOrientation(LinearLayout.VERTICAL);
         
         setContentView(_appLayout);

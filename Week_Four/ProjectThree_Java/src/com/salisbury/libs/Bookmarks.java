@@ -13,7 +13,7 @@ public class Bookmarks extends LinearLayout {
 	
 	Button _add;
 	Button _remove;
-	Spinner _list;
+	public Spinner _list;
 	Context _context;
 	ArrayList<String> _stateData = new ArrayList<String>();
 	
@@ -43,7 +43,7 @@ public class Bookmarks extends LinearLayout {
 		_list = new Spinner(_context);
 		lp = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f);
 		_list.setLayoutParams(lp);
-		ArrayAdapter<String>listAdapter = new ArrayAdapter<String>(_context, android.R.layout.simple_spinner_item);
+		ArrayAdapter<String>listAdapter = new ArrayAdapter<String>(_context, android.R.layout.simple_spinner_item, _stateData);
 		listAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 		_list.setAdapter(listAdapter);
 
