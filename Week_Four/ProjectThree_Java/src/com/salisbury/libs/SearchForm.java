@@ -3,6 +3,7 @@ package com.salisbury.libs;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -54,6 +55,7 @@ public class SearchForm extends LinearLayout{
 			
 		_searchButton = new Button(_context);
 		_searchButton.setText("Search");
+		_searchButton.setTextColor(Color.RED);
 		
 		this.addView(_stateList);
 		this.addView(_searchButton);

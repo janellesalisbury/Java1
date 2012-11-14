@@ -3,6 +3,8 @@ package com.projectthree_java;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import org.json.JSONArray;
@@ -22,6 +24,8 @@ import android.content.Context;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -73,7 +77,6 @@ public class MainActivity extends Activity {
         _state = new StateDisplays(_context);
         
         //ADD BOOKMARKS	
-        
         _bookmark = new Bookmarks(_context);
         
         
@@ -87,7 +90,8 @@ public class MainActivity extends Activity {
         
     }
 
-    @Override
+   
+	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
