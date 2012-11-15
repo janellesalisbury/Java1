@@ -79,23 +79,8 @@ public class MainActivity extends Activity {
         //ADD STATE DISPLAY
         _state = new StateDisplays(_context);
         
-        //ADD BOOKMARKS	
-        ArrayList<String>bkmk = new ArrayList<String>(Arrays.<String>asList(FileStuff.readStringFile(_context, "bookmarks", true)));
-        _bookmark = new Bookmarks(_context, bkmk);
-        _bookmark._list.setOnItemSelectedListener(new OnItemSelectedListener (){
-
-			@Override
-			public void onItemSelected(AdapterView<?> parent, View v, int pos, long id){
-					
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> parent) {
-				// TODO Auto-generated method stub
-				
-			}
-        	
-        });
+        //ADD BOOKMARKS
+        _bookmark = new Bookmarks(_context);
         
         
          //ADD VIEWS

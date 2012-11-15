@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -22,16 +26,7 @@ public class Bookmarks extends LinearLayout {
 		createBookmarks(context);
 	}
 	
-	public Bookmarks(Context context, ArrayList<String>item){
-		super(context);
-		createBookmarks(context);
-		
-		for(int i= 0, j=item.size(); i<j; i++){
-			_stateData.add(item.get(i));
-		}
-			
-		
-	}
+	
 		private void createBookmarks(Context context){
 		_context = context;
 		LayoutParams lp;
@@ -46,7 +41,27 @@ public class Bookmarks extends LinearLayout {
 		ArrayAdapter<String>listAdapter = new ArrayAdapter<String>(_context, android.R.layout.simple_spinner_item, _stateData);
 		listAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
 		_list.setAdapter(listAdapter);
+		
+		//FUNCTIONALITY OF BUTTONS
+		
+		_list.setOnItemSelectedListener(new OnItemSelectedListener(){
 
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View v,
+					int pos, long id) {
+				Log.i("BOOKMARK SELECTED", parent.getItemAtPosition(pos).toString());
+				
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				Log.i("BOOKMARK SELECTED", "NADA");
+				
+			}
+		});
+
+		updateBookmarks();
+		
 		//ADD BUTTONS/TEXT
 		_add = new  Button(_context);
 		_remove = new Button(_context);
@@ -62,7 +77,10 @@ public class Bookmarks extends LinearLayout {
 	
 		
 	}
-	
+	private void updateBookmarks(){
+		_stateData.add("New York");
+		_stateData.add("Nevada");
+	}
 
 	
 }
