@@ -29,27 +29,27 @@ public class StateDisplays extends GridLayout{
 		
 		TextView populationLabel = new TextView(_context);
 		populationLabel.setText("Total Population:");
-		populationLabel.setTextColor(Color.BLUE);
+		
 		_population = new TextView(_context);
 		
 		TextView populationWhite = new TextView(_context);
 		populationWhite.setText("White:");
-		populationWhite.setTextColor(Color.BLUE);
+		
 		_popWhite = new TextView(_context);
 		
 		TextView populationBlack = new TextView(_context);
 		populationBlack.setText("Black:");
-		populationBlack.setTextColor(Color.BLUE);
+		
 		_popBlack = new TextView(_context);
 		
 		TextView populationNative = new TextView(_context);
 		populationNative.setText("Native American:");
-		populationNative.setTextColor(Color.BLUE);
+		
 		_popNativeAmerican = new TextView(_context);
 		
 		TextView populationHawaiian = new TextView(_context);
 		populationHawaiian.setText("Hawaiian/Other:");
-		populationHawaiian.setTextColor(Color.BLUE);
+		
 		_popHawaiian = new TextView(_context);
 		
 		this.addView(populationLabel);
