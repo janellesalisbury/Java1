@@ -16,7 +16,7 @@ import com.salisbury.libs.SearchForm;
 import com.salisbury.libs.StateDisplays;
 import com.salisbury.libs.WebStuff;
 
-import android.R.color;
+
 import android.view.View.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
+
 
 
 
