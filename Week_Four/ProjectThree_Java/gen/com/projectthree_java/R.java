@@ -28,5 +28,6 @@ public final class R {
     }
     public static final class style {
         public static final int AppTheme=0x7f040000;
+        public static final int theMain=0x7f040001;
     }
 }

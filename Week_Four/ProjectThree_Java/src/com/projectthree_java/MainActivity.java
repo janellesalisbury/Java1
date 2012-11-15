@@ -102,7 +102,7 @@ public class MainActivity extends Activity {
         _appLayout.addView(_search);
         _appLayout.addView(_state); 
         _appLayout.addView(_bookmark);
-        _appLayout.setBackgroundColor(Color.LTGRAY);
+        _appLayout.setBackgroundColor(Color.TRANSPARENT);
         _appLayout.setOrientation(LinearLayout.VERTICAL);
         
         setContentView(_appLayout);
