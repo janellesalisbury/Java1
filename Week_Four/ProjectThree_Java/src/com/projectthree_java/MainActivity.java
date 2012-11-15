@@ -29,6 +29,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 
@@ -81,6 +82,14 @@ public class MainActivity extends Activity {
         
         //ADD BOOKMARKS
         _bookmark = new Bookmarks(_context);
+        
+        //ADD IMAGEVIEW
+        ImageView map = new ImageView(this);
+        map.setImageResource(R.drawable.map);
+        map.setPadding(100, 0, 0, 150);
+        _appLayout.addView(map);
+        
+        
         
         
          //ADD VIEWS
