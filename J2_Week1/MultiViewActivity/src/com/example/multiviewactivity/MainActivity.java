@@ -19,12 +19,14 @@ public class MainActivity extends Activity {
         final EditText et = (EditText) findViewById(R.id.editText1);
         
         Button b = (Button) findViewById(R.id.button1);
+       
         b.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(MainActivity.this, SecondActivity.class);
 				intent.putExtra("thetext", et.getText().toString());
+				startActivity(intent);
 							
 			}
 		});
