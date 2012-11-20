@@ -6,8 +6,8 @@
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="176dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This is the second activity" />
+        android:text="TextView" />
 
 </LinearLayout>
