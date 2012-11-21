@@ -10,7 +10,7 @@ package com.tailor_made;
 public final class R {
     public static final class array {
         public static final int clothing_categories=0x7f040000;
-        public static final int item_types=0x7f040001;
+        public static final int shirt_types=0x7f040001;
     }
     public static final class attr {
     }
@@ -26,8 +26,8 @@ public final class R {
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int list_item=0x7f030001;
-        public static final int single_list_item_view=0x7f030002;
-        public static final int type_items=0x7f030003;
+        public static final int shirt_item=0x7f030002;
+        public static final int single_list_item_view=0x7f030003;
     }
     public static final class menu {
         public static final int activity_main=0x7f070000;

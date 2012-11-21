@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="shirt_types">
+        <item>Tanks</item>
+        <item>T-Shirts</item>
+        <item>Blouses</item>
+        <item>Long-Sleeve</item>
+        <item>Sweaters/Sweatshirts</item>
+    </string-array>
+    
+</resources>
