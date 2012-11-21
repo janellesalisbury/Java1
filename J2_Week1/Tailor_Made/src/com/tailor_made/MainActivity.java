@@ -38,13 +38,13 @@ public class MainActivity extends ListActivity {
         lv.setOnItemClickListener(new OnItemClickListener(){
         	public void onItemClick(AdapterView<?> parent, View view, int position, long id){
         	
-				String result = ((TextView) view).getText().toString();
+				String product = ((TextView) view).getText().toString();
 				
 				//LAUNCHING THE NEW ACTIVITY
 				Intent intent = new Intent(getApplicationContext(), SingleListItem.class);
 				
 				//SEND TO NEW ACTIVITY
-				intent.putExtra("result", result);
+				intent.putExtra("product", product);
 				startActivity(intent);
         		
         	}
