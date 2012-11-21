@@ -32,6 +32,17 @@ public class MainActivity extends ListActivity {
         //BINDING TO LISTADAPTER
         this.setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, R.id.label, clothing_categories));
         
+        ListView lv = getListView();
+        
+        //ONCLICK
+        lv.setOnItemClickListener(new OnItemClickListener(){
+        	public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+        	
+				String product = ((TextView) view).getText().toString();
+        		
+        	}
+        });
+        
       
     }
 
