@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".SingleListItem"
                     android:label="Clothing"></activity>
+        <activity android:name=".WebView"
+            		android:label="Websites"></activity>
     </application>
 
 </manifest>

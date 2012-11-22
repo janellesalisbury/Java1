@@ -1,10 +1,15 @@
 package com.tailor_made;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class SingleListItem extends Activity{
     @Override
@@ -20,11 +25,7 @@ public class SingleListItem extends Activity{
         // displaying selected product name
         txtProduct.setText(product);
         
-        //STORING STRING RESOURCES INTO ARRAY
-        String [] shirt_types = getResources().getStringArray(R.array.shirt_types);
-        
-        //BINDING TO LISTADAPTER
-        //this.setListAdapter(new ArrayAdapter<String>(this, R.layout.shirt_item, R.id.label, shirt_types));
  
+    	}
     }
-}
+ 
