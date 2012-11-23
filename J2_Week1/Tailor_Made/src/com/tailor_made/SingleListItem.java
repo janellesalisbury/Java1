@@ -19,12 +19,13 @@ public class SingleListItem extends Activity{
         TextView txtProduct = (TextView) findViewById(R.id.product_label);
  
         Intent i = getIntent();
-        // getting attached intent data
+        // GETTING ATTACHED INTENT DATA
         String product = i.getStringExtra("product");
-        // displaying selected product name
+        // DISPLAYING SELECTED TEXT
         txtProduct.setText(product);
-        
-  Button button;
+      
+    //CREATE A BUTTON/ONCLICK LISTENER TO OPEN WEBVIEW
+    Button button;
   	button = (Button) findViewById(R.id.buttonUrl);
   	
   	button.setOnClickListener(new OnClickListener() {
