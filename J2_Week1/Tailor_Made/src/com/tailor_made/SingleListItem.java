@@ -1,15 +1,14 @@
 package com.tailor_made;
 
 import android.app.Activity;
-import android.app.ListActivity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
+
 
 public class SingleListItem extends Activity{
     @Override
@@ -25,7 +24,20 @@ public class SingleListItem extends Activity{
         // displaying selected product name
         txtProduct.setText(product);
         
- 
+  Button button;
+  	button = (Button) findViewById(R.id.buttonUrl);
+  	
+  	button.setOnClickListener(new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+			startActivity(i);
+
+			
+		}
+	});
+   
     	}
     }
  
