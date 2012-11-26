@@ -1,4 +1,4 @@
-package com.fiftystates_funfacts;
+package com.funfacts_fiftystates;
 
 import android.os.Bundle;
 import android.app.Activity;

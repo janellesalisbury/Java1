@@ -1,8 +1,8 @@
 <resources>
 
-    <string name="app_name">FiftyStates_funfacts</string>
+    <string name="app_name">FunFacts_FiftyStates</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">FiftyStates_funfacts</string>
+    <string name="title_activity_main">FunFacts_FiftyStates</string>
 
 </resources>

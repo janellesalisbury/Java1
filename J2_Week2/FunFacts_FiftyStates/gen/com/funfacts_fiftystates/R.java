@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.fiftystates_funfacts;
+package com.funfacts_fiftystates;
 
 public final class R {
     public static final class attr {
