@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="actor_names">
+        <item>Chevy Chase</item>
+        <item>Clint Eastwood</item>
+        <item>Jim Carrey</item>
+        <item>John Wayne</item>
+        <item>Johnny Depp</item>
+        <item>Judy Garland</item>
+        <item>Marilyn Monroe</item>
+        <item>Matthew McConaughey</item>
+        <item>Penelope Cruz</item>
+    </string-array>
+</resources>
