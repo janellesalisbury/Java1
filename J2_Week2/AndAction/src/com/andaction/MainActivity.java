@@ -35,11 +35,11 @@ public class MainActivity extends ListActivity {
 				String result = ((TextView) view).getText().toString();
 				
 			//LAUNCHING NEW ACTIVITY
-				Intent intent = new Intent(getApplicationContext(), SingleListItem.class);
+				Intent i = new Intent(getApplicationContext(), SingleListItem.class);
 				
 			//SENDING TO NEW ACTIVITY
-				intent.putExtra("result", result);
-				startActivity(intent);
+				i.putExtra("result", result);
+				startActivity(i);
 				
 			}
         	

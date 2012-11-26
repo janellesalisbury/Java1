@@ -1,8 +1,13 @@
 package com.andaction;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class SingleListItem extends Activity{
@@ -16,10 +21,28 @@ public class SingleListItem extends Activity{
 		Intent i = getIntent();
 		
 		//GETTING ATTACHED INTENT DATA
-		String product = i.getStringExtra("product");
+		String result = i.getStringExtra("result");
 		
 		//DISPLAYING SELECTED NAME
-		txtProduct.setText(product);
+		txtProduct.setText(result);
+		
+		//CREATE BUTTON AND ONCLICK LISTENER
+		Button button;
+	  	button = (Button) findViewById(R.id.buttonUrl);
+	  	
+	  	button.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
+				startActivity(i);
+
+			
+		}
+		
+		
+	 });
+		
 		
 	}
 	

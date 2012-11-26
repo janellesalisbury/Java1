@@ -7,9 +7,14 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:textSize="24dip"
+    android:textStyle="normal"
     android:padding="10dip"
-    android:gravity="center"
-    android:textColor="#800080"/>
-    
+    android:textColor="#4B0082"
+    android:gravity="center"/>
+<Button
+        android:id="@+id/buttonUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Find Me!" />
 
 </LinearLayout>
