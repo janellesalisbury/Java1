@@ -1,10 +1,14 @@
 package com.lights_camera_action;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.app.ListActivity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class MainActivity extends ListActivity {
 
@@ -14,6 +18,21 @@ public class MainActivity extends ListActivity {
         setContentView(R.layout.activity_main);
         
         setListAdapter (new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.actors)));
+        
+        ListView lv = getListView();
+        
+        //ONCLICK LISTENER
+        lv.setOnItemClickListener(new OnItemClickListener(){
+        	@Override
+			public void onItemClick(AdapterView<?> parent, View v, int position,long id) {
+        		//LAUNCHING NEW ACTIVITY
+        		Intent intent = new Intent(getApplicationContext(), SingleListItem.class);
+        		//SEND TO NEW ACTIVITY
+        		startActivity(intent);
+        		
+				
+        	}
+		});
     }
 
     @Override
