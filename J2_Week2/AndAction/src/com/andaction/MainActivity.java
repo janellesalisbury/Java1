@@ -1,5 +1,6 @@
 package com.andaction;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.ListActivity;
@@ -31,14 +32,11 @@ public class MainActivity extends ListActivity {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-			//SELECTED ITEM
-				String result = ((TextView) view).getText().toString();
-				
+			
 			//LAUNCHING NEW ACTIVITY
-				Intent i = new Intent(getApplicationContext(), SingleListItem.class);
+				Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"));
 				
 			//SENDING TO NEW ACTIVITY
-				i.putExtra("result", result);
 				startActivity(i);
 				
 			}
