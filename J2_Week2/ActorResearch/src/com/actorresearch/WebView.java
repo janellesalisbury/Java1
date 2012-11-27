@@ -1,13 +1,12 @@
-package com.andaction;
-
+package com.actorresearch;
 
 import android.app.Activity;
 import android.os.Bundle;
 
 public class WebView extends Activity{
-	public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.web);
-		
+		setContentView(R.layout.web_view);
 	}
+
 }
