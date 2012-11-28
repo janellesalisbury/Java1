@@ -1,5 +1,7 @@
 package com.actorresearch;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.ListActivity;
@@ -26,6 +28,10 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
         ListView mainListView = (ListView) findViewById(R.id.mainListView);
+        
+        ArrayList<String> actors = new ArrayList();
+        
+        
 	    mainListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, actors));
 	    mainListView.setOnItemSelectedListener(new OnItemSelectedListener(){
 
