@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +17,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
-	String [] actors = {"Jim Carrey", "John Wayne", "Penelope Cruz", "Marilyn Monroe", "Johnny Depp", "Chevy Chase", "Matthew McConaughey",
+	String[] actors = {"Jim Carrey", "John Wayne", "Penelope Cruz", "Marilyn Monroe", "Johnny Depp", "Chevy Chase", "Matthew McConaughey",
 			"Judy Garland", "Clint Eastwood"};
 			
 	 @Override
@@ -24,7 +25,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        ListView mainListView = (ListView) findViewById(R.layout.activity_main);
+        ListView mainListView = (ListView) findViewById(R.id.mainListView);
 	    mainListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, actors));
 	    mainListView.setOnItemSelectedListener(new OnItemSelectedListener(){
 
@@ -40,20 +41,11 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
-				// TODO Auto-generated method stub
+				Log.i("ERROR", "Select an item");
 				
 			}
 	    	
 	    });
 	    
-			
-
-			
-        
-       
-       
-        
-        
-        
-    }
+	 }
  }
