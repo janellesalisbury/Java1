@@ -16,12 +16,11 @@
         android:hint="@string/edit_text_hint"
         android:textColor="@color/text_color"
         android:textSize="16dp"/>
-    <Button android:id="@+id/button"
+    <Button android:id="@+id/button1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/text_color"
-        android:text="@string/button_text"
-        android:onClick="openListView"/>
+        android:text="@string/button_text"/>
     </LinearLayout>
     <ListView 
         android:layout_width="fill_parent"

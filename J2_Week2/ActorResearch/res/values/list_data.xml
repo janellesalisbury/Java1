@@ -11,15 +11,5 @@
         <item>Johnny Depp</item>
         <item>Clint Eastwood</item>
     </string-array>
-    <string-array name="imdb_link">
-        <item>http://www.imdb.com/name/nm0000331/</item>
-        <item>http://www.imdb.com/name/nm0000120/</item>
-        <item>http://www.imdb.com/name/nm0000078/</item>
-        <item>http://www.imdb.com/name/nm0000054/</item>
-        <item>http://www.imdb.com/name/nm0000190/</item>
-        <item>http://www.imdb.com/name/nm0004851/</item>
-        <item>http://www.imdb.com/name/nm0000023/</item>
-        <item>http://www.imdb.com/name/nm0000136/</item>
-        <item>http://www.imdb.com/name/nm0000142/</item>
-    </string-array>
+    
 </resources>
