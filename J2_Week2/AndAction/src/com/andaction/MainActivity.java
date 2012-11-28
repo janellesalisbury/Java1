@@ -1,8 +1,6 @@
 package com.andaction;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.view.Menu;
@@ -18,6 +16,7 @@ public class MainActivity extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_main);
         
         
         //STORING STRING RESOURCES INTO AN ARRAY
@@ -32,12 +31,15 @@ public class MainActivity extends ListActivity {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				
+			//SELECTED ITEM
+				String product = ((TextView) view).getText().toString();
 			
 			//LAUNCHING NEW ACTIVITY
-				Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.imdb.com/search"));
-				
+				Intent intent = new Intent(getApplicationContext(), SingleListItem.class);
 			//SENDING TO NEW ACTIVITY
-				startActivity(i);
+				intent.putExtra("product", product);
+				startActivity(intent);
 				
 			}
         	

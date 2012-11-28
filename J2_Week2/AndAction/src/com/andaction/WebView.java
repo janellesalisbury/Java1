@@ -9,5 +9,7 @@ public class WebView extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.web);
 		
+		 
+		
 	}
 }

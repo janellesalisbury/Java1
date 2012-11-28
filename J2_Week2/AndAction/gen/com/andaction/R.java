@@ -13,6 +13,9 @@ public final class R {
     }
     public static final class attr {
     }
+    public static final class color {
+        public static final int text_color=0x7f070000;
+    }
     public static final class drawable {
         public static final int chevy=0x7f020000;
         public static final int clint=0x7f020001;
@@ -27,20 +30,24 @@ public final class R {
         public static final int penelope=0x7f02000a;
     }
     public static final class id {
-        public static final int label=0x7f080000;
-        public static final int menu_settings=0x7f080002;
-        public static final int webView1=0x7f080001;
+        public static final int button_url=0x7f090002;
+        public static final int label=0x7f090000;
+        public static final int menu_settings=0x7f090004;
+        public static final int name_label=0x7f090001;
+        public static final int webView1=0x7f090003;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int list_item=0x7f030001;
-        public static final int web=0x7f030002;
+        public static final int single_list_item_view=0x7f030002;
+        public static final int web=0x7f030003;
     }
     public static final class menu {
-        public static final int activity_main=0x7f070000;
+        public static final int activity_main=0x7f080000;
     }
     public static final class string {
         public static final int app_name=0x7f050000;
+        public static final int button_text=0x7f050004;
         public static final int hello_world=0x7f050001;
         public static final int menu_settings=0x7f050002;
         public static final int title_activity_main=0x7f050003;
