@@ -16,51 +16,40 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 public class MainActivity extends Activity {
+	String [] actors = {"Jim Carrey", "John Wayne", "Penelope Cruz", "Marilyn Monroe", "Johnny Depp", "Chevy Chase", "Matthew McConaughey",
+			"Judy Garland", "Clint Eastwood"};
+			
 	 @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        //CREATE BUTTON/ONCLICK
-        Button doSearch = (Button) findViewById(R.id.button1);
-        doSearch.setOnClickListener(new OnClickListener(){
+        ListView mainListView = (ListView) findViewById(R.layout.activity_main);
+	    mainListView.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, actors));
+	    mainListView.setOnItemSelectedListener(new OnItemSelectedListener(){
 
 			@Override
-			public void onClick(View view) {
-				
-				ListView mainListView = (ListView) findViewById(R.layout.activity_main);
-			    mainListView.setListAdapter(ArrayAdapter.createFromResource(getApplicationContext(), 
-			    		R.array.actor_names, R.layout.activity_main));
-			    mainListView.setOnItemSelectedListener(new OnItemSelectedListener(){
-
-					@Override
-					public void onItemSelected(AdapterView<?> parent, View v,
-							int position, long id) {
-						
-						//LAUNCH NEW ACTIVITY
-						Intent intent = new Intent(getApplicationContext(), WebView.class);
-						
-						//SEND TO NEW ACTIVITY
-						startActivity(intent);
-						
-					}
-
-					@Override
-					public void onNothingSelected(AdapterView<?> parent) {
-						
-						
-					}
-			    	
-			    });
-			      
-			    
-				
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+				//LAUNCH NEW ACTIVITY CLASS
+				Intent intent = new Intent(getApplicationContext(), WebView.class);
+				//SEND TO NEW ACTIVITY
+				startActivity(intent);
 				
 			}
-        	
-        });
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+	    	
+	    });
+	    
+			
+
+			
         
-       
        
        
         
