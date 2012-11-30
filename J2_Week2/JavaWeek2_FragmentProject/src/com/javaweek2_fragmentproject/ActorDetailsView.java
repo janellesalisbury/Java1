@@ -1,5 +1,7 @@
 package com.javaweek2_fragmentproject;
 
-public class ActorDetailsView  {
+import android.app.Activity;
+
+public class ActorDetailsView extends Activity {
 
 }
