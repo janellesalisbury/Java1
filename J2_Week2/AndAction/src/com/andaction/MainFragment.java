@@ -9,14 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class MainFragment extends Fragment {
-	public void onListItemClick(ListView l, View v, int position, long id) {
-	    String[] actors = getResources().getStringArray(R.array.actor_names);
-	    String names = actors[position];
-	    Intent showNames = new Intent(getActivity().getApplicationContext(),
-	            MainActivity.class);
-	    showNames.setData(Uri.parse(names));
-	    startActivity(showNames);
-	}
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
@@ -25,4 +17,22 @@ public class MainFragment extends Fragment {
 	            R.layout.list_item));
 	
 	}
+	
+	
+	private void setListAdapter(ArrayAdapter<CharSequence> createFromResource) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public interface onNameSelectedListener{
+		public void onNameSelected(Uri uri);
+	}
+
+	public void onListItemClick(ListView l, View v, int position, long id) {
+	    String[] actors = getResources().getStringArray(R.array.actor_names);
+	    String names = actors[position];
+	   // onNameSelectedListener.onNameSelected(Uri.parse(names));
+	}
+	
+	
 }

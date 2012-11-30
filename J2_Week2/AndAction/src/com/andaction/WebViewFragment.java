@@ -1,7 +1,6 @@
 package com.andaction;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +13,15 @@ public class WebViewFragment extends Fragment{
 	}
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-		WebView view = (WebView) inflater.inflate(R.layout.web, container, false);
+		View viewer = (View)inflater.inflate(R.layout.web, container, false);
+		return viewer;
+		
 		
 		
 	}
 
-}
+	public void updateStuffHere(String newURL){
+		
+		}
+	}
+

@@ -1,5 +1,7 @@
 package com.andaction;
 
+import com.andaction.MainFragment.onNameSelectedListener;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -9,11 +11,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class SingleListItem  extends Activity{
+public class SingleListItem  extends Activity implements onNameSelectedListener{
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		this.setContentView(R.layout.single_list_item_view);
+		this.setContentView(R.layout.main_fragment);
 		
 		TextView txtProduct = (TextView) findViewById(R.id.name_label);
 		
@@ -39,6 +42,14 @@ public class SingleListItem  extends Activity{
 		
 		});
 		
+		
+	}
+
+	@Override
+	public void onNameSelected(Uri Actoruri) {
+		Intent showNames = new Intent(getApplicationContext(), WebView.class);
+		showNames.setData(Actoruri);
+		startActivity(showNames);
 		
 	}
 
