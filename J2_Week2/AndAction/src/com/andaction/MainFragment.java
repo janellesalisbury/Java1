@@ -12,17 +12,12 @@ public class MainFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
-	    setListAdapter(ArrayAdapter.createFromResource(getActivity()
-	            .getApplicationContext(), R.array.actor_names,
-	            R.layout.list_item));
+	   // setListAdapter(ArrayAdapter.createFromResource(getActivity()
+	        //    .getApplicationContext(), R.array.actor_names,
+	           // R.layout.list_item));
 	
 	}
 	
-	
-	private void setListAdapter(ArrayAdapter<CharSequence> createFromResource) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public interface onNameSelectedListener{
 		public void onNameSelected(Uri uri);
@@ -31,7 +26,7 @@ public class MainFragment extends Fragment {
 	public void onListItemClick(ListView l, View v, int position, long id) {
 	    String[] actors = getResources().getStringArray(R.array.actor_names);
 	    String names = actors[position];
-	   // onNameSelectedListener.onNameSelected(Uri.parse(names));
+	    //onNameSelectedListener.onNameSelected(Uri.parse(names));
 	}
 	
 	
