@@ -54,6 +54,11 @@ public class ActorsFragment extends ListFragment{
 		public void onListItemSelected(int item);
 	}
 	
+	public void update(int item) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
 
 
