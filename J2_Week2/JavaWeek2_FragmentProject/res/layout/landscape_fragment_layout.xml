@@ -4,5 +4,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
+    <fragment class="com.javaweek2_fragmentproject.ActorsFragment"
+        android:id="@+id/actors"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_width="0px"/>
+    
+    <FrameLayout android:id="@+id/details"
+        android:layout_weight="1"
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:background="?android:attr/detailsElementBackground"/>
+    
 
 </LinearLayout>
