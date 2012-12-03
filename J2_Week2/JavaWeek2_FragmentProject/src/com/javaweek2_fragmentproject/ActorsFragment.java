@@ -53,7 +53,10 @@ public class ActorsFragment extends ListFragment{
 	public interface ListItemSelectedListener{
 		public void onListItemSelected(int item);
 	}
+	
 }
+
+
 		
 	
 
