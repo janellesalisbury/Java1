@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-    <fragment class="com.javaweek2_fragmentproject.ActorsFragment"
-        android:id="@+id/actors_fragment"
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:name="com.javaweek2_fragmentproject.MainActivityFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</FrameLayout>
+    	android:layout_height="match_parent"
+    	android:id="@+id/actor_list_fragment">
+        
+    </fragment>
+        
+        
+    

@@ -25,17 +25,30 @@
     </string-array>
     
     <string-array name="websites">
-        <item>http://www.imdb.com/name/nm0000120</item>
-        <item>http://www.imdb.com/name/nm0004851</item>
-        <item>http://www.imdb.com/name/nm0000331</item>
-        <item>http://www.imdb.com/name/nm0000054</item>
-        <item>http://www.imdb.com/name/nm0000023</item>
-        <item>http://www.imdb.com/name/nm0000078</item>
-        <item>http://www.imdb.com/name/nm0000136</item>
-        <item>http://www.imdb.com/name/nm0000190</item>
-        <item>http://www.imdb.com/name/nm0000142</item>
-        
+        <item>nm0000120</item>
+        <item>nm0004851</item>
+        <item>nm0000331</item>
+        <item>nm0000054</item>
+        <item>nm0000023</item>
+        <item>nm0000078</item>
+        <item>nm0000136</item>
+        <item>nm0000190</item>
+        <item>nm0000142</item>
     </string-array>
+        
+   <string-array name="image_locations">
+       <item>jim_carrey.jpg</item>
+       <item>penelope_cruz.jpg</item>
+       <item>chevy_chase.jpg</item>
+       <item>marilyn_monroe.jpg</item>
+       <item>judy_garland.jpg</item>
+       <item>john_wayne.jpg</item>
+       <item>johnny_depp.jpg</item>
+       <item>matthew_mcconaughey.jpg</item>
+       <item>clint_eastwood.jpg</item>
+   </string-array>
+        
+  
     
         
         
