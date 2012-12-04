@@ -5,7 +5,7 @@
     android:orientation="vertical" >
     
     <fragment class="com.javaweek2_fragmentproject.ActorsFragment"
-        android:id="@+id/actors"
+        android:id="@+id/actors_fragment"
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:layout_width="0px"/>
