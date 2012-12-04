@@ -1,7 +1,6 @@
 package com.javaweek2_fragmentproject;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.View;

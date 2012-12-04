@@ -20,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActorDetailsView"/>
+        <activity android:name=".ActorDetailsView"
+            android:label="Actor Details"/>
     </application>
 
 </manifest>
