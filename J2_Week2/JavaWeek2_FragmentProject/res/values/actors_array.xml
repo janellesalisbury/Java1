@@ -37,15 +37,15 @@
     </string-array>
         
    <string-array name="image_locations">
-       <item>jim.jpg</item>
-       <item>penelope.jpg</item>
-       <item>chevy.jpg</item>
-       <item>marilyn.jpg</item>
-       <item>judy.jpg</item>
-       <item>john.jpg</item>
-       <item>johnny.jpg</item>
-       <item>matthew.jpg</item>
-       <item>clint.jpg</item>
+       <item>jim_carrey.jpg</item>
+       <item>penelope_cruz.jpg</item>
+       <item>chevy_chase.jpg</item>
+       <item>marilyn_monroe.jpg</item>
+       <item>judy_garland.jpg</item>
+       <item>john_wayne.jpg</item>
+       <item>johnny_depp.jpg</item>
+       <item>matthew_mcconaughey.jpg</item>
+       <item>clint_eastwood.jpg</item>
    </string-array>
         
   

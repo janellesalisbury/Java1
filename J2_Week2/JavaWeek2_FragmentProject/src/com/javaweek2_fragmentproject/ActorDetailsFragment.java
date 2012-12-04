@@ -21,12 +21,15 @@ public class ActorDetailsFragment extends Fragment{
 	
 	public void update(int item){
 		TextView actorName = (TextView) getView().findViewById(R.id.actorName);
+		//TextView actorAge = (TextView) getView().findViewById(R.id.actorAge);
 		ImageView image = (ImageView) getView().findViewById(R.id.image);
 		
-		String [] actorage_array = getResources().getStringArray(R.array.actorage_array);
+		String [] actornames_array = getResources().getStringArray(R.array.actornames_array);
+		//String [] actorage_array = getResources().getStringArray(R.array.actorage_array);
 		String [] image_locations = getResources().getStringArray(R.array.image_locations);
 		
-		actorName.setText(actorage_array[item]);
+		actorName.setText(actornames_array[item]);
+		//actorAge.setText(actorage_array[item]);
 		InputStream is;
 		try {
             is = getActivity().getAssets().open(image_locations[item]);

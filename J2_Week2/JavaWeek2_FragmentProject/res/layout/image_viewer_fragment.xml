@@ -10,6 +10,12 @@
         android:layout_alignParentTop="true" 
         android:gravity="center" 
         android:layout_height="wrap_content"></TextView>
+<!--     <TextView -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:text="TextView2" -->
+<!--         android:id="@+id/actorAge"  -->
+<!--         android:gravity="center"  -->
+<!--         android:layout_height="wrap_content"></TextView> -->
     <ImageView
         android:id="@+id/image"
         android:src="@drawable/ic_launcher"

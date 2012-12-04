@@ -1,6 +1,7 @@
 package com.javaweek2_fragmentproject;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.app.Activity;
 import android.content.Intent;
 
@@ -8,7 +9,8 @@ public class MainActivity extends Activity implements MainActivityFragment.ListI
 	//called when activity is first created
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		Log.d("step debug","activity on create");
+		setContentView(R.layout.main);
 	}
 	
 	@Override
