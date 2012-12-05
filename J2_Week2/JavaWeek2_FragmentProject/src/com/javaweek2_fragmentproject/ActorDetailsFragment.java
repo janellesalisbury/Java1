@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +24,11 @@ public class ActorDetailsFragment extends Fragment{
 			String [] actornames_array = getResources().getStringArray(R.array.actornames_array);
 			String [] actorage_array = getResources().getStringArray(R.array.actorage_array);
 			String [] websites_array = getResources().getStringArray(R.array.websites_array);
-			String [] image_locations = getResources().getStringArray(R.array.actorImage_array);
+			//String [] image_locations = getResources().getStringArray(R.array.actorImage_array);
 
-			Spanned sp = Html.fromHtml("http://www.imdb.com/" + websites_array[item]);
+			Spanned sp = Html.fromHtml("http://www.imdb.com/name/" + websites_array[item]);
+			actorName.setMovementMethod(LinkMovementMethod.getInstance());
+			actorName.setText(sp);
 			actorName.setText(actornames_array[item] + "\n" + actorage_array[item] + "\n" + sp);
 			image.findViewById(R.array.actorImage_array);
 			

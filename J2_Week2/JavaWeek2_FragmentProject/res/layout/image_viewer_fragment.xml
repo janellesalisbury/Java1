@@ -9,7 +9,9 @@
         android:id="@+id/actorName"
         android:layout_alignParentTop="true" 
         android:gravity="center" 
-        android:layout_height="wrap_content"></TextView>    
+        android:layout_height="wrap_content"
+        android:autoLink="web">
+    </TextView>    
     <ImageView
         android:id="@+id/image"
         android:src="@drawable/ic_launcher"
