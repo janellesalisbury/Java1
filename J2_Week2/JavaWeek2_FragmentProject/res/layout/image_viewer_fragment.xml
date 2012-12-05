@@ -14,7 +14,7 @@
     </TextView>    
     <ImageView
         android:id="@+id/image"
-        android:src="@drawable/ic_launcher"
+        android:src="@drawable/missing"
         android:layout_below="@+id/actorName"
         android:layout_alignLeft="@+id/actorName"
         android:layout_alignRight="@+id/actorName"

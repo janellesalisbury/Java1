@@ -36,16 +36,16 @@
         <item>nm0000142</item>
     </string-array>
         
-   <string-array name="actorImage_array">
-       <item>jim_carrey</item>
-       <item>penelope_cruz</item>
-       <item>chevy_chase</item>
-       <item>marilyn_monroe</item>
-       <item>judy_garland</item>
-       <item>john_wayne</item>
-       <item>johnny_depp</item>
-       <item>matthew_mcconaughey</item>
-       <item>clint_eastwood</item>
+   <string-array name="image_locations">
+       <item>jim</item>
+       <item>penelope</item>
+       <item>chevy</item>
+       <item>marilyn</item>
+       <item>judy</item>
+       <item>john</item>
+       <item>johnny</item>
+       <item>matthew</item>
+       <item>clint</item>
    </string-array>
         
   

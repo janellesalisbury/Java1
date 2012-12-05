@@ -9,9 +9,9 @@ package com.javaweek2_fragmentproject;
 
 public final class R {
     public static final class array {
-        public static final int actorImage_array=0x7f040003;
         public static final int actorage_array=0x7f040001;
         public static final int actornames_array=0x7f040000;
+        public static final int image_locations=0x7f040003;
         public static final int websites_array=0x7f040002;
     }
     public static final class attr {
@@ -27,7 +27,8 @@ public final class R {
         public static final int judy=0x7f020007;
         public static final int marilyn=0x7f020008;
         public static final int matthew=0x7f020009;
-        public static final int penelope=0x7f02000a;
+        public static final int missing=0x7f02000a;
+        public static final int penelope=0x7f02000b;
     }
     public static final class id {
         public static final int actorName=0x7f080001;
