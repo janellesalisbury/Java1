@@ -1,13 +1,9 @@
 package com.javaweek2_fragmentproject;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import android.app.Fragment;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.Html;
+import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,26 +15,26 @@ public class ActorDetailsFragment extends Fragment{
 		return inflater.inflate(R.layout.image_viewer_fragment, container, false);
 	}
 	
-	public void update(int item){
-		TextView actorName = (TextView) getView().findViewById(R.id.actorName);
-		//TextView actorAge = (TextView) getView().findViewById(R.id.actorAge);
-		ImageView image = (ImageView) getView().findViewById(R.id.image);
+	
+		public void update(int item){
+			TextView actorName = (TextView) getView().findViewById(R.id.actorName);
+			ImageView image = (ImageView) getView().findViewById(R.id.image);
+
+			String [] actornames_array = getResources().getStringArray(R.array.actornames_array);
+			String [] actorage_array = getResources().getStringArray(R.array.actorage_array);
+			String [] websites_array = getResources().getStringArray(R.array.websites_array);
+			String [] image_locations = getResources().getStringArray(R.array.actorImage_array);
+
+			Spanned sp = Html.fromHtml("http://www.imdb.com/" + websites_array[item]);
+			actorName.setText(actornames_array[item] + "\n" + actorage_array[item] + "\n" + sp);
+			image.findViewById(R.array.actorImage_array);
+			
+			
+			return;
+				
 		
-		String [] actornames_array = getResources().getStringArray(R.array.actornames_array);
-		//String [] actorage_array = getResources().getStringArray(R.array.actorage_array);
-		String [] image_locations = getResources().getStringArray(R.array.image_locations);
 		
-		actorName.setText(actornames_array[item]);
-		//actorAge.setText(actorage_array[item]);
-		InputStream is;
-		try {
-            is = getActivity().getAssets().open(image_locations[item]);
-            Bitmap bitmap = BitmapFactory.decodeStream(is);
-            image.setImageBitmap(bitmap);
-        } catch (IOException e) {
-            Log.e("SampleViewerFragment", "Failed to decode image");
-        }
-    }
+	}	
 }
 
 	

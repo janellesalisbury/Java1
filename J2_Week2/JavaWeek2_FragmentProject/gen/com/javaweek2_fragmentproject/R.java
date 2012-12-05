@@ -9,10 +9,10 @@ package com.javaweek2_fragmentproject;
 
 public final class R {
     public static final class array {
+        public static final int actorImage_array=0x7f040003;
         public static final int actorage_array=0x7f040001;
         public static final int actornames_array=0x7f040000;
-        public static final int image_locations=0x7f040003;
-        public static final int websites=0x7f040002;
+        public static final int websites_array=0x7f040002;
     }
     public static final class attr {
     }

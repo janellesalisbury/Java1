@@ -24,7 +24,7 @@
         <item>82</item>
     </string-array>
     
-    <string-array name="websites">
+    <string-array name="websites_array">
         <item>nm0000120</item>
         <item>nm0004851</item>
         <item>nm0000331</item>
@@ -36,16 +36,16 @@
         <item>nm0000142</item>
     </string-array>
         
-   <string-array name="image_locations">
-       <item>jim_carrey.jpg</item>
-       <item>penelope_cruz.jpg</item>
-       <item>chevy_chase.jpg</item>
-       <item>marilyn_monroe.jpg</item>
-       <item>judy_garland.jpg</item>
-       <item>john_wayne.jpg</item>
-       <item>johnny_depp.jpg</item>
-       <item>matthew_mcconaughey.jpg</item>
-       <item>clint_eastwood.jpg</item>
+   <string-array name="actorImage_array">
+       <item>jim_carrey</item>
+       <item>penelope_cruz</item>
+       <item>chevy_chase</item>
+       <item>marilyn_monroe</item>
+       <item>judy_garland</item>
+       <item>john_wayne</item>
+       <item>johnny_depp</item>
+       <item>matthew_mcconaughey</item>
+       <item>clint_eastwood</item>
    </string-array>
         
   
