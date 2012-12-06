@@ -1,7 +1,10 @@
 package com.javaweek2_fragmentproject;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
@@ -10,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ActorDetailsFragment extends Fragment{
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -23,7 +27,7 @@ public class ActorDetailsFragment extends Fragment{
 			
 			String [] actornames_array = getResources().getStringArray(R.array.actornames_array);
 			String [] actorage_array = getResources().getStringArray(R.array.actorage_array);
-			//String [] websites_array = getResources().getStringArray(R.array.websites_array);
+			String [] websites_array = getResources().getStringArray(R.array.websites_array);
 			
 			
 			ImageView image = (ImageView) getView().findViewById(R.id.image);
@@ -54,18 +58,18 @@ public class ActorDetailsFragment extends Fragment{
 			
 			
 			actorName.setText(actornames_array[item]);
-			//Spanned sp = Html.fromHtml("http://www.imdb.com/name/" + websites_array[item]);
+			Spanned sp = Html.fromHtml("http://www.imdb.com/name/" + websites_array[item]);
 			actorName.setMovementMethod(LinkMovementMethod.getInstance());
-			//actorName.setText(sp);
-			actorName.setText(actornames_array[item] + "\n" + actorage_array[item] + "\n");
+			actorName.setText(sp);
+			actorName.setText(actornames_array[item] + "\n" + actorage_array[item] + "\n" + sp);
 			
 			
 			
 			return;
 				
 		
+		}
 		
-	}	
 }
 
 	
