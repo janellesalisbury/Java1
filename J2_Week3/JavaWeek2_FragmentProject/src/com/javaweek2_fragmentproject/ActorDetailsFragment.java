@@ -23,7 +23,7 @@ public class ActorDetailsFragment extends Fragment{
 			
 			String [] actornames_array = getResources().getStringArray(R.array.actornames_array);
 			String [] actorage_array = getResources().getStringArray(R.array.actorage_array);
-			String [] websites_array = getResources().getStringArray(R.array.websites_array);
+			//String [] websites_array = getResources().getStringArray(R.array.websites_array);
 			
 			
 			ImageView image = (ImageView) getView().findViewById(R.id.image);
@@ -54,10 +54,10 @@ public class ActorDetailsFragment extends Fragment{
 			
 			
 			actorName.setText(actornames_array[item]);
-			Spanned sp = Html.fromHtml("http://www.imdb.com/name/" + websites_array[item]);
+			//Spanned sp = Html.fromHtml("http://www.imdb.com/name/" + websites_array[item]);
 			actorName.setMovementMethod(LinkMovementMethod.getInstance());
-			actorName.setText(sp);
-			actorName.setText(actornames_array[item] + "\n" + actorage_array[item] + "\n" + sp);
+			//actorName.setText(sp);
+			actorName.setText(actornames_array[item] + "\n" + actorage_array[item] + "\n");
 			
 			
 			

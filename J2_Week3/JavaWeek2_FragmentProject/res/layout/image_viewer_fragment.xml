@@ -9,15 +9,25 @@
         android:id="@+id/actorName"
         android:layout_alignParentTop="true" 
         android:gravity="center" 
+        android:layout_height="wrap_content">
+    </TextView>   
+    <Button
+        android:id="@+id/intentService"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autoLink="web">
-    </TextView>    
+        android:onClick="onClick"
+        android:text="IMDB site" 
+        android:gravity="center"
+        android:layout_below="@+id/actorName"
+        android:layout_alignLeft="@+id/actorName" 
+        android:layout_alignRight="@+id/actorName" >
+    </Button>  
     <ImageView
         android:id="@+id/image"
         android:src="@drawable/missing"
-        android:layout_below="@+id/actorName"
-        android:layout_alignLeft="@+id/actorName"
-        android:layout_alignRight="@+id/actorName"
+        android:layout_below="@+id/intentService"
+        android:layout_alignLeft="@+id/intentService"
+        android:layout_alignRight="@+id/intentService"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:scaleType="centerInside">
