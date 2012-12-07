@@ -13,10 +13,11 @@ public class ActorDetailsView extends Activity {
         	finish();
         	return;
         }
-	setContentView(R.layout.image_viewer_activity);
-	Intent launchingIntent = getIntent();
-	int item = launchingIntent.getIntExtra("item", 0);
-	ActorDetailsFragment viewer = (ActorDetailsFragment) getFragmentManager().findFragmentById(R.id.image_viewer_fragment);
-	viewer.update(item);
+        setContentView(R.layout.image_viewer_activity);
+    	Intent launchingIntent = getIntent();
+    	int item = launchingIntent.getIntExtra("item", 0);
+    	ActorDetailsFragment viewer = (ActorDetailsFragment) getFragmentManager().findFragmentById(R.id.image_viewer_fragment);
+    	viewer.update(item);
+    	}
 	}
-}
+
