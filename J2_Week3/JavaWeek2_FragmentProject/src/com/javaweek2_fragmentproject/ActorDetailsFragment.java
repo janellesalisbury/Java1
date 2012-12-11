@@ -16,7 +16,6 @@ public class ActorDetailsFragment extends Fragment{
 		return inflater.inflate(R.layout.image_viewer_fragment, container, false);
 	}
 	
-	
 		public void update(int item){
 			TextView actorName = (TextView) getView().findViewById(R.id.actorName);
 			//TextView actorAge = (TextView) getView().findViewById(R.id.actorAge);
@@ -60,6 +59,8 @@ public class ActorDetailsFragment extends Fragment{
 			actorName.setText(actornames_array[item] + "\n" + actorage_array[item] + "\n" + sp);
 			return;
 			}
+	
+			
 }
 
 	
