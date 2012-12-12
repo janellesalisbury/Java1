@@ -1,20 +1,36 @@
 package com.javaweek2_fragmentproject;
 
+import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Messenger;
 import android.text.Html;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ActorDetailsFragment extends Fragment{
+	public interface WebListener{
+		public void onWebList();
+	}
+	
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 		return inflater.inflate(R.layout.image_viewer_fragment, container, false);
-	}
+		
+		
 	
 		public void update(int item){
 			TextView actorName = (TextView) getView().findViewById(R.id.actorName);
@@ -58,9 +74,38 @@ public class ActorDetailsFragment extends Fragment{
 			actorName.setText(sp);
 			actorName.setText(actornames_array[item] + "\n" + actorage_array[item] + "\n" + sp);
 			return;
-			}
-	
-			
-}
+		}
+		
+		Handler handler = new Handler() {
+		    @SuppressLint("HandlerLeak")
+			public void handleMessage(Message message) {
+		      Object path = message.obj;
+			int RESULT_OK = 0;
+//			if (message.arg1 == RESULT_OK && path != null) {
+//		        Toast.makeText(ActorDetailsFragment.this,
+//	            "Downloaded" + path.toString(), Toast.LENGTH_LONG)
+//		            .show();
+//		        Log.d("clickity clack", "im working until here");
+//		      } else {
+//	        Toast.makeText(ActorDetailsFragment.this, "Download failed.",
+//	            Toast.LENGTH_LONG)
+//	            .show();
+		      }
+		    
 
-	
+		Button startBtn = (Button) getActivity().findViewById(R.id.intentService);
+		startBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				 Intent intent = new Intent(this, DownloadService.class);
+				    // Create a new Messenger for the communication back
+				    Messenger messenger = new Messenger(handler);
+				    intent.putExtra("MESSENGER", messenger);
+				    intent.setData(Uri.parse("http://www.imdb.com"));
+				    intent.putExtra("urlpath", "http://www.imdb.com");
+				    startService(intent);
+			}
+		});
+	  };
+	}
+}
