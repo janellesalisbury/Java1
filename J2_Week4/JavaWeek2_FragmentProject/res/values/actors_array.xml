@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="actornames_array">
+        <item>Jim Carrey</item>
+        <item>Penelope Cruz</item>
+        <item>Chevy Chase</item>
+        <item>Marilyn Monroe</item>
+        <item>Judy Garland</item>
+        <item>John Wayne</item>
+        <item>Johnny Depp</item>
+        <item>Matthew McConaughey</item>
+        <item>Clint Eastwood</item>
+    </string-array>
+    
+    <string-array name="actorage_array">
+        <item>50</item>
+        <item>38</item>
+        <item>69</item>
+        <item>36</item>
+        <item>47</item>
+        <item>72</item>
+        <item>49</item>
+        <item>43</item>
+        <item>82</item>
+    </string-array>
+    
+    <string-array name="websites_array">
+        <item>nm0000120"</item>
+        <item>nm0004851</item>
+        <item>nm0000331</item>
+        <item>nm0000054</item>
+        <item>nm0000023</item>
+        <item>nm0000078</item>
+        <item>nm0000136</item>
+        <item>nm0000190</item>
+        <item>nm0000142</item>
+    </string-array>
+        
+   <string-array name="image_locations">
+       <item>jim</item>
+       <item>penelope</item>
+       <item>chevy</item>
+       <item>marilyn</item>
+       <item>judy</item>
+       <item>john</item>
+       <item>johnny</item>
+       <item>matthew</item>
+       <item>clint</item>
+   </string-array>
+        
+  
+    
+        
+        
+    
+</resources>

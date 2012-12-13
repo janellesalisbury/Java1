@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:text="TextView"
+        android:id="@+id/actorName"
+        android:layout_alignParentTop="true" 
+        android:gravity="center" 
+        android:layout_height="wrap_content"
+        android:autoLink="web">
+    </TextView>   
+   <Button
+        android:id="@+id/intentService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClick"
+        android:text="IMDB site" 
+        android:gravity="center"
+        android:layout_below="@+id/actorName"
+        android:layout_alignLeft="@+id/actorName" 
+        android:layout_alignRight="@+id/actorName" > 
+    </Button> 
+    <ImageView
+        android:id="@+id/image"
+        android:src="@drawable/missing"
+        android:layout_below="@+id/actorName"
+        android:layout_alignLeft="@+id/actorName"
+        android:layout_alignRight="@+id/actorName"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:scaleType="centerInside">
+        
+    </ImageView>
+</RelativeLayout>
