@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.restaurantjunkie.SecondActivity"
+        <activity android:name=".SecondActivity"
             android:label="Restaurant Information"/>
     </application>
 
