@@ -1,15 +1,19 @@
 package com.restaurantjunkie;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 
-public class SecondActivity extends Activity{
+public class SecondActivity extends ListActivity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.second);
-	}
+		setContentView(R.layout.second); 
+		
+		setListAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,
+				getResources().getStringArray(R.array.restaurants)));
 
+		
+	}
 }

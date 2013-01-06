@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends Activity {
 
@@ -15,12 +16,16 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		final EditText et = (EditText) findViewById(R.id.edit_message);
 		Button send = (Button) findViewById(R.id.send_button);
 		send.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(getApplicationContext(), SecondActivity.class));
+				Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+				intent.putExtra("text entry", et.getText().toString());
+				startActivity(intent);
+				
 				
 			}
 		});

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="restaurants">
+        <item name="Jack In The Box">Jack In The Box</item>
+        <item name="Sonic">Sonic</item>
+        <item name="McDonalds">McDonalds</item>
+        <item name="Subway">Subway</item>
+        <item name="Violis">Violis</item>
+        <item name="Heberts">Heberts Steak Ranch</item>
+    </string-array>
+    
+</resources>
