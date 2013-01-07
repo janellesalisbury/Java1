@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <string-array name="restaurants">
         <item name="Jack In The Box">Jack In The Box</item>
         <item name="Sonic">Sonic</item>
@@ -7,6 +7,10 @@
         <item name="Subway">Subway</item>
         <item name="Violis">Violis</item>
         <item name="Heberts">Heberts Steak Ranch</item>
+        <item name="Golden Corral">Golden Corral</item>
+        <item name="Margaritaville">Jimmy Buffets Margaritaville</item>
+        <item name="Hibachi Grill">Hibachi Grill</item>
+        <item name="677 prime">677 Prime</item>
     </string-array>
     
 </resources>
