@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -16,6 +15,9 @@ public class SecondActivity extends ListActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.second); 
+		
+		String restaurantName = getIntent().getExtras().getString("restaurant_name");
+		setTitle("Feed Me:"+restaurantName);
 		
 		setListAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,
 				getResources().getStringArray(R.array.restaurants)));
