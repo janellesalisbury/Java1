@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
 					Toast.makeText(getApplicationContext(), "Please enter restaurant", Toast.LENGTH_LONG).show();
 				}else{
 				
-				startActivity(intent);
+				startActivityForResult(intent, 1);
 				
 				}
 				
@@ -42,9 +42,18 @@ public class MainActivity extends Activity {
 		});
 		
 	}
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+		if (requestCode == 1) {
+
+		     if(resultCode == RESULT_OK){
+
+		      @SuppressWarnings("unused")
+			String result=data.getStringExtra("result");
+		     }
+		}
 	
-	
+	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

@@ -26,7 +26,10 @@ public class SecondActivity extends ListActivity{
 			
 			@Override
 			public void onClick(View v) {
-				
+				 Intent returnIntent = new Intent();
+				 returnIntent.putExtra("result",RESULT_OK);
+				 setResult(RESULT_OK,returnIntent);     
+				 finish();
 				
 			}
 		});
