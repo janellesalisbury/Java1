@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class SecondActivity extends ListActivity{
@@ -18,6 +20,16 @@ public class SecondActivity extends ListActivity{
 		
 		String restaurantName = getIntent().getExtras().getString("restaurant_name");
 		setTitle("Feed Me:"+restaurantName);
+		
+		Button returnHome = (Button) findViewById(R.id.back_button);
+		returnHome.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				
+			}
+		});
 		
 		setListAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,
 				getResources().getStringArray(R.array.restaurants)));
@@ -30,7 +42,7 @@ public class SecondActivity extends ListActivity{
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position,
 					long id) {
-				Intent internet = new Intent(Intent.ACTION_VIEW, Uri.parse("http://api.v3.factual.com/t/restaurants?key=gPkail5I7qZheLWqk085rXmWu68IXLw1lqGHEqIw"));
+				Intent internet = new Intent(Intent.ACTION_VIEW, Uri.parse("http://factual.com"));
 				startActivity(internet);
 					
 				}
