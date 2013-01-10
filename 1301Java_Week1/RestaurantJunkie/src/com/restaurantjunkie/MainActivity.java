@@ -20,9 +20,10 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		//create edit text field
 		final EditText et = (EditText) findViewById(R.id.edit_message);
 		
-		//Button to begin second activity
+		//Button to begin second activity with a simple pop up toast if user has not entered search term
 		Button send = (Button) findViewById(R.id.send_button);
 		send.setOnClickListener(new OnClickListener() {
 			
@@ -42,6 +43,8 @@ public class MainActivity extends Activity {
 		});
 		
 	}
+	
+	//retrieve the passed code from second activity
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 		if (requestCode == 1) {

@@ -18,9 +18,12 @@ public class SecondActivity extends ListActivity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.second); 
 		
+		//create the passing of the restaurant name for the title of activity
 		String restaurantName = getIntent().getExtras().getString("restaurant_name");
 		setTitle("Feed Me:"+restaurantName);
 		
+		
+		//button to return to home page(main activity)
 		Button returnHome = (Button) findViewById(R.id.back_button);
 		returnHome.setOnClickListener(new OnClickListener() {
 			
@@ -34,12 +37,13 @@ public class SecondActivity extends ListActivity{
 			}
 		});
 		
+		//set listview of restaurants (dummy data) 
 		setListAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,
 				getResources().getStringArray(R.array.restaurants)));
 		
 		ListView lv = getListView();
 		
-		//OnClick
+		//OnClick to open third activity (which will be the restaurant info)
 		lv.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
