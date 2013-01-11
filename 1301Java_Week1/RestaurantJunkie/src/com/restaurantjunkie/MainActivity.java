@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
-//OAuthService service = (OAuthService) new ServiceBuilder();
+
 						
 
 	@Override
