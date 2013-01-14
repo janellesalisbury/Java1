@@ -14,47 +14,62 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.hardware.input.InputManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.EditText;
 
 
 
 public class MainActivity extends Activity {
 	
 	Context _context;
-	LinearLayout _appLayout;
-	SearchForm _search;
 	StateDisplays _state;
 	Boolean connected = false;
 	HashMap<String, String> _history;
-	
+	static final int REQUEST_CODE = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         
         _context = this;
-        _appLayout = new LinearLayout(this);
         _history = new HashMap<String, String>();
         
         Log.i("HISTORY READ",_history.toString());
         
-        //ADD SEARCH FORM
-        _search = new SearchForm(_context);
-        
-        //ADD CLICK EVENT HANDLER
-        Button searchButton = _search.getButton();
-        
+        //ADD CLICK EVENT HANDLER FOR SEARCH FEATURE
+        Button searchButton = (Button) findViewById(R.id.search_button);
         searchButton.setOnClickListener(new OnClickListener(){
         	@Override
         	public void onClick(View v){
+        		EditText field = (EditText) findViewById(R.id.search_field);
+        		String state = field.getText().toString();
+        		field.setText(state);
         		//Get state information 
-        		getInfo(_search.getNumber().toString());
+        		getInfo(state);
+        		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        		imm.hideSoftInputFromInputMethod(field.getWindowToken(), 0);
+        		getInfo(state);
         	}
         });
+        
+        //CREATE BOOKMARKS BUTTON
+        Button bkmkButton = (Button) findViewById(R.id.bookmark_button);
+        bkmkButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+			Intent i = new Intent(_context, Bookmarks.class);
+			startActivityForResult(i, REQUEST_CODE);
+				
+			}
+		});
         
         //DETECT NETWORK CONNECTIVITY
         connected = WebStuff.getConnectionStatus(_context);
@@ -64,8 +79,7 @@ public class MainActivity extends Activity {
         
         //ADD STATE DISPLAY
         _state = new StateDisplays(_context);
-       //Main content view, launched on open
-        setContentView(_appLayout);
+
         
     }
 
