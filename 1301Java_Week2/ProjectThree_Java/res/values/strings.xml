@@ -4,5 +4,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">ProjectThree_Java</string>
+    <string name="please_enter_a_state">Please enter a state</string>
+    <string name="search">Search</string>
+    <string name="bkmk_it">BkMk It</string>
 
 </resources>

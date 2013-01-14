@@ -64,14 +64,7 @@ public class MainActivity extends Activity {
         
         //ADD STATE DISPLAY
         _state = new StateDisplays(_context);
-        
-        
-        
-         //ADD VIEWS
-        _appLayout.addView(_search);
-        _appLayout.addView(_state);        
-        _appLayout.setOrientation(LinearLayout.VERTICAL);
-        
+       //Main content view, launched on open
         setContentView(_appLayout);
         
     }
