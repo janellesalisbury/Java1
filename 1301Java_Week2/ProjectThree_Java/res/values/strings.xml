@@ -7,5 +7,11 @@
     <string name="please_enter_a_state">Please enter a state</string>
     <string name="search">Search</string>
     <string name="bkmk_it">BkMk It</string>
+    <string name="state_population_">State_Population:</string>
+    <string name="white_">White:</string>
+    <string name="black_">Black:</string>
+    <string name="native_american_">Native American:</string>
+    <string name="other_">Other:</string>
+
 
 </resources>
