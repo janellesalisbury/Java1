@@ -32,12 +32,12 @@ public class MainActivity extends Activity {
 
 	public void updateData(JSONArray data){
 		try{
-		((TextView) findViewById(R.id.state_name)).setText(data.getString(5));
-		((TextView) findViewById(R.id.state_pop)).setText(data.getString(0));
-		((TextView) findViewById(R.id.white_pop)).setText(data.getString(1));
-		((TextView) findViewById(R.id.black_pop)).setText(data.getString(2));
-		((TextView) findViewById(R.id.native_pop)).setText(data.getString(3));
-		((TextView) findViewById(R.id.other_pop)).setText(data.getString(4));
+		((TextView) findViewById(R.id.state_name)).setText(data.getString(0));
+		((TextView) findViewById(R.id.state_pop)).setText(data.getString(1));
+		((TextView) findViewById(R.id.white_pop)).setText(data.getString(2));
+		((TextView) findViewById(R.id.black_pop)).setText(data.getString(3));
+		((TextView) findViewById(R.id.native_pop)).setText(data.getString(4));
+		((TextView) findViewById(R.id.other_pop)).setText(data.getString(5));
 		}catch(JSONException e){
 			Log.e("JSON ERROR", e.toString());
 		}
@@ -85,7 +85,15 @@ public class MainActivity extends Activity {
 		});
         
         //ADD BOOKMARK BUTTON
-        
+        Button addBkmk = (Button) findViewById(R.id.addbkmk_button);
+        addBkmk.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
         
         
         
@@ -104,7 +112,7 @@ public class MainActivity extends Activity {
         return true;
     }
     private void getInfo(String state){
-    	String baseURL = "http://api.census.gov/data/2010/sf1?key=e44eee8f8d8583f1b0854a96fcbe580d59164a54&get=P0030001,P0030002,P0030003,P0030004,P0030006&for=state:"+state;
+    	String baseURL = "http://api.census.gov/data/2010/sf1?key=e44eee8f8d8583f1b0854a96fcbe580d59164a54&get=NAME,P0030001,P0030002,P0030003,P0030004,P0030006&for=state:"+state;
     	Log.i("GET INFO CALL", baseURL);
     	URL finalURL;
     	try{
