@@ -82,6 +82,10 @@
             android:layout_height="wrap_content"/>
         
     </GridLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/state_codes_start_at_01_for_alabama_and_continue_in_order"/>
     
     <Button 
         android:id="@+id/addbkmk_button"

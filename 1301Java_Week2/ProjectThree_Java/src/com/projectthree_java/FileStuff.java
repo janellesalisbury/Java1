@@ -130,6 +130,11 @@ public class FileStuff {
 			}
 		return content;
 		}
+	public static void storeStringFile(Context _context, String filename,
+			Bookmark _bookmark, boolean external) {
+		// TODO Auto-generated method stub
+		
+	}
 		
 	}
 

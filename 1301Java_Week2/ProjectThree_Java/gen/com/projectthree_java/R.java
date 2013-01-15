@@ -48,6 +48,8 @@ public final class R {
         public static final int please_enter_a_state=0x7f040004;
         public static final int search=0x7f040005;
         public static final int state=0x7f04000f;
+        public static final int state_codes_start_at_01_for_alabama_and_continue_in_order=0x7f040011;
+        public static final int state_codes_start_at_1_for_arizona_and_progress_in_order=0x7f040010;
         public static final int state_population_=0x7f040007;
         public static final int title_activity_main=0x7f040003;
         public static final int white_=0x7f040008;

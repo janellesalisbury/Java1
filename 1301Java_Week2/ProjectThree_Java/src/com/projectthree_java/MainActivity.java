@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	
+	String _bookmark;
 	Context _context;
 	Boolean connected = false;
 	HashMap<String, String> _history;
@@ -52,6 +53,7 @@ public class MainActivity extends Activity {
         
         _context = this;
         _history = new HashMap<String, String>();
+        _bookmark = FileStuff.readStringFile(_context, "bookmark", true);
         
         Log.i("HISTORY READ",_history.toString());
         
@@ -90,7 +92,16 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
+				String stateInfo = ((TextView) findViewById(R.id.search_field)).getText().toString();
+				if(stateInfo !=null){
+					if(_bookmark.length() > 0){
+						_bookmark = _bookmark.concat(","+stateInfo);
+					}else{
+						_bookmark = stateInfo;
+						
+					}
+					FileStuff.storeStringFile(_context, "bookmark", _bookmark, true);
+				}
 				
 			}
 		});
@@ -137,7 +148,18 @@ public class MainActivity extends Activity {
     	}
     	return history;
     }
-    private class StateRequest extends AsyncTask<URL, Void, String>{
+    
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    	if(resultCode == RESULT_OK && requestCode == REQUEST_CODE){
+    		if(data.hasExtra("state")){
+    			String state = data.getExtras().getString("state");
+    			((EditText) findViewById(R.id.search_field)).setText(state);
+    			getInfo(state);
+    		}
+    	}
+    }
+
+	private class StateRequest extends AsyncTask<URL, Void, String>{
     	@Override
     	protected String doInBackground(URL...urls){
     		String response = "";
