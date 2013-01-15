@@ -25,6 +25,14 @@
             android:text="@string/bkmk_it"/>
     </LinearLayout>
   
-    
+    <GridLayout 
+        android:id="@+id/statedata"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1"
+        android:columnCount="2">
+        
+        
+    </GridLayout>
 
 </LinearLayout>
