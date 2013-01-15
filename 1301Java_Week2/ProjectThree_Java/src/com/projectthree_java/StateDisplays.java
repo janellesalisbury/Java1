@@ -2,7 +2,6 @@ package com.projectthree_java;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-
 import android.content.Context;
 import android.util.Log;
 import android.widget.GridLayout;
@@ -15,6 +14,7 @@ public class StateDisplays extends GridLayout{
 	static TextView _popBlack;
 	static TextView _popNativeAmerican;
 	static TextView _popHawaiian;
+	static TextView _stateName;
 	Context _context;
 	static JSONArray _statedata;
 	
@@ -24,6 +24,11 @@ public class StateDisplays extends GridLayout{
 		_context = context;
 		
 		this.setColumnCount(2);
+		
+		TextView stateLabel = new TextView(_context);
+		stateLabel.setText("State Name");
+		_stateName = new TextView(_context);
+		
 		
 		TextView populationLabel = new TextView(_context);
 		populationLabel.setText("Total Population:");
@@ -45,6 +50,9 @@ public class StateDisplays extends GridLayout{
 		populationHawiian.setText("Hawaiian and Other:");
 		_popHawaiian = new TextView(_context);
 		
+		this.addView(stateLabel);
+		this.addView(_stateName);
+		
 		this.addView(populationLabel);
 		this.addView(_population);
 		
@@ -64,6 +72,7 @@ public class StateDisplays extends GridLayout{
 	public static void updateData(JSONArray data){
 		_statedata = data;
 		try{
+		_stateName.setText(data.getString(5));
 		_population.setText(data.getString(0));
 		_popWhite.setText(data.getString(1));
 		_popBlack.setText(data.getString(2));

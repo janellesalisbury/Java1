@@ -7,31 +7,43 @@ import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-
-
 import android.view.View.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.hardware.input.InputManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 
 public class MainActivity extends Activity {
 	
 	Context _context;
-	StateDisplays _state;
 	Boolean connected = false;
 	HashMap<String, String> _history;
 	static final int REQUEST_CODE = 0;
+
+	public void updateData(JSONArray data){
+		try{
+		((TextView) findViewById(R.id.state_name)).setText(data.getString(5));
+		((TextView) findViewById(R.id.state_pop)).setText(data.getString(0));
+		((TextView) findViewById(R.id.white_pop)).setText(data.getString(1));
+		((TextView) findViewById(R.id.black_pop)).setText(data.getString(2));
+		((TextView) findViewById(R.id.native_pop)).setText(data.getString(3));
+		((TextView) findViewById(R.id.other_pop)).setText(data.getString(4));
+		}catch(JSONException e){
+			Log.e("JSON ERROR", e.toString());
+		}
+		
+		
+	}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,21 +77,24 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-			Intent i = new Intent(_context, Bookmarks.class);
+			Intent i = new Intent(_context, Bookmark.class);
 			startActivityForResult(i, REQUEST_CODE);
+			
 				
 			}
 		});
+        
+        //ADD BOOKMARK BUTTON
+        
+        
+        
+        
         
         //DETECT NETWORK CONNECTIVITY
         connected = WebStuff.getConnectionStatus(_context);
         if(connected){
         	Log.i("NETWORK CONNECTION", WebStuff.getConnectionType(_context));
         }
-        
-        //ADD STATE DISPLAY
-        _state = new StateDisplays(_context);
-
         
     }
 
@@ -131,9 +146,9 @@ public class MainActivity extends Activity {
     			JSONArray json = new JSONArray(result);
     			JSONArray results = json.getJSONArray(1);
     			Log.i("JSON Array", results.toString());
-    			StateDisplays.updateData(results);
+    			updateData(results);
     		}catch(JSONException e){
-    			Log.e("JSON", "JSON OBJECT EXPECTION");
+    			Log.e("JSON EXCEPTION", "::"+result);
     		
     		}
     	}
