@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -19,7 +20,7 @@ import android.widget.TextView;
 
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements MainFragment.MainListener {
 	
 	String _bookmark;
 	Context _context;
@@ -68,6 +69,8 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
+    
+    //INFO CALL TO SEARCH CENSUS API
     private void getInfo(String state){
     	String baseURL = "http://api.census.gov/data/2010/sf1?key=e44eee8f8d8583f1b0854a96fcbe580d59164a54&get=NAME,P0030001,P0030002,P0030003,P0030004,P0030006&for=state:"+state;
     	Log.i("GET INFO CALL", baseURL);
@@ -81,6 +84,7 @@ public class MainActivity extends Activity {
     		finalURL = null;
     	}
     }
+    //HISTORY HASHMAP
     @SuppressWarnings({ "unchecked", "unused" })
 	private HashMap<String, String> getHistory(){
     	Object stored = FileStuff.readObjectFile(_context, "history", false);
@@ -95,6 +99,7 @@ public class MainActivity extends Activity {
     	return history;
     }
     
+    //BOOKMARK STUFF
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
     	if(resultCode == RESULT_OK && requestCode == REQUEST_CODE){
     		if(data.hasExtra("state")){
@@ -129,5 +134,36 @@ public class MainActivity extends Activity {
     		}
     	}
     }
+
+	//SEARCH FUNCTIONALITY
+	@Override
+	public void onStateSearch(String state) {
+		getInfo(state);
+		
+	}
+
+	//START BOOKMARK VIEW FUNCTIONALITY
+	@Override
+	public void onBookmarkList() {
+		Intent i = new Intent(_context, Bookmark.class);
+		startActivityForResult(i, REQUEST_CODE);
+		
+	}
+
+	//ADD BOOKMARK FUNCTIONALITY
+	@Override
+	public void onAddBookmark() {
+		String stateInfo = ((TextView) findViewById(R.id.search_field)).getText().toString();
+		if(stateInfo !=null){
+			if(_bookmark.length() > 0){
+				_bookmark = _bookmark.concat(","+stateInfo);
+			}else{
+				_bookmark = stateInfo;
+				
+			}
+			FileStuff.storeStringFile(_context, "bookmark", _bookmark, true);
+		}
+		
+	};
 }
   
