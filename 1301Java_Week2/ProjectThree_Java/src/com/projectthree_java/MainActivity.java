@@ -7,7 +7,6 @@ import java.util.HashMap;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import android.view.View.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
@@ -15,9 +14,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -30,7 +26,9 @@ public class MainActivity extends Activity {
 	Boolean connected = false;
 	HashMap<String, String> _history;
 	static final int REQUEST_CODE = 0;
-
+	
+	
+	//CREATE DETAIL VIEW OF API DATA 
 	public void updateData(JSONArray data){
 		try{
 		((TextView) findViewById(R.id.state_name)).setText(data.getString(0));
@@ -49,66 +47,14 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_fragment);
         
         _context = this;
         _history = new HashMap<String, String>();
         _bookmark = FileStuff.readStringFile(_context, "bookmark", true);
         
         Log.i("HISTORY READ",_history.toString());
-        
-        //ADD CLICK EVENT HANDLER FOR SEARCH FEATURE
-        Button searchButton = (Button) findViewById(R.id.search_button);
-        searchButton.setOnClickListener(new OnClickListener(){
-        	@Override
-        	public void onClick(View v){
-        		EditText field = (EditText) findViewById(R.id.search_field);
-        		String state = field.getText().toString();
-        		field.setText(state);
-        		//Get state information 
-        		getInfo(state);
-        		InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-        		imm.hideSoftInputFromInputMethod(field.getWindowToken(), 0);
-        		getInfo(state);
-        	}
-        });
-        
-        //CREATE BOOKMARKS BUTTON
-        Button bkmkButton = (Button) findViewById(R.id.bookmark_button);
-        bkmkButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-			Intent i = new Intent(_context, Bookmark.class);
-			startActivityForResult(i, REQUEST_CODE);
-			
-				
-			}
-		});
-        
-        //ADD BOOKMARK BUTTON
-        Button addBkmk = (Button) findViewById(R.id.addbkmk_button);
-        addBkmk.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				String stateInfo = ((TextView) findViewById(R.id.search_field)).getText().toString();
-				if(stateInfo !=null){
-					if(_bookmark.length() > 0){
-						_bookmark = _bookmark.concat(","+stateInfo);
-					}else{
-						_bookmark = stateInfo;
-						
-					}
-					FileStuff.storeStringFile(_context, "bookmark", _bookmark, true);
-				}
-				
-			}
-		});
-        
-        
-        
-        
+
         //DETECT NETWORK CONNECTIVITY
         connected = WebStuff.getConnectionStatus(_context);
         if(connected){

@@ -16,9 +16,12 @@ public final class R {
     }
     public static final class id {
         public static final int addbkmk_button=0x7f07000a;
+        public static final int bkmklist=0x7f07000c;
         public static final int black_pop=0x7f070007;
         public static final int bookmark_button=0x7f070002;
-        public static final int menu_settings=0x7f07000b;
+        public static final int bookmark_fragment=0x7f07000b;
+        public static final int main_fragment=0x7f07000d;
+        public static final int menu_settings=0x7f07000e;
         public static final int native_pop=0x7f070008;
         public static final int other_pop=0x7f070009;
         public static final int search_button=0x7f070001;
@@ -30,7 +33,9 @@ public final class R {
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int bookmarks=0x7f030001;
+        public static final int bookmark_frag=0x7f030001;
+        public static final int bookmarks=0x7f030002;
+        public static final int main_fragment=0x7f030003;
     }
     public static final class menu {
         public static final int activity_main=0x7f060000;
