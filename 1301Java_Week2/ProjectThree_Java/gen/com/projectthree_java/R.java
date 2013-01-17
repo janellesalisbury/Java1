@@ -38,8 +38,7 @@ public final class R {
         public static final int main_fragment=0x7f030003;
     }
     public static final class menu {
-        public static final int activity_bookmarks=0x7f060000;
-        public static final int activity_main=0x7f060001;
+        public static final int activity_main=0x7f060000;
     }
     public static final class string {
         public static final int Bookmarks=0x7f04000c;

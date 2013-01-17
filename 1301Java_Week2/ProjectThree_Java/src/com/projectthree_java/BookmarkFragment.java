@@ -6,7 +6,13 @@ import java.util.Arrays;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 
 public class BookmarkFragment extends Fragment {
 	
@@ -38,5 +44,25 @@ public class BookmarkFragment extends Fragment {
 		_state = new ArrayList<String>(Arrays.asList(bkmkArray));
 	};
 	
-
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		LinearLayout view = (LinearLayout) inflater.inflate(R.layout.bookmarks,container, false);
+		
+		//List Adapter
+		ListView myBookmk = (ListView) view.findViewById(R.id.bkmklist);
+		_listAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1);
+		myBookmk.setAdapter(_listAdapter);
+		
+		//OPEN ITEMS FROM LISTVIEW
+		myBookmk.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+			@Override
+			public void onItemClick(AdapterView<?> parent, View v, int pos, long id){
+				
+			}
+		});
+		
+		return view;
+	}
+	
 }
