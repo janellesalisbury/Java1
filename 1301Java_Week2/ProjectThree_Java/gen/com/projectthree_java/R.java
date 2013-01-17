@@ -35,8 +35,7 @@ public final class R {
         public static final int activity_main=0x7f030000;
         public static final int bookmark_frag=0x7f030001;
         public static final int bookmarks=0x7f030002;
-        public static final int main=0x7f030003;
-        public static final int main_fragment=0x7f030004;
+        public static final int main_fragment=0x7f030003;
     }
     public static final class menu {
         public static final int activity_main=0x7f060000;
@@ -58,6 +57,7 @@ public final class R {
         public static final int state_codes_start_at_01_for_alabama_and_continue_in_order=0x7f040011;
         public static final int state_codes_start_at_1_for_arizona_and_progress_in_order=0x7f040010;
         public static final int state_population_=0x7f040007;
+        public static final int supposed_to_be_a_bookmarks_list_here=0x7f040012;
         public static final int title_activity_main=0x7f040003;
         public static final int white_=0x7f040008;
     }

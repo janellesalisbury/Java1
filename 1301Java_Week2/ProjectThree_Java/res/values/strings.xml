@@ -18,6 +18,7 @@
     <string name="state">State:</string>
     <string name="state_codes_start_at_1_for_arizona_and_progress_in_order">State codes start at 1 for Alabama and progress in order</string>
     <string name="state_codes_start_at_01_for_alabama_and_continue_in_order">State codes start at 01 for Alabama and continue in order</string>
+    <string name="supposed_to_be_a_bookmarks_list_here">Supposed to be a bookmarks list here</string>
 
 
 </resources>

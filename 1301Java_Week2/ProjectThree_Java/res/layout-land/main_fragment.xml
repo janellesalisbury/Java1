@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:id="@+id/main_fragment"
+    	android:name="com.projectthree_java.MainFragment"
+    	android:layout_width="0dip"
+    	android:layout_height="match_parent"
+    	android:layout_weight="65" >
+	</fragment>
+	<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:id="@+id/bookmark_fragment"
+    	android:name="com.projectthree_java.BookmarkFragment"
+    	android:layout_width="0dip"
+    	android:layout_height="match_parent" 
+    	android:layout_weight="35">
+	</fragment>
+
+        
+</LinearLayout>

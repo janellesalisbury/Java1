@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 
 
-public class MainActivity extends Activity implements MainFragment.MainListener {
+public class MainActivity extends Activity implements MainFragment.MainListener, BookmarkFragment.BookmarkListener {
 	
 	String _bookmark;
 	Context _context;
@@ -163,6 +163,12 @@ public class MainActivity extends Activity implements MainFragment.MainListener 
 			}
 			FileStuff.storeStringFile(_context, "bookmark", _bookmark, true);
 		}
+		
+	}
+
+	@Override
+	public void onBookmarkSelected(String state) {
+		getInfo(state);
 		
 	};
 }
