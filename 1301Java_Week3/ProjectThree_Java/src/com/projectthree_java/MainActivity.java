@@ -14,10 +14,14 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.res.Configuration;
+import android.util.Config;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 
@@ -179,10 +183,16 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 	private BroadcastReceiver my_receiver = new BroadcastReceiver(){
 
 		@Override
-		public void onReceive(Context arg0, Intent arg1) {
-			// TODO Auto-generated method stub
+		public void onReceive(Context context, Intent intent) {
+			int orientation = getBaseContext().getResources().getConfiguration().orientation;
+			if(orientation == Configuration.ORIENTATION_PORTRAIT){
+				Toast.makeText(getBaseContext(), "Rotate for landscape view", Toast.LENGTH_SHORT).show();
+			}else if(orientation == Configuration.ORIENTATION_LANDSCAPE){
+				Toast.makeText(getBaseContext(), "Landscape view activated", Toast.LENGTH_SHORT).show();
+			}
 			
 		}
 		
 	};
+	private IntentFilter filter = new IntentFilter(Intent.ACTION_CONFIGURATION_CHANGED);
 } 
