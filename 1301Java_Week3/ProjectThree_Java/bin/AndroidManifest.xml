@@ -25,14 +25,7 @@
         </activity>
         <activity 
             android:name=".Bookmark"
-            android:label="@string/Bookmarks"/>
-        <receiver 
-            android:name="BroadcastReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.ACTION_CONFIGURATION_CHANGED"/>
-            </intent-filter>
-        </receiver>
-      
+            android:label="@string/Bookmarks"/>  
     </application>
 
 </manifest>

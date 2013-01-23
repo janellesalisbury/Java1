@@ -11,30 +11,25 @@ import org.json.JSONException;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.res.Configuration;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 
 
 public class MainActivity extends Activity implements MainFragment.MainListener, BookmarkFragment.BookmarkListener {
 
-	
+	Context mContext;
 	String _bookmark;
 	Context _context;
 	Boolean connected = false;
 	HashMap<String, String> _history;
 	static final int REQUEST_CODE = 0;
-	
-	
+
 	//CREATE DETAIL VIEW OF API DATA 
 	public void updateData(JSONArray data){
 		try{
@@ -51,15 +46,21 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 		
 	}
 
+	//CREATE LISTENER STUFF
+	public static final String TAG = "ScreenOrientationListener";
+	
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        MainActivity mContext = this;
         setContentView(R.layout.main_fragment);
-
+        
         _context = this;
         _history = new HashMap<String, String>();
         _bookmark = FileStuff.readStringFile(_context, "bookmark", true);
         
+        startService(new Intent(this, MyService.class));
         Log.i("HISTORY READ",_history.toString());
 
         //DETECT NETWORK CONNECTIVITY
@@ -70,35 +71,7 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
         
     }
     
-	
-	//CREATING A BROADCAST RECEIVER FOR ORIENTATION
-	private BroadcastReceiver my_receiver = new BroadcastReceiver(){
-
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			int orientation = getBaseContext().getResources().getConfiguration().orientation;
-			if(orientation == Configuration.ORIENTATION_PORTRAIT){
-				Toast.makeText(getBaseContext(), "Rotate for landscape view", Toast.LENGTH_SHORT).show();
-			}else if(orientation == Configuration.ORIENTATION_LANDSCAPE){
-				Toast.makeText(getBaseContext(), "Landscape view activated", Toast.LENGTH_SHORT).show();
-			}
-			
-		}
-		
-	};
-	private IntentFilter filter = new IntentFilter(Intent.ACTION_CONFIGURATION_CHANGED);
-    
-    @Override
-    protected void onResume() {
-    	this.registerReceiver(my_receiver, filter);
-    	super.onResume();
-    }
-    @Override
-    protected void onPause() {
-    	this.unregisterReceiver(my_receiver);
-    	super.onPause();
-    }
-    
+ 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
