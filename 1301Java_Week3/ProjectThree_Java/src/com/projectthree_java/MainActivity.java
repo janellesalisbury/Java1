@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.EditText;
@@ -22,6 +23,12 @@ import android.widget.TextView;
 
 
 public class MainActivity extends Activity implements MainFragment.MainListener, BookmarkFragment.BookmarkListener {
+	
+	//Create and initialize an OrientationBroadcastReceiver object  
+    private OrientationBroadcastReceiver orientationBR = new OrientationBroadcastReceiver();  
+    //Create and initialize a new IntentFilter  
+    private IntentFilter orientationIF = new IntentFilter(Intent.ACTION_CONFIGURATION_CHANGED);  
+  
 
 	Context mContext;
 	String _bookmark;
@@ -45,22 +52,17 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 		
 		
 	}
-
-	//CREATE LISTENER STUFF
-	public static final String TAG = "ScreenOrientationListener";
-	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MainActivity mContext = this;
         setContentView(R.layout.main_fragment);
         
         _context = this;
         _history = new HashMap<String, String>();
         _bookmark = FileStuff.readStringFile(_context, "bookmark", true);
         
-        startService(new Intent(this, MyService.class));
+       
         Log.i("HISTORY READ",_history.toString());
 
         //DETECT NETWORK CONNECTIVITY
@@ -71,7 +73,22 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
         
     }
     
- 
+    @Override  
+    protected void onResume()  
+    {  
+        //Register the Orientation BroadcastReceiver  
+        this.registerReceiver(orientationBR, orientationIF);  
+        super.onResume();  
+    }  
+  
+    @Override  
+    protected void onPause()  
+    {  
+        //Unregister the Orientation BroadcastReceiver to avoid a BroadcastReceiver leak  
+        this.unregisterReceiver(orientationBR);  
+        super.onPause();  
+    }  
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
