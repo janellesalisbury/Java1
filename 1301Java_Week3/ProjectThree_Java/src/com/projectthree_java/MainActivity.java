@@ -18,6 +18,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -73,8 +74,16 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment);
-     
-        
+       
+        //ADDING STATES TO DATABASE
+       
+        DBAdapter db = new DBAdapter(this); 
+        db.open();
+        long id;
+        id= db.insertState("California", "CA", "37253956");
+        id= db.insertState("Vermont", "VT", "625741");
+        db.close();
+         
         _context = this;
         _history = new HashMap<String, String>();
         _bookmark = FileStuff.readStringFile(_context, "bookmark", true);
@@ -89,8 +98,13 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
         }
         
     }
-    
-    public void onClick(View view){
+    //DISPLAY STATE
+    private void DisplayState(Cursor c) {
+		Toast.makeText(this, "id:" + c.getString(0) + "\n" + "STATE:" + c.getString(1) + "\n" + "ABREVIATION:" + c.getString(2)
+				+ "\n" + "POPULATION:" + c.getString(3) + "\n",
+				 Toast.LENGTH_LONG).show();
+}
+	public void onClick(View view){
     	Intent intent = new Intent(this, MapService.class);
     	Messenger messenger = new Messenger(handler);
     	intent.putExtra("MESSENGER", messenger);
