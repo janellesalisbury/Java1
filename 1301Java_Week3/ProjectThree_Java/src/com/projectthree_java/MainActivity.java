@@ -8,34 +8,48 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.Messenger;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 
 
 public class MainActivity extends Activity implements MainFragment.MainListener, BookmarkFragment.BookmarkListener {
 	
-	//Create and initialize an OrientationBroadcastReceiver object  
-    private OrientationBroadcastReceiver orientationBR = new OrientationBroadcastReceiver();  
-    //Create and initialize a new IntentFilter  
-    private IntentFilter orientationIF = new IntentFilter(Intent.ACTION_CONFIGURATION_CHANGED);  
-  
-
 	Context mContext;
 	String _bookmark;
 	Context _context;
 	Boolean connected = false;
 	HashMap<String, String> _history;
 	static final int REQUEST_CODE = 0;
+	
+	  private Handler handler = new Handler() {
+		    public void handleMessage(Message message) {
+		      Object path = message.obj;
+		      if (message.arg1 == RESULT_OK && path != null) {
+		        Toast.makeText(MainActivity.this,
+		            "Downloaded" + path.toString(), Toast.LENGTH_LONG)
+		            .show();
+		      } else {
+		        Toast.makeText(MainActivity.this, "Download failed.",
+		            Toast.LENGTH_LONG).show();
+		      }
+
+		    };
+		  };
 
 	//CREATE DETAIL VIEW OF API DATA 
 	public void updateData(JSONArray data){
@@ -57,6 +71,7 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment);
+     
         
         _context = this;
         _history = new HashMap<String, String>();
@@ -73,23 +88,21 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
         
     }
     
-    @Override  
-    protected void onResume()  
-    {  
-        //Register the Orientation BroadcastReceiver  
-        this.registerReceiver(orientationBR, orientationIF);  
-        super.onResume();  
-    }  
-  
-    @Override  
-    protected void onPause()  
-    {  
-        //Unregister the Orientation BroadcastReceiver to avoid a BroadcastReceiver leak  
-        this.unregisterReceiver(orientationBR);  
-        super.onPause();  
-    }  
-
-
+    public void onClick(View view){
+    	Intent intent = new Intent(this, MapService.class);
+    	Messenger messenger = new Messenger(handler);
+    	intent.putExtra("MESSENGER", messenger);
+    	intent.setData(Uri.parse("http://parks.mapquest.com/national-parks/national-parks-by-state/"));
+    	intent.putExtra("urlPath", "http://parks.mapquest.com/national-parks/national-parks-by-state/");
+    	startService(intent);
+    	
+    }  	
+    	
+    	
+    	
+    	
+    	
+    	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);

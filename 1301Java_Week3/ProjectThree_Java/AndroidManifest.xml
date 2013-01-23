@@ -25,7 +25,8 @@
         </activity>
         <activity 
             android:name=".Bookmark"
-            android:label="@string/Bookmarks"/>  
+            android:label="@string/Bookmarks"/>
+        <service android:name=".MapSerice"></service>
     </application>
 
 </manifest>

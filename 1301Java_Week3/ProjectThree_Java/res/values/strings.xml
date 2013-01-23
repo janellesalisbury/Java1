@@ -21,6 +21,7 @@
     <string name="supposed_to_be_a_bookmarks_list_here">Supposed to be a bookmarks list here</string>
     <string name="enter_state_number">Enter state number</string>
     <string name="download_the_state_map">Download the State Map</string>
+    <string name="download_from_mapquest">Download From Mapquest</string>
 
 
 </resources>
