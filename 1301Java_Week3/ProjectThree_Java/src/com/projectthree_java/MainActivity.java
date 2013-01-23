@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Messenger;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -36,7 +37,8 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 	HashMap<String, String> _history;
 	static final int REQUEST_CODE = 0;
 	
-	  private Handler handler = new Handler() {
+	  @SuppressLint("HandlerLeak")
+	private Handler handler = new Handler() {
 		    public void handleMessage(Message message) {
 		      Object path = message.obj;
 		      if (message.arg1 == RESULT_OK && path != null) {
@@ -92,8 +94,8 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
     	Intent intent = new Intent(this, MapService.class);
     	Messenger messenger = new Messenger(handler);
     	intent.putExtra("MESSENGER", messenger);
-    	intent.setData(Uri.parse("http://parks.mapquest.com/national-parks/national-parks-by-state/"));
-    	intent.putExtra("urlPath", "http://parks.mapquest.com/national-parks/national-parks-by-state/");
+    	intent.setData(Uri.parse("http://parks.mapquest.com/national-parks/map-of-all-national-parks/"));
+    	intent.putExtra("urlPath", "http://parks.mapquest.com/national-parks/map-of-all-national-parks/");
     	startService(intent);
     	
     }  	
