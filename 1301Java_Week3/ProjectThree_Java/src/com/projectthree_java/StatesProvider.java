@@ -14,26 +14,26 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.util.Log;
 
-public class StatesProvider extends ContentProvider{
-	
-	public static final String PROVIDER_NAME = "com.projectthree_java.provider.States";
-	
+public class StatesProvider extends ContentProvider {
+
+	public static final String PROVIDER_NAME = "com.projectthree_java.provider.StatesProvider";
+
 	public static final Uri CONTENT_URI = Uri.parse("content://" + PROVIDER_NAME + "/state");
-	
+
 	public static final String _ID = "_id";
 	public static final String STATES = "state";
 	public static final String ABBREVIATION = "abbreviation";
 	public static final String POPULATION = "population";
-	
+
 	private static final int STATE = 1;
 	private static final int STATE_ID = 2;
-	
+
 	private static final UriMatcher uriMatcher;
 	static{
 		uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 		uriMatcher.addURI(PROVIDER_NAME, "state", STATE);
 		uriMatcher.addURI(PROVIDER_NAME, "state/#", STATE_ID);
-		
+
 	}
 	private SQLiteDatabase stateDB;
 	private static final String DATABASE_STATE= "state";
@@ -41,14 +41,14 @@ public class StatesProvider extends ContentProvider{
 	@SuppressWarnings("unused")
 	private static final String DATABASE_ABBREVIATION= "abbreviation";
 	private static final int DATABASE_VERSION= 2;
-	
+
 	private static final String DATABASE_CREATE = "create table" + DATABASE_TABLE + " (_id integer primary key autoincrement, "
 	         + "state text not null, abbreviation text not null, population text not null);";
-	
+
 	private static class DatabaseHelper extends SQLiteOpenHelper{
 		DatabaseHelper(Context context){
 			super(context, DATABASE_STATE, null, DATABASE_VERSION);
-	
+
 	}
 		@Override
 	      public void onCreate(SQLiteDatabase db) 
@@ -68,7 +68,7 @@ public class StatesProvider extends ContentProvider{
 	         onCreate(db);
 	      }
 	   }
-	
+
 	@Override
 	public int delete(Uri arg0, String arg1, String[] arg2) {
 		  // arg0 = uri 
@@ -106,7 +106,7 @@ public class StatesProvider extends ContentProvider{
 		default:
 			throw new IllegalArgumentException("unsupported URI:" + uri);
 		}
-		
+
 	}
 
 	@Override
@@ -168,7 +168,8 @@ public class StatesProvider extends ContentProvider{
 		           getContext().getContentResolver().notifyChange(uri, null);
 		           return count;
 		        }
-		
+
 	}
 
 
+	

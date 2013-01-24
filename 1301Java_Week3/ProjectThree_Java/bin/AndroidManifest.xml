@@ -27,13 +27,7 @@
             android:name=".Bookmark"
             android:label="@string/Bookmarks"/>
         <provider android:name = "StatesProvider"
-            android:authorities="com.projectthree_java.provider.States"></provider>
-        <service android:name=".MapSerice"></service>
-        <receiver android:name="NetworkReceiver">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-            </intent-filter>
-        </receiver>
-    </application>
+            android:authorities="com.projectthree_java.provider.StatesProvider"></provider>
+	 </application>
 
 </manifest>

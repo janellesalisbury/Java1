@@ -22,6 +22,12 @@
     <string name="enter_state_number">Enter state number</string>
     <string name="download_the_state_map">Download the State Map</string>
     <string name="download_from_mapquest">Download From Mapquest</string>
+    <string name="my_wifi_ip_">My Wifi IP:</string>
+    <string name="ssid_">SSID:</string>
+    <string name="bssid_">BSSID:</string>
+    <string name="speed_">Speed:</string>
+    <string name="rssi_">Rssi:</string>
+    <string name="mac_">MAC:</string>
 
 
 </resources>
