@@ -41,22 +41,6 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 	static final int REQUEST_CODE = 0;
 	
 	
-	//HANDLER FOR INTENET SERVICE
-	  @SuppressLint("HandlerLeak")
-	private Handler handler = new Handler() {
-		    public void handleMessage(Message message) {
-		      Object path = message.obj;
-		      if (message.arg1 == RESULT_OK && path != null) {
-		        Toast.makeText(MainActivity.this,
-		            "Downloaded" + path.toString(), Toast.LENGTH_LONG)
-		            .show();
-		      } else {
-		        Toast.makeText(MainActivity.this, "Download failed.",
-		            Toast.LENGTH_LONG).show();
-		      }
-
-		    };
-		  };
 
 	//CREATE DETAIL VIEW OF API DATA 
 	public void updateData(JSONArray data){
@@ -123,17 +107,7 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 //				+ "\n" + "POPULATION:" + c.getString(3) + "\n",
 //				 Toast.LENGTH_LONG).show();
 //}
-    
-    //ONCLICK FOR INTENT SERVICE
-	public void onClick(View view){
-    	Intent intent = new Intent(this, MapService.class);
-    	Messenger messenger = new Messenger(handler);
-    	intent.putExtra("MESSENGER", messenger);
-    	intent.setData(Uri.parse("http://parks.mapquest.com/national-parks/map-of-all-national-parks/"));
-    	intent.putExtra("urlPath", "http://parks.mapquest.com/national-parks/map-of-all-national-parks/");
-    	startService(intent);
-    	
-    }  	
+
   	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
