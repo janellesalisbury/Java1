@@ -1,10 +1,5 @@
 package com.projectthree_java;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -12,7 +7,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
 public class DBAdapter {
 	
@@ -24,6 +18,7 @@ public class DBAdapter {
 	private static final String TAG= "DBAdapter";
 	private static final String DATABASE_STATE= "state";
 	private static final String DATABASE_TABLE= "population";
+	@SuppressWarnings("unused")
 	private static final String DATABASE_ABBREVIATION= "abbreviation";
 	private static final int DATABASE_VERSION= 2;
 	

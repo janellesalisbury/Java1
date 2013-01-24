@@ -16,6 +16,7 @@ import android.os.Message;
 import android.os.Messenger;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -29,6 +30,7 @@ import android.widget.Toast;
 
 
 
+
 public class MainActivity extends Activity implements MainFragment.MainListener, BookmarkFragment.BookmarkListener {
 	
 	Context mContext;
@@ -38,6 +40,8 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 	HashMap<String, String> _history;
 	static final int REQUEST_CODE = 0;
 	
+	
+	//HANDLER FOR INTENET SERVICE
 	  @SuppressLint("HandlerLeak")
 	private Handler handler = new Handler() {
 		    public void handleMessage(Message message) {
@@ -75,14 +79,29 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_fragment);
        
-        //ADDING STATES TO DATABASE
+//        //ADDING STATES TO DATABASE
+//        ContentValues values = new ContentValues();
+//        values.put(StatesProvider.STATES, "California");
+//        values.put(StatesProvider.ABBREVIATION, "CA");
+//        values.put(StatesProvider.POPULATION, "37253956");
+//        Uri uri = getContentResolver().insert(StatesProvider.CONTENT_URI, values);
+//        
+//        values.clear();
+//        values.put(StatesProvider.STATES, "Vermont");
+//        values.put(StatesProvider.ABBREVIATION, "VT");
+//        values.put(StatesProvider.POPULATION, "625741");
+//        
+//        Uri allStates = Uri.parse("content://com.projectthree_java.provider.States/state");
+//		Cursor c = getContentResolver().query(allStates, null, null, null, "statedesc");
+//		if(c.moveToFirst()){
+//			do{
+//				Toast.makeText(this, c.getString(c.getColumnIndex(StatesProvider._ID)) + "," +c.getString(c.getColumnIndex(StatesProvider.ABBREVIATION))
+//						+ "," + c.getString(c.getColumnIndex(StatesProvider.POPULATION)), Toast.LENGTH_LONG).show();
+//			}while(c.moveToNext());
+//		}
+//        
        
-        DBAdapter db = new DBAdapter(this); 
-        db.open();
-        long id;
-        id= db.insertState("California", "CA", "37253956");
-        id= db.insertState("Vermont", "VT", "625741");
-        db.close();
+        
          
         _context = this;
         _history = new HashMap<String, String>();
@@ -98,12 +117,14 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
         }
         
     }
-    //DISPLAY STATE
-    private void DisplayState(Cursor c) {
-		Toast.makeText(this, "id:" + c.getString(0) + "\n" + "STATE:" + c.getString(1) + "\n" + "ABREVIATION:" + c.getString(2)
-				+ "\n" + "POPULATION:" + c.getString(3) + "\n",
-				 Toast.LENGTH_LONG).show();
-}
+////    //DISPLAY STATE
+//    private void DisplayState(Cursor c) {
+//		Toast.makeText(this, "id:" + c.getString(0) + "\n" + "STATE:" + c.getString(1) + "\n" + "ABREVIATION:" + c.getString(2)
+//				+ "\n" + "POPULATION:" + c.getString(3) + "\n",
+//				 Toast.LENGTH_LONG).show();
+//}
+    
+    //ONCLICK FOR INTENT SERVICE
 	public void onClick(View view){
     	Intent intent = new Intent(this, MapService.class);
     	Messenger messenger = new Messenger(handler);
@@ -113,12 +134,7 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
     	startService(intent);
     	
     }  	
-    	
-    	
-    	
-    	
-    	
-    	
+  	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_main, menu);
