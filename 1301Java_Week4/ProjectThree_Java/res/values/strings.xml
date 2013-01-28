@@ -1,0 +1,33 @@
+<resources>
+
+    <string name="app_name">ProjectThree_Java</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">ProjectThree_Java</string>
+    <string name="please_enter_a_state">Please enter a state</string>
+    <string name="search">Search</string>
+    <string name="bkmk_it">Open Bookmarks</string>
+    <string name="state_population_">State Population:</string>
+    <string name="white_">White:</string>
+    <string name="black_">Black:</string>
+    <string name="native_american_">Native American:</string>
+    <string name="other_">Other:</string>
+    <string name="Bookmarks">Bookmarks</string>
+    <string name="add_to_bookmarks">Add to Bookmarks?</string>
+    <string name="enter_your_state_code">Enter Your State Code</string>
+    <string name="state">State:</string>
+    <string name="state_codes_start_at_1_for_arizona_and_progress_in_order">State codes start at 1 for Alabama and progress in order</string>
+    <string name="state_codes_start_at_01_for_alabama_and_continue_in_order">State codes start at 01 for Alabama and continue in order</string>
+    <string name="supposed_to_be_a_bookmarks_list_here">Supposed to be a bookmarks list here</string>
+    <string name="enter_state_number">Enter state number</string>
+    <string name="download_the_state_map">Download the State Map</string>
+    <string name="download_from_mapquest">Download From Mapquest</string>
+    <string name="my_wifi_ip_">My Wifi IP:</string>
+    <string name="ssid_">SSID:</string>
+    <string name="bssid_">BSSID:</string>
+    <string name="speed_">Speed:</string>
+    <string name="rssi_">Rssi:</string>
+    <string name="mac_">MAC:</string>
+
+
+</resources>
