@@ -4,26 +4,18 @@ package com.projectthree_java;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.database.Cursor;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 
@@ -196,9 +188,9 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 		startActivityForResult(i, REQUEST_CODE);
 		
 		}
-//
+
 //	//ADD BOOKMARK FUNCTIONALITY
-//	@Override
+	@Override
 	public void onAddBookmark() {
 		String stateInfo = String.valueOf("");
 		if(stateInfo !=null){
@@ -212,13 +204,15 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 		}
 		
 	}
-//
-//	@Override
+
+	@Override
 	public void onBookmarkSelected(String state) {
 		getInfo(state);
 		
 	};
 
 
+}
 
-} 
+
+
