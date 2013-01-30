@@ -14,15 +14,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.AdapterView.OnItemSelectedListener;
 
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment{
 	
 	private MainListener listener;
 	
 	public interface MainListener{
 		public void onStateSearch(String state);
 		public void onBookmarkList();
-		public void onAddBookmark();
+		void onAddBookmark();
+		
+		
+		
 	}
 	
 	@Override
@@ -31,12 +35,8 @@ public class MainFragment extends Fragment {
 		
 		LinearLayout view = (LinearLayout) inflateMain.inflate(R.layout.activity_main, container, false);
 		
-		
-		
-	
-		
-		//ADD ITEM SELECTION FUCTIONALITY TO SPINNER
-		Spinner state_names = (Spinner) view.findViewById(R.id.spinner);
+		//ADD CLICK EVENT HANDLER FOR SEARCH FEATURE
+        Button searchButton = (Button) view.findViewById(R.id.search_button);
         searchButton.setOnClickListener(new OnClickListener(){
         	@Override
         	public void onClick(View v){
@@ -44,14 +44,16 @@ public class MainFragment extends Fragment {
         		String state = field.getText().toString();
         		field.setText(state);
         		
-        		//Get state information 
+           		//Get state information 
         		InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        		imm.hideSoftInputFromInputMethod(field.getWindowToken(), 0);
+       		imm.hideSoftInputFromInputMethod(field.getWindowToken(), 0);
         		listener.onStateSearch(state);
-        	}
-        });
+      	}
+       });
         
-       
+
+
+		
 //        //CREATE GO TO BOOKMARKS BUTTON
         Button bkmkButton = (Button) view.findViewById(R.id.bookmarks_button);
         bkmkButton.setOnClickListener(new OnClickListener() {
@@ -61,7 +63,6 @@ public class MainFragment extends Fragment {
 				listener.onBookmarkList();	
 			}
 		});
-        
 
         //ADD BOOKMARK BUTTON
         Button addBkmk = (Button) view.findViewById(R.id.addbkmk_button);
@@ -88,5 +89,28 @@ public class MainFragment extends Fragment {
 			throw new ClassCastException(activity.toString() +"must implement MainListener fool!");
 		}
 	}
-
+	
+	//ADD ITEM SELECTION FUCTIONALITY TO SPINNER
+//    Spinner state_names = (Spinner) getActivity().findViewById(R.id.spinner);
+//	public void onItemSelected(AdapterView<?> parent, View view, 
+//            int pos, long id) {
+//		
+//		String selected = parent.getItemAtPosition(pos).toString();
+//		
+//		
+//		//Get state information 
+//		InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+//		imm.hideSoftInputFromInputMethod(state_names.getWindowToken(), 0);
+//		listener.onStateSearch(state_names);
+//    }
+//
+//    public void onNothingSelected(AdapterView<?> parent) {
+//        // Another interface callback
+//    }
 }
+
+
+	
+	
+
+

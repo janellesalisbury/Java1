@@ -1,11 +1,8 @@
 package com.projectthree_java;
 
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
@@ -19,10 +16,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -64,30 +58,7 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
         setContentView(R.layout.main_fragment);
 
  
-       
-        //ADDING STATES TO DATABASE
-//        ContentValues values = new ContentValues();
-//        values.put(StatesProvider.STATES, "California");
-//        values.put(StatesProvider.ABBREVIATION, "CA");
-//        values.put(StatesProvider.POPULATION, "37253956");
-//        Uri uri = getContentResolver().insert(StatesProvider.CONTENT_URI, values);
-//        
-//        values.clear();
-//        values.put(StatesProvider.STATES, "Vermont");
-//        values.put(StatesProvider.ABBREVIATION, "VT");
-//        values.put(StatesProvider.POPULATION, "625741");
-//        
-//        Uri allStates = Uri.parse("content://com.projectthree_java.provider.StatesProvider/state");
-//		Cursor c = getContentResolver().query(allStates, null, null, null, "statedesc");
-//		if(c.moveToFirst()){
-//			do{
-//				Toast.makeText(this, c.getString(c.getColumnIndex(StatesProvider._ID)) + "," +c.getString(c.getColumnIndex(StatesProvider.ABBREVIATION))
-//						+ "," + c.getString(c.getColumnIndex(StatesProvider.POPULATION)), Toast.LENGTH_LONG).show();
-//			}while(c.moveToNext());
-//		}
-//        
-       
-        
+
          
         _context = this;
         _history = new HashMap<String, String>();
@@ -104,13 +75,6 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
         }
         
     }
-    //DISPLAY STATE
-//    private void DisplayState(Cursor c) {
-//		Toast.makeText(this, "id:" + c.getString(0) + "\n" + "STATE:" + c.getString(1) + "\n" + "ABREVIATION:" + c.getString(2)
-//				+ "\n" + "POPULATION:" + c.getString(3) + "\n",
-//				 Toast.LENGTH_LONG).show();
-//}
-
   	
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -209,7 +173,7 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 	public void onBookmarkList() {
 		Intent i = new Intent(_context, Bookmark.class);
 		startActivityForResult(i, REQUEST_CODE);
-		
+
 		}
 
 //	//ADD BOOKMARK FUNCTIONALITY
@@ -221,21 +185,19 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 				_bookmark = _bookmark.concat(","+stateInfo);
 			}else{
 				_bookmark = stateInfo;
-				
+
 			}
 			FileStuff.storeStringFile(_context, "bookmark", _bookmark, true);
 		}
-		
+
 	}
 
 	@Override
 	public void onBookmarkSelected(String state) {
-		getInfo(state);
+		// TODO Auto-generated method stub
 		
-	};
+	}
 
+	
 
 }
-
-
-

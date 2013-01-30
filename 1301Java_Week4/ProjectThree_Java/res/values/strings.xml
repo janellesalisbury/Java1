@@ -73,6 +73,8 @@
 	<item>Wyoming</item>
 	</string-array>
 	<string name="go_to_bookmarks">Go to Bookmarks</string>
+	<string name="enter_state_number">Enter State Code</string>
+	<string name="state_codes_start_at_01_for_alabama_and_continue_in_order">state_codes_start_at_01_for_alabama_and_continue_in_order</string>
 
 
 </resources>

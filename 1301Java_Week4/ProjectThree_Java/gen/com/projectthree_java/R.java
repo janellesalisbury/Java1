@@ -24,22 +24,23 @@ public final class R {
         public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int addbkmk_button=0x7f090009;
-        public static final int bkmklist=0x7f09000d;
-        public static final int black_pop=0x7f090005;
-        public static final int bookmark_fragment=0x7f09000a;
-        public static final int bookmarks_button=0x7f090008;
-        public static final int main_fragment=0x7f09000e;
-        public static final int menu_settings=0x7f09000f;
-        public static final int native_pop=0x7f090006;
-        public static final int other_pop=0x7f090007;
-        public static final int progressbar=0x7f09000c;
-        public static final int spinner=0x7f090000;
-        public static final int state_name=0x7f090002;
-        public static final int state_pop=0x7f090003;
-        public static final int statedata=0x7f090001;
-        public static final int textfield=0x7f09000b;
-        public static final int white_pop=0x7f090004;
+        public static final int addbkmk_button=0x7f09000a;
+        public static final int bkmklist=0x7f09000e;
+        public static final int black_pop=0x7f090006;
+        public static final int bookmark_fragment=0x7f09000b;
+        public static final int bookmarks_button=0x7f090009;
+        public static final int main_fragment=0x7f09000f;
+        public static final int menu_settings=0x7f090010;
+        public static final int native_pop=0x7f090007;
+        public static final int other_pop=0x7f090008;
+        public static final int progressbar=0x7f09000d;
+        public static final int search=0x7f090000;
+        public static final int search_button=0x7f090001;
+        public static final int state_name=0x7f090003;
+        public static final int state_pop=0x7f090004;
+        public static final int statedata=0x7f090002;
+        public static final int textfield=0x7f09000c;
+        public static final int white_pop=0x7f090005;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -56,6 +57,7 @@ public final class R {
         public static final int app_name=0x7f040000;
         public static final int bkmk_it=0x7f040006;
         public static final int black_=0x7f040009;
+        public static final int enter_state_number=0x7f040011;
         public static final int go_to_bookmarks=0x7f040010;
         public static final int hello_world=0x7f040001;
         public static final int menu_settings=0x7f040002;
@@ -64,6 +66,7 @@ public final class R {
         public static final int please_enter_a_state=0x7f040004;
         public static final int search=0x7f040005;
         public static final int state=0x7f04000d;
+        public static final int state_codes_start_at_01_for_alabama_and_continue_in_order=0x7f040012;
         public static final int state_population_=0x7f040007;
         public static final int supposed_to_be_a_bookmarks_list_here=0x7f04000f;
         public static final int title_activity_main=0x7f040003;
