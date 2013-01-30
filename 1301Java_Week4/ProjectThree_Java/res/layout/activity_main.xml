@@ -8,26 +8,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
+        
+        <Spinner
+			android:id="@+id/spinner"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:drawSelectorOnTop="true"
+			android:entries="@array/state_name"/>
        
-        <EditText
-            android:id="@+id/search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/enter_state_number" />
-
-        <Button
-            android:id="@+id/search_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/search" 
-            android:textColor="@color/Blue"/>
-
-        <Button
-            android:id="@+id/bookmark_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/bkmk_it"
-            android:textColor="@color/Blue" />
     </LinearLayout>
 
     <GridLayout
@@ -109,11 +97,14 @@
             android:layout_height="wrap_content"
             android:textColor="@color/Red" />
     </GridLayout>
+    
 
-    <TextView
-        android:layout_width="wrap_content"
+        <Button
+        android:id="@+id/bookmarks_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/state_codes_start_at_01_for_alabama_and_continue_in_order" />
+        android:text="@string/go_to_bookmarks"
+        android:textColor="@color/Blue" />
     <Button
         android:id="@+id/addbkmk_button"
         android:layout_width="match_parent"

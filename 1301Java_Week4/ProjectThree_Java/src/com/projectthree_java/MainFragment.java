@@ -9,9 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 
 public class MainFragment extends Fragment {
 	
@@ -29,8 +31,12 @@ public class MainFragment extends Fragment {
 		
 		LinearLayout view = (LinearLayout) inflateMain.inflate(R.layout.activity_main, container, false);
 		
-		//ADD CLICK EVENT HANDLER FOR SEARCH FEATURE
-        Button searchButton = (Button) view.findViewById(R.id.search_button);
+		
+		
+	
+		
+		//ADD ITEM SELECTION FUCTIONALITY TO SPINNER
+		Spinner state_names = (Spinner) view.findViewById(R.id.spinner);
         searchButton.setOnClickListener(new OnClickListener(){
         	@Override
         	public void onClick(View v){
@@ -45,9 +51,9 @@ public class MainFragment extends Fragment {
         	}
         });
         
-        
-        //CREATE GO TO BOOKMARKS BUTTON
-        Button bkmkButton = (Button) view.findViewById(R.id.bookmark_button);
+       
+//        //CREATE GO TO BOOKMARKS BUTTON
+        Button bkmkButton = (Button) view.findViewById(R.id.bookmarks_button);
         bkmkButton.setOnClickListener(new OnClickListener() {
 			
 			@Override

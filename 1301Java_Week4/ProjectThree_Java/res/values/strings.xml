@@ -13,21 +13,66 @@
     <string name="native_american_">Native American:</string>
     <string name="other_">Other:</string>
     <string name="Bookmarks">Bookmarks</string>
-    <string name="add_to_bookmarks">Add to Bookmarks?</string>
-    <string name="enter_your_state_code">Enter Your State Code</string>
     <string name="state">State:</string>
-    <string name="state_codes_start_at_1_for_arizona_and_progress_in_order">State codes start at 1 for Alabama and progress in order</string>
-    <string name="state_codes_start_at_01_for_alabama_and_continue_in_order">State codes start at 01 for Alabama and continue in order</string>
+    <string name="add_to_bookmarks">Add to Bookmarks?</string>
+
     <string name="supposed_to_be_a_bookmarks_list_here">Supposed to be a bookmarks list here</string>
-    <string name="enter_state_number">Enter state number</string>
-    <string name="download_the_state_map">Download the State Map</string>
-    <string name="download_from_mapquest">Download From Mapquest</string>
-    <string name="my_wifi_ip_">My Wifi IP:</string>
-    <string name="ssid_">SSID:</string>
-    <string name="bssid_">BSSID:</string>
-    <string name="speed_">Speed:</string>
-    <string name="rssi_">Rssi:</string>
-    <string name="mac_">MAC:</string>
+   
+    
+	<string-array name="state_name">
+	<item>Alabama</item>
+	<item>Alabama</item>
+	<item>Alaska</item>
+	<item>Arizona</item>
+	<item>Arkansas</item>
+	<item>California</item>
+	<item>Colorado</item>
+	<item>Connecticut</item>
+	<item>Delaware</item>
+	<item>Florida</item>
+	<item>Georgia</item>
+	<item>Hawaii</item>
+	<item>Idaho</item>
+	<item>Illinois</item>
+	<item>Indiana</item>
+	<item>Iowa</item>
+	<item>Kansas</item>
+	<item>Kentucky</item>
+	<item>Louisiana</item>
+	<item>Maine</item>
+	<item>Maryland</item>
+	<item>Massachusetts</item>
+	<item>Michigan</item>
+	<item>Minnesota</item>
+	<item>Mississippi</item>
+	<item>Missouri</item>
+	<item>Montana</item>
+	<item>Nebraska</item>
+	<item>Nevada</item>
+	<item>New Hampshire</item>
+	<item>New Jersey</item>
+	<item>New Mexico</item>
+	<item>New York</item>
+	<item>North Carolina</item>
+	<item>North Dakota</item>
+	<item>Ohio</item>
+	<item>Oklahoma</item>
+	<item>Oregon</item>
+	<item>Pennsylvania</item>
+	<item>Rhode Island</item>
+	<item>South Carolina</item>
+	<item>South Dakota</item>
+	<item>Tennessee</item>
+	<item>Texas</item>
+	<item>Utah</item>
+	<item>Vermont</item>
+	<item>Virginia</item>
+	<item>Washington</item>
+	<item>West Virginia</item>
+	<item>Wisconsin</item>
+	<item>Wyoming</item>
+	</string-array>
+	<string name="go_to_bookmarks">Go to Bookmarks</string>
 
 
 </resources>

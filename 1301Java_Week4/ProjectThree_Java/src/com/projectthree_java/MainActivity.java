@@ -19,6 +19,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -29,7 +32,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity implements MainFragment.MainListener, BookmarkFragment.BookmarkListener {
 	
 
-	
+
 	Context mContext;
 	String _bookmark;
 	Context _context;
@@ -92,6 +95,7 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
         
        
         Log.i("HISTORY READ",_history.toString());
+        
 
         //DETECT NETWORK CONNECTIVITY
         connected = WebStuff.getConnectionStatus(_context);
@@ -145,16 +149,17 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
     
     
     
-    //BOOKMARK STUFF
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-    	if(resultCode == RESULT_OK && requestCode == REQUEST_CODE){
-    		if(data.hasExtra("state")){
-    			String state = data.getExtras().getString("state");
-    			((EditText) findViewById(R.id.search)).setText(state);
-    			getInfo(state);
-    		}
-    	}
-    }
+//    
+//    //BOOKMARK STUFF
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+//    	if(resultCode == RESULT_OK && requestCode == REQUEST_CODE){
+//    		if(data.hasExtra("state")){
+//    			String state = data.getExtras().getString("state");
+//    			((EditText) findViewById(R.id.search)).setText(state);
+//    			getInfo(state);
+//    		}
+//    	}
+//    }
 
 	private class StateRequest extends AsyncTask<URL, Void, String>{
     	@Override
@@ -173,11 +178,11 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
     			JSONArray json = new JSONArray(result);
     			JSONArray results = json.getJSONArray(1);
     			Log.i("JSON Array", results.toString());
-    			Log.i("Here I am", getFilesDir().toString());
+    			Log.i("Here I am", getFilesDir().toString() + "/" + results.getString(0));
     			updateData(results);
     			try {
     				 
-    				FileWriter file = new FileWriter("getFilesDir()" + "results.getItemAtPos(1)");
+    				FileWriter file = new FileWriter(getFilesDir().toString() + "/" + results.getString(0));
     				file.write(results.toString());
     				file.flush();
     				file.close();
