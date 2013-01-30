@@ -1,6 +1,11 @@
 package com.projectthree_java;
 
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
@@ -123,7 +128,7 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
     		finalURL = null;
     	}
     }
-    //HISTORY HASHMAP
+    //HISTORY HASHMAP TO READ THE HISTORY FILE
     @SuppressWarnings({ "unchecked", "unused" })
 	private HashMap<String, String> getHistory(){
     	Object stored = FileStuff.readObjectFile(_context, "history", false);
@@ -137,6 +142,8 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
     	}
     	return history;
     }
+    
+    
     
     //BOOKMARK STUFF
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -166,7 +173,18 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
     			JSONArray json = new JSONArray(result);
     			JSONArray results = json.getJSONArray(1);
     			Log.i("JSON Array", results.toString());
+    			Log.i("Here I am", getFilesDir().toString());
     			updateData(results);
+    			try {
+    				 
+    				FileWriter file = new FileWriter("getFilesDir()" + "results.getItemAtPos(1)");
+    				file.write(results.toString());
+    				file.flush();
+    				file.close();
+    		 
+    			} catch (IOException e) {
+    				e.printStackTrace();
+    			}
     		}catch(JSONException e){
     			Log.e("JSON EXCEPTION", "::"+result);
     		
