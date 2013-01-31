@@ -1,6 +1,7 @@
 package com.projectthree_java;
 
 
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -8,6 +9,8 @@ import java.net.URL;
 import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,7 +19,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -33,6 +35,7 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 	Boolean connected = false;
 	HashMap<String, String> _history;
 	static final int REQUEST_CODE = 0;
+	JSONParser parser = new JSONParser();
 	
 	
 
@@ -82,8 +85,12 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
         return true;
     }
     
+    private void getInfoOffline(String state) {
+    	//WRITE CODE TO get the state name out of the spinner, and read the history file for that state using library functions
+ 
+   } 
     //INFO CALL TO SEARCH CENSUS API
-    private void getInfo(String state){
+    private void getInfoOnline(String state){
     	String baseURL = "http://api.census.gov/data/2010/sf1?key=e44eee8f8d8583f1b0854a96fcbe580d59164a54&get=NAME,P0030001,P0030002,P0030003,P0030004,P0030006&for=state:"+state;
     	Log.i("GET INFO CALL", baseURL);
     	URL finalURL;
@@ -164,7 +171,11 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 	//SEARCH FUNCTIONALITY
 	@Override
 	public void onStateSearch(String state) {
-		getInfo(state);
+		//write conditional to run getInfoOnline if online and getInfoOffline if offline
+		//if online
+			getInfoOnline(state);
+		//else
+			getInfoOffline(state);
 		
 	}
 
