@@ -4,18 +4,14 @@ package com.projectthree_java;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -26,7 +22,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -96,64 +91,26 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
     private void getInfoOffline(String file) {
     	//WRITE CODE TO get the state name out of the spinner, and read the history file for that state using library functions
     	try{
-			JSONArray json = new JSONArray(file);
-			JSONArray results = json.getJSONArray(1);
-			Log.i("Look here", results.toString());
-			Log.i("Read me", getFilesDir().toString() + "/" + results.getString(0));
-			updateData(results);
-			FileInputStream in = null;
-			InputStreamReader reader = null;
-			try {
-			    char[] inputBuffer = new char[256];
-			    in = openFileInput("myfile.txt");
-			    reader = new InputStreamReader(in);
-			    reader.read(inputBuffer);
-			    String myText = new String(inputBuffer);
-			} catch (Exception e) {;}
-			finally {
-			    try {
-			        if (reader != null)reader.close();
-			    } catch (IOException e) {; }
-			    try {
-			        if (in != null)in.close();
-			    } catch (IOException e) {;}
-			}
-		}catch(JSONException e){
-			Log.e("JSON EXCEPTION", "::"+file);
-		
-		}
-	}
 
+		    FileInputStream fis;
+		    try {
+		        fis = openFileInput("getFilesDir().toString() + / + results.getString(0)");
+		        InputStreamReader isr = new InputStreamReader(fis);
+		        BufferedReader br = new BufferedReader(isr);
+		        String data = br.readLine();
+		        Log.i("Reading file" , data);
+		    } catch (FileNotFoundException e) {
+		        Log.w("Reading file" , "Unable to open file");
+		    } catch (IOException e) {
+		        Log.w("Reading file" , "Error reading file");
 
-//			try {
-//				 
-//				InputStream instream = openFileInput(getFilesDir().toString() + "/" + results.getString(0));
-//				if (instream != null) {
-//				      // prepare the file for reading
-//				      InputStreamReader inputreader = new InputStreamReader(instream);
-//				      BufferedReader buffreader = new BufferedReader(inputreader);
-//				                 
-//				      String line;
-//				 
-//				      // read every line of the file into the line-variable, on line at the time
-//				      while (( line = buffreader.readLine())) {
-//				        
-//				      }
-//				 
-//				    }
-//				     
-//				    // close the file again       
-//				    instream.close();
-//				  } catch (java.io.FileNotFoundException e) {
-//				    // do something if the myfilename.txt does not exits
-//				  }
-//		}finally{
-//			
-//		}
-//	}
-		
-
-    
+    	}finally{
+    		Log.i("sorry", "cant read your stuff");
+    	}
+    	}finally{
+    		//please work
+    	}
+    } 
     
     
     //INFO CALL TO SEARCH CENSUS API
