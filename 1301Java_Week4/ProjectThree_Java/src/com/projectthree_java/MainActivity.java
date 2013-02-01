@@ -1,10 +1,14 @@
 package com.projectthree_java;
 
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
@@ -46,7 +50,7 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 	//CREATE DETAIL VIEW OF API DATA 
 	public void updateData(JSONArray data){
 		try{
-		
+		((TextView) findViewById(R.id.state_name)).setText(data.getString(0));
 		((TextView) findViewById(R.id.state_pop)).setText(data.getString(1));
 		((TextView) findViewById(R.id.white_pop)).setText(data.getString(2));
 		((TextView) findViewById(R.id.black_pop)).setText(data.getString(3));
@@ -91,27 +95,70 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
     
     private void getInfoOffline(String file) {
     	//WRITE CODE TO get the state name out of the spinner, and read the history file for that state using library functions
-    	JSONObject obj = new JSONObject();
-    	Spinner state_names = (Spinner) findViewById(R.id.spinner);
-    	
-    	try {
-    	
-			Object state = parser.parse(new FileReader(getFilesDir().toString()  + "/" + state_names.getItemAtPosition(0).toString()));
-			
-			
-		} catch (FileNotFoundException e) {
-			Log.i("Sorry", "No such file");
-		} catch (IOException e) {
-			Log.i("Oops", "IO Exception");
-		} catch (ParseException e) {
-			Log.i("Sorry", "Can't parse object");
+    	try{
+			JSONArray json = new JSONArray(file);
+			JSONArray results = json.getJSONArray(1);
+			Log.i("Look here", results.toString());
+			Log.i("Read me", getFilesDir().toString() + "/" + results.getString(0));
+			updateData(results);
+			FileInputStream in = null;
+			InputStreamReader reader = null;
+			try {
+			    char[] inputBuffer = new char[256];
+			    in = openFileInput("myfile.txt");
+			    reader = new InputStreamReader(in);
+			    reader.read(inputBuffer);
+			    String myText = new String(inputBuffer);
+			} catch (Exception e) {;}
+			finally {
+			    try {
+			        if (reader != null)reader.close();
+			    } catch (IOException e) {; }
+			    try {
+			        if (in != null)in.close();
+			    } catch (IOException e) {;}
+			}
+		}catch(JSONException e){
+			Log.e("JSON EXCEPTION", "::"+file);
+		
 		}
-    }
+	}
+
+
+//			try {
+//				 
+//				InputStream instream = openFileInput(getFilesDir().toString() + "/" + results.getString(0));
+//				if (instream != null) {
+//				      // prepare the file for reading
+//				      InputStreamReader inputreader = new InputStreamReader(instream);
+//				      BufferedReader buffreader = new BufferedReader(inputreader);
+//				                 
+//				      String line;
+//				 
+//				      // read every line of the file into the line-variable, on line at the time
+//				      while (( line = buffreader.readLine())) {
+//				        
+//				      }
+//				 
+//				    }
+//				     
+//				    // close the file again       
+//				    instream.close();
+//				  } catch (java.io.FileNotFoundException e) {
+//				    // do something if the myfilename.txt does not exits
+//				  }
+//		}finally{
+//			
+//		}
+//	}
+		
+
+    
     
     
     //INFO CALL TO SEARCH CENSUS API
     private void getInfoOnline(String state){
-    	String baseURL = "http://api.census.gov/data/2010/sf1?key=e44eee8f8d8583f1b0854a96fcbe580d59164a54&get=P0030001,P0030002,P0030003,P0030004,P0030006&for=state:"+state;
+    	String baseURL = "http://api.census.gov/data/2010/sf1?key=e44eee8f8d8583f1b0854a96fcbe580d59164a54&get=NAME,P0030001,P0030002,P0030003,P0030004,P0030006&for=state:"+state;
     	Log.i("GET INFO CALL", baseURL);
     	URL finalURL;
     	try{

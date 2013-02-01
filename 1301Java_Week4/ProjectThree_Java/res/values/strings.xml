@@ -22,15 +22,18 @@
 	<string-array name="state_name">
 	<item>Alabama</item>
 	<item>Alaska</item>
+	<item></item>
 	<item>Arizona</item>
 	<item>Arkansas</item>
 	<item>California</item>
+	<item></item>
 	<item>Colorado</item>
 	<item>Connecticut</item>
 	<item>Delaware</item>
-	<item>Florida</item>
 	<item>District of Colombia</item>
+	<item>Florida</item>
 	<item>Georgia</item>
+	<item ></item>
 	<item>Hawaii</item>
 	<item>Idaho</item>
 	<item>Illinois</item>
@@ -75,6 +78,7 @@
 	<string name="go_to_bookmarks">Go to Bookmarks</string>
 	<string name="enter_state_number">Enter State Code</string>
 	<string name="state_codes_start_at_01_for_alabama_and_continue_in_order">state_codes_start_at_01_for_alabama_and_continue_in_order</string>
+	<string name="state_name">state_name</string>
 
 
 </resources>
