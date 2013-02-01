@@ -1,6 +1,7 @@
 package com.projectthree_java;
 
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,6 +10,8 @@ import java.net.URL;
 import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -19,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -42,7 +46,7 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 	//CREATE DETAIL VIEW OF API DATA 
 	public void updateData(JSONArray data){
 		try{
-		((TextView) findViewById(R.id.state_name)).setText(data.getString(0));
+		
 		((TextView) findViewById(R.id.state_pop)).setText(data.getString(1));
 		((TextView) findViewById(R.id.white_pop)).setText(data.getString(2));
 		((TextView) findViewById(R.id.black_pop)).setText(data.getString(3));
@@ -85,13 +89,29 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
         return true;
     }
     
-    private void getInfoOffline(String state) {
+    private void getInfoOffline(String file) {
     	//WRITE CODE TO get the state name out of the spinner, and read the history file for that state using library functions
- 
-   } 
+    	JSONObject obj = new JSONObject();
+    	Spinner state_names = (Spinner) findViewById(R.id.spinner);
+    	
+    	try {
+    	
+			Object state = parser.parse(new FileReader(getFilesDir().toString()  + "/" + state_names.getItemAtPosition(0).toString()));
+			
+			
+		} catch (FileNotFoundException e) {
+			Log.i("Sorry", "No such file");
+		} catch (IOException e) {
+			Log.i("Oops", "IO Exception");
+		} catch (ParseException e) {
+			Log.i("Sorry", "Can't parse object");
+		}
+    }
+    
+    
     //INFO CALL TO SEARCH CENSUS API
     private void getInfoOnline(String state){
-    	String baseURL = "http://api.census.gov/data/2010/sf1?key=e44eee8f8d8583f1b0854a96fcbe580d59164a54&get=NAME,P0030001,P0030002,P0030003,P0030004,P0030006&for=state:"+state;
+    	String baseURL = "http://api.census.gov/data/2010/sf1?key=e44eee8f8d8583f1b0854a96fcbe580d59164a54&get=P0030001,P0030002,P0030003,P0030004,P0030006&for=state:"+state;
     	Log.i("GET INFO CALL", baseURL);
     	URL finalURL;
     	try{
@@ -105,9 +125,8 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
     }
     //HISTORY HASHMAP TO READ THE HISTORY FILE
     @SuppressWarnings({ "unchecked", "unused" })
-	private HashMap<String, String> getHistory(){
+	private HashMap<String, String> getHistory() throws FileNotFoundException, IOException, ParseException{
     	Object stored = FileStuff.readObjectFile(_context, "history", false);
-    	
     	HashMap<String, String> history;
     	if(stored == null){
     		Log.i("HISTORY", "NO HISTORY FILE FOUND");
@@ -120,14 +139,15 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
     
     
     
-//    
+    
 //    //BOOKMARK STUFF
 //    protected void onActivityResult(int requestCode, int resultCode, Intent data){
 //    	if(resultCode == RESULT_OK && requestCode == REQUEST_CODE){
 //    		if(data.hasExtra("state")){
+//    			//String selected = state_names.getItemAtPosition(pos).toString();
 //    			String state = data.getExtras().getString("state");
-//    			((EditText) findViewById(R.id.search)).setText(state);
-//    			getInfo(state);
+//    			Spinner state_names = (Spinner) findViewById(R.id.spinner);
+//    			getInfoOnline(state);
 //    		}
 //    	}
 //    }
@@ -172,10 +192,12 @@ public class MainActivity extends Activity implements MainFragment.MainListener,
 	@Override
 	public void onStateSearch(String state) {
 		//write conditional to run getInfoOnline if online and getInfoOffline if offline
-		//if online
+		if(connected == true){
 			getInfoOnline(state);
-		//else
+	
+		}else{
 			getInfoOffline(state);
+		}
 		
 	}
 
