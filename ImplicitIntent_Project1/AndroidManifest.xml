@@ -3,7 +3,10 @@
     package="com.implicitintent_project1"
     android:versionCode="1"
     android:versionName="1.0" >
-
+    
+	<!-- Add Internet Permissions -->
+	<uses-permission android:name="android.permission.INTERNET"/>
+	
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
@@ -22,6 +25,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- Add Project Activities -->
+        <activity android:name=".AddWebsiteActivity"/>
+        <activity android:name=".RSSItemsActivity"
+            android:configChanges="keyboardHidden|orientation"/>
+        <activity android:name=".WebPageActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation"/>
     </application>
 
 </manifest>
