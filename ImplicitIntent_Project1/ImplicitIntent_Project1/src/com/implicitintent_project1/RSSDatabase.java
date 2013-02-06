@@ -126,13 +126,27 @@ public class RSSDatabase extends SQLiteOpenHelper{
 		 
 		 Website site = new Website(c.getString(1), c.getString(2), c.getString(3), c.getString(4));
 		 site.setId(Integer.parseInt(c.getString(0)));
-		return null;
-		
+		 site.setTitle(c.getString(1));
+		 site.setLink(c.getString(2));
+		 site.setRSSLink(c.getString(3));
+		 site.setDescription(c.getString(4));
+		 c.close();
+		 db.close();
+		return site;	
 	}
+	
+	 //DELETE A WEBSITE 
+	 public void deleteSite(Website site){
+		 SQLiteDatabase db = this.getWritableDatabase();
+		 db.delete(TABLE_RSS, KEY_ID + " = ?", new String[] { String.valueOf(site.getId()) });
+		 
+	 }
 
+	 //DOES WEBSITE ALREADY EXIST IS DATABASE?
 	private boolean siteExists(SQLiteDatabase db, String rssLink) {
-		// TODO Auto-generated method stub
-		return false;
+		Cursor c = db.rawQuery("SELECT 1 FROM" + TABLE_RSS + "WHERE rss_link = '" + rssLink + "'", new String[] {});
+		boolean exists = (c.getCount() > 0);
+		return exists;
 	}
 	
 	
