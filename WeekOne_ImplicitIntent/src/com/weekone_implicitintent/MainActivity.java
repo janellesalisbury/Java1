@@ -10,6 +10,8 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		//THIS IS A TEST TO SEE IF GITHUB IS WORKING!
 	}
 
 	@Override
