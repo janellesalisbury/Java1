@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WeekOne_ImplicitIntent</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="enter_url_here">Enter URL Here</string>
+    <string name="search_now">Search Now</string>
+
+</resources>
