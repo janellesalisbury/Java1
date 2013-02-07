@@ -7,9 +7,14 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/enter_url_here"/>
-    <Button android:id="@+id/search_button"
-        android:layout_height="wrap_content"
+
+    <Button
+        android:id="@+id/search_button"
         android:layout_width="match_parent"
-        android:text="@string/search_now"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/editText"
+        android:layout_marginTop="20dp"
+        android:text="@string/search_now" />
 
 </RelativeLayout>
