@@ -1,29 +1,42 @@
 package com.intentproject_weekone;
 
+import android.net.Uri;
 import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 
-public class MainActivity extends Activity implements OnClickListener{
+public class MainActivity extends Activity {
+	
+	private Button searchButton;
+	EditText editText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		final Context context = this;
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_main, menu);
-		return true;
-	}
-
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		
+		editText = (EditText) findViewById(R.id.edit_text);
+		
+		 searchButton = (Button) findViewById(R.id.search_button);
+		 searchButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent launcher = new Intent(Intent.ACTION_VIEW, Uri.parse("http://" + editText.getText().toString() + ".com"));
+				launcher.putExtra("url", "http://" + editText.getText().toString() + ".com");
+				startActivity(launcher);
+				
+			}
+		});
+		
+		
 		
 	}
 
