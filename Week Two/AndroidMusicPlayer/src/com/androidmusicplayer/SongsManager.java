@@ -16,7 +16,7 @@ public class SongsManager {
 	}
 	
 	//READ FILES AND STORE TO LIST
-	public ArrayList<HashMap<String, String>> getPlaylist(){
+	public ArrayList<HashMap<String, String>> getPlayList(){
 		File home = new File(MEDIA_PATH);
 		
 		if (home.listFiles(new FileExtensionFilter()).length > 0){
