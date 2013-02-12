@@ -1,16 +1,22 @@
 package com.videoplayback_week2;
 
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 public class MainActivity extends Activity {
@@ -32,59 +38,37 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		chkStatus();
+
+	}
+	//MOBILE CONNECTION, WI-FI CONNECTION OR NO CONNECTION DETECTION
+	void chkStatus()
+	{
+	final ConnectivityManager connMgr = (ConnectivityManager)
+	this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+	final android.net.NetworkInfo wifi =
+	connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+	final android.net.NetworkInfo mobile =
+	connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+	if( wifi.isAvailable() ){
+	Toast.makeText(this, "Wifi" , Toast.LENGTH_LONG).show();
+	Log.i("WIFI", "You're using a wi-fi connection");
+	}
+	else if( mobile.isAvailable() ){
+	Toast.makeText(this, "Mobile 3G " , Toast.LENGTH_LONG).show();
+	Log.i("MOBILE", "You're using a 3G connection");
+	}
+	else
+	{Toast.makeText(this, "No Network " , Toast.LENGTH_LONG).show();}
+	
 	        
 		//SET CONTEXT
 		_this = this;
-		
-		Button btnStatus = (Button) findViewById(R.id.button2);
-		 
-        // creating connection detector class instance
-        cd = new NetworkDetection(getApplicationContext());
-        btnStatus.setOnClickListener(new View.OnClickListener() {
- 
-            @Override
-            public void onClick(View v) {
- 
-                // get Internet status
-                isInternetPresent = cd.isConnectingToInternet();
- 
-                // check for Internet status
-                if (isInternetPresent) {
-                    // Internet Connection is Present
-                    // make HTTP requests
-                    showAlertDialog(MainActivity.this, "Internet Connection",
-                            "You're connected", true);
-                } else {
-                    // Internet connection is not present
-                    // Ask user to connect to Internet
-                    showAlertDialog(MainActivity.this, "No Internet Connection",
-                            "Oops, please select a network", false);
-                }
-            }
- 
-        });
- 
-    }
- 
-    @SuppressWarnings("deprecation")
-	public void showAlertDialog(Context context, String title, String message, Boolean status) {
-        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
- 
-        //SETTING DIALOG TITLE
-        alertDialog.setTitle(title);
- 
-        //SETTING DIALOG MESSAGE
-        alertDialog.setMessage(message);
- 
-        //OK BUTTON
-        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-            }
-        });
- 
-        //ALERT MESSAGE
-        alertDialog.show();
-    
+
 		//SET UP BUTTON FOR VIDEO PLAYBACK
 		Button button1 = (Button) findViewById(R.id.button1);
 		button1.setOnClickListener(new OnClickListener() {
@@ -103,6 +87,8 @@ public class MainActivity extends Activity {
 		});
 
 	}
+
+  
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
