@@ -1,6 +1,5 @@
 package com.videoplayback_week2;
 
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
@@ -18,6 +17,7 @@ public class MainActivity extends Activity {
 	Button button1;
 	VideoView vv;
 	Context _this;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
