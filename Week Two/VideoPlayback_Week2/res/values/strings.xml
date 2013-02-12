@@ -4,5 +4,6 @@
     <string name="app_name">VideoPlayback_Week2</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="watch_ironman_3_trailer">Watch IronMan 3 Trailer</string>
 
 </resources>
