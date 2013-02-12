@@ -24,7 +24,8 @@ public final class R {
         public static final int activity_main=0x7f070000;
     }
     public static final class raw {
-        public static final int vid=0x7f040000;
+        public static final int ironman=0x7f040000;
+        public static final int vid=0x7f040001;
     }
     public static final class string {
         public static final int app_name=0x7f050000;

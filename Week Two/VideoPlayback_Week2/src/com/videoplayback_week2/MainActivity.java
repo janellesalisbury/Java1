@@ -3,7 +3,6 @@ package com.videoplayback_week2;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
-import android.widget.VideoView;
 
 public class MainActivity extends Activity {
 
@@ -11,9 +10,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		VideoView v = (VideoView) findViewById(R.id.videoView1);
-		v.setVideoPath("/sdcard/Moves Like Jagger.mp4");
+
 	}
 
 	@Override
