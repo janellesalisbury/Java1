@@ -1,14 +1,13 @@
 package com.videoplayback_week2;
 
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
@@ -106,14 +105,26 @@ public class MainActivity extends Activity {
 		Button button1 = (Button) findViewById(R.id.button1);
 		button1.setOnClickListener(new OnClickListener() {
 			
+			@SuppressWarnings("deprecation")
 			@Override
 			public void onClick(View v) {
-				//PLAY VIDEO NOW
+				//PLAY VIDEO NOW AND SEND NOTIFICATION TO PHONE
 				vv = (VideoView) findViewById(R.id.videoView1);
 				String uriPath = "android.resource://" + getPackageName() + "/" + R.raw.ironman;
 				vv.setVideoURI(Uri.parse(uriPath));
 				vv.setMediaController(new MediaController(_this));
 				vv.start();
+				NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+				@SuppressWarnings("deprecation")
+				Notification notify = new Notification(android.R.drawable.stat_notify_more, 
+						"launching video", System.currentTimeMillis());
+				Context context = MainActivity.this;
+				CharSequence title = "You have been notified";
+				CharSequence details = "Continue watching video";
+				Intent in = new Intent(context, MainActivity.class);
+				PendingIntent pending = PendingIntent.getActivity(context, 0, in, 0);
+				notify.setLatestEventInfo(context, title, details, pending);
+				nm.notify(0, notify);
 				
 				
 			}
