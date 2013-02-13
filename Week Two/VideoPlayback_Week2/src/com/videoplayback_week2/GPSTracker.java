@@ -8,6 +8,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 
 public class GPSTracker extends Service implements LocationListener{
 	//GLOBAL VARIABLE
@@ -46,11 +47,38 @@ public class GPSTracker extends Service implements LocationListener{
 				if(isNetworkEnabled){
 					locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
 							MIN_TIME_BETWEEN_UPDATES, MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+					Log.d("Network", "Network");
+					if(locationManager !=null){
+						location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+						if(location !=null){
+							lat = location.getLatitude();
+							longitude = location.getLongitude();
+						}
+						
+					}
+				}
+				//USE GPS TO OBTAIN LOCATION
+				if(isGPSEnabled){
+					if(location == null){
+						locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+								MIN_TIME_BETWEEN_UPDATES, MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+						Log.d("GPS Enabled", "GPS Enabled");
+						if(locationManager !=null){
+							location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+							if(location !=null){
+								lat = location.getLatitude();
+								longitude = location.getLongitude();
+							}
+						}
+					}
 				}
 			}
+		}catch(Exception e){
+			e.printStackTrace();
 		}
+		return location;
 	}
-
+		
 	@Override
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
