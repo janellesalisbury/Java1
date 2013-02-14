@@ -7,8 +7,10 @@ import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -23,7 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-public class MainActivity extends Activity implements SensorEventListener{
+public class MainActivity<batteryReceiver> extends Activity implements SensorEventListener{
 	//GLOBAL VARIABLES
 	String buttonText;
 	Button button1;
@@ -38,9 +40,7 @@ public class MainActivity extends Activity implements SensorEventListener{
  
     // CONNECTION DETECTOR
     NetworkDetection cd;
-    
-
-  
+ 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -135,10 +135,11 @@ public class MainActivity extends Activity implements SensorEventListener{
 		
 	}
 
-	
+ 	
 
-
-		
 }
+		
+
+
 
 
