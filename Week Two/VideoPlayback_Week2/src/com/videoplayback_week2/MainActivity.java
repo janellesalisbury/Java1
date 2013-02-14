@@ -40,9 +40,6 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
 	SensorManager sm;
 	Sensor accelerometer ;
 	private TextView contentTxt;
-	private WakeLock screenWakeLock;
-	
-	
 	
 	//INTERNET CONNECTED BOOLEAN
     Boolean isInternetPresent = false;
@@ -59,6 +56,7 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
         int  health= intent.getIntExtra(BatteryManager.EXTRA_HEALTH,0);
         int  status= intent.getIntExtra(BatteryManager.EXTRA_STATUS,0);
         int  temperature= intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE,0);
+        //SET TEXT OUTPUT OF INTEGERS
         contentTxt.setText("Battery Level:" + String.valueOf(level) + "%" + "\b" + "Health:" + String.valueOf(health)
         		+ "\b" + "Status:" + String.valueOf(status) + "\b" + "Temperature:" + String.valueOf(temperature));
       }
@@ -71,6 +69,7 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		//BATTERY TEXTVIEW/REGISTER INTENT
 		contentTxt = (TextView) this.findViewById(R.id.contentTxt);
 	    this.registerReceiver(this.mBatInfoReceiver, 
 	    new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
@@ -126,6 +125,7 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
 				vv.setVideoURI(Uri.parse(uriPath));
 				vv.setMediaController(new MediaController(_this));
 				vv.start();
+				//SET NOTIFICATION OF VIDEO LAUNCHING AND CONTINUE WATCHING UPON NOTIFICATION CLICK
 				NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 				Notification notify = new Notification(android.R.drawable.stat_notify_more, 
 						"launching video", System.currentTimeMillis());
@@ -161,6 +161,7 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
 
 	@Override
 	public void onSensorChanged(SensorEvent event) {
+		//SET ACCELERATION VALUES WHICH WILL CHANGE WITH PHONE MOVEMENT
 		acceleration.setText("X:" + event.values[0] + "\bY:" + event.values[1] + "\bZ:" + event.values[2]);
 	}
     
