@@ -9,22 +9,29 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.MediaController;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements SensorEventListener{
 	//GLOBAL VARIABLES
 	String buttonText;
 	Button button1;
-	Button button2;
 	VideoView vv;
 	Context _this;
+	TextView acceleration;
+	SensorManager sm;
+	Sensor accelerometer ;
 	
 	//INTERNET CONNECTED BOOLEAN
     Boolean isInternetPresent = false;
@@ -32,48 +39,22 @@ public class MainActivity extends Activity {
     // CONNECTION DETECTOR
     NetworkDetection cd;
     
-    //GPS TRACKER
-    GPSTracker gps;
-	
 
+  
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+		//CHECK NETWORK STATUS
 		chkStatus();
-		
-
-        button2 = (Button) findViewById(R.id.button2);
- 
-        // show location button click event
-        button2.setOnClickListener(new View.OnClickListener() {
- 
-            @Override
-            public void onClick(View arg0) {
-                // create class object
-                gps = new GPSTracker(MainActivity.this);
- 
-                // check if GPS enabled
-                if(gps.canGetLocation()){
- 
-                    double latitude = gps.getLatitude();
-                    double longitude = gps.getLongitude();
- 
-                    // \n is for new line
-                    Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
-                }else{
-                    // can't get location
-                    // GPS or Network is not enabled
-                    // Ask user to enable GPS/network in settings
-                    gps.showSettingsAlert();
-                }
- 
-            }
-        });
-    }
-
+		//CREATE ACCELEROMETER MANAGER
+		sm = (SensorManager) getSystemService(SENSOR_SERVICE);
+		accelerometer = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+		sm.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+		acceleration = (TextView) findViewById(R.id.acceleration);
 	
+	}
+
 	//MOBILE CONNECTION, WI-FI CONNECTION OR NO CONNECTION DETECTION
 	void chkStatus()
 	{
@@ -115,7 +96,6 @@ public class MainActivity extends Activity {
 				vv.setMediaController(new MediaController(_this));
 				vv.start();
 				NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-				@SuppressWarnings("deprecation")
 				Notification notify = new Notification(android.R.drawable.stat_notify_more, 
 						"launching video", System.currentTimeMillis());
 				Context context = MainActivity.this;
@@ -141,4 +121,24 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
+
+	@Override
+	public void onAccuracyChanged(Sensor sensor, int accuracy) {
+		//UNUSED
+		
+	}
+
+
+	@Override
+	public void onSensorChanged(SensorEvent event) {
+		acceleration.setText("X:" + event.values[0] + "\bY:" + event.values[1] + "\bZ:" + event.values[2]);
+		
+	}
+
+	
+
+
+		
 }
+
+
