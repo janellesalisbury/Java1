@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
+import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -21,6 +23,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.TextView;
@@ -37,7 +40,8 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
 	SensorManager sm;
 	Sensor accelerometer ;
 	private TextView contentTxt;
-	PowerManager manager;
+	private WakeLock screenWakeLock;
+	
 	
 	
 	//INTERNET CONNECTED BOOLEAN
@@ -57,10 +61,11 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
         int  temperature= intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE,0);
         contentTxt.setText("Battery Level:" + String.valueOf(level) + "%" + "\b" + "Health:" + String.valueOf(health)
         		+ "\b" + "Status:" + String.valueOf(status) + "\b" + "Temperature:" + String.valueOf(temperature));
-        
       }
-    };
- 
+        
+      };
+    
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -157,6 +162,6 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
 	@Override
 	public void onSensorChanged(SensorEvent event) {
 		acceleration.setText("X:" + event.values[0] + "\bY:" + event.values[1] + "\bZ:" + event.values[2]);
-	}	
-
+	}
+    
 }
