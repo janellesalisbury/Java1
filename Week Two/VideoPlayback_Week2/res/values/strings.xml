@@ -9,5 +9,6 @@
     <string name="health_">Health:</string>
     <string name="x_y_z_">X: Y: Z:</string>
     <string name="health_x_y_z_">Health: X: Y: Z:</string>
+    <string name="health_level_status_">Health: Level: Status:</string>
 
 </resources>

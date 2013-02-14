@@ -4,6 +4,7 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -35,7 +36,8 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
 	TextView acceleration;
 	SensorManager sm;
 	Sensor accelerometer ;
-	private TextView battery;
+	private TextView contentTxt;
+	PowerManager manager;
 	
 	
 	//INTERNET CONNECTED BOOLEAN
@@ -43,11 +45,30 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
  
     // CONNECTION DETECTOR
     NetworkDetection cd;
+    
+    //CREATE BROADCAST RECEIVER FOR BATTERY MANAGEMENT INFO
+    private BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver(){
+      @Override
+      public void onReceive(Context arg0, Intent intent) {
+       //SAVE BATTERY INFO
+        int level = intent.getIntExtra("level", 0);
+        int  health= intent.getIntExtra(BatteryManager.EXTRA_HEALTH,0);
+        int  status= intent.getIntExtra(BatteryManager.EXTRA_STATUS,0);
+        int  temperature= intent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE,0);
+        contentTxt.setText("Battery Level:" + String.valueOf(level) + "%" + "\b" + "Health:" + String.valueOf(health)
+        		+ "\b" + "Status:" + String.valueOf(status) + "\b" + "Temperature:" + String.valueOf(temperature));
+        
+      }
+    };
  
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		contentTxt = (TextView) this.findViewById(R.id.contentTxt);
+	    this.registerReceiver(this.mBatInfoReceiver, 
+	    new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 		
 		//CHECK NETWORK STATUS
 		chkStatus();
@@ -58,21 +79,8 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
 		sm.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 		acceleration = (TextView) findViewById(R.id.acceleration);
 		
-		//GET BATTERY TEXTVIEW and REGISTER RECEIVER
-		battery=(TextView)findViewById(R.id.battery);
-		this.registerReceiver(this.batteryInfoReceiver,	new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-	
 	}
 
-	private BroadcastReceiver batteryInfoReceiver = new BroadcastReceiver() {
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			
-			int  health= intent.getIntExtra(BatteryManager.EXTRA_HEALTH,0);
-			int  level= intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0);
-			int  status= intent.getIntExtra(BatteryManager.EXTRA_STATUS,0);
-		}
-	};
 	
 	//MOBILE CONNECTION, WI-FI CONNECTION OR NO CONNECTION DETECTION
 	void chkStatus()

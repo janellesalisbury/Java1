@@ -22,19 +22,18 @@
         android:text="@string/x_y_z_" />
 
     <TextView
-        android:id="@+id/battery"
+        android:id="@+id/contentTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/acceleration"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:text="Health:" />
+        android:layout_alignParentRight="true" />
 
     <VideoView
         android:id="@+id/videoView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textView1"
+        android:layout_above="@+id/contentTxt"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/button1" />
 
