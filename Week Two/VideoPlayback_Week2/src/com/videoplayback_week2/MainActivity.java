@@ -2,6 +2,7 @@ package com.videoplayback_week2;
 
 import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Notification;
@@ -34,6 +35,8 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
 	TextView acceleration;
 	SensorManager sm;
 	Sensor accelerometer ;
+	private TextView battery;
+	
 	
 	//INTERNET CONNECTED BOOLEAN
     Boolean isInternetPresent = false;
@@ -45,16 +48,32 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
 		//CHECK NETWORK STATUS
 		chkStatus();
+		
 		//CREATE ACCELEROMETER MANAGER
 		sm = (SensorManager) getSystemService(SENSOR_SERVICE);
 		accelerometer = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 		sm.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
 		acceleration = (TextView) findViewById(R.id.acceleration);
+		
+		//GET BATTERY TEXTVIEW and REGISTER RECEIVER
+		battery=(TextView)findViewById(R.id.battery);
+		this.registerReceiver(this.batteryInfoReceiver,	new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 	
 	}
 
+	private BroadcastReceiver batteryInfoReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			
+			int  health= intent.getIntExtra(BatteryManager.EXTRA_HEALTH,0);
+			int  level= intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0);
+			int  status= intent.getIntExtra(BatteryManager.EXTRA_STATUS,0);
+		}
+	};
+	
 	//MOBILE CONNECTION, WI-FI CONNECTION OR NO CONNECTION DETECTION
 	void chkStatus()
 	{
@@ -78,7 +97,6 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
 	else
 	{Toast.makeText(this, "No Network " , Toast.LENGTH_LONG).show();}
 	
-	        
 		//SET CONTEXT
 		_this = this;
 
@@ -112,7 +130,6 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
 
 	}
 
-  
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -132,14 +149,6 @@ public class MainActivity<batteryReceiver> extends Activity implements SensorEve
 	@Override
 	public void onSensorChanged(SensorEvent event) {
 		acceleration.setText("X:" + event.values[0] + "\bY:" + event.values[1] + "\bZ:" + event.values[2]);
-		
-	}
-
- 	
+	}	
 
 }
-		
-
-
-
-

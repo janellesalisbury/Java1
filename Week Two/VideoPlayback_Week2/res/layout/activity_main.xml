@@ -13,29 +13,28 @@
         android:layout_alignParentTop="true"
         android:text="@string/watch_ironman_3_trailer" />
 
-<!--     <Button -->
-<!--         android:id="@+id/button2" -->
-<!--         style="?android:attr/buttonStyleSmall" -->
-<!--         android:layout_width="wrap_content" -->
-<!--         android:layout_height="wrap_content" -->
-<!--         android:layout_alignParentBottom="true" -->
-<!--         android:layout_alignParentRight="true" -->
-<!--         android:text="@string/where_the_heck_am_i_" /> -->
-
     <TextView
         android:id="@+id/acceleration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/x_y_z_" />
+
+    <TextView
+        android:id="@+id/battery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/acceleration"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:text="X: Y: Z:" />
+        android:text="Health:" />
 
     <VideoView
         android:id="@+id/videoView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/acceleration"
+        android:layout_above="@+id/textView1"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/button1" />
 
