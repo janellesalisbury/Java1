@@ -7,6 +7,10 @@ import org.simpleframework.xml.core.Persister;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
@@ -42,6 +46,9 @@ public class MainActivity extends Activity implements MainActivityFragment.ListI
 		
 	
 	}
+	
+
+	
 	public static class MyTabListener<T extends Fragment> implements TabListener{
 		private Fragment mFragment;
 		private final Activity mActivity;
@@ -156,16 +163,31 @@ public class MainActivity extends Activity implements MainActivityFragment.ListI
 	}
 	
 	boolean b = actor1.equals(actor1);
-	
-	
-	
-	
+
 	}
-		
-}
+		 @Override
+		  public boolean onCreateOptionsMenu(Menu menu) {
+		    MenuInflater inflater = getMenuInflater();
+		    inflater.inflate(R.layout.mainmenu, menu);
+		    return true;
+		  }
 
+		  @Override
+		  public boolean onOptionsItemSelected(MenuItem item) {
+		    switch (item.getItemId()) {
+		    case R.id.action_refresh:
+		      Toast.makeText(this, "Action refresh selected", Toast.LENGTH_SHORT)
+		          .show();
+		      break;
+		    case R.id.action_settings:
+		      Toast.makeText(this, "Action Settings selected", Toast.LENGTH_SHORT)
+		          .show();
+		      break;
 
-	
- 
- 
+		    default:
+		      break;
+		    }
 
+		    return true;
+		  }
+		} 
