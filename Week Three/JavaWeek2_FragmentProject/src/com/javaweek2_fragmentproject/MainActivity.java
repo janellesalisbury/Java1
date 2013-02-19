@@ -25,7 +25,7 @@ public class MainActivity extends Activity implements MainActivityFragment.ListI
 		//SET UP ACTION BAR FOR TABS
 		ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		actionBar.setDisplayShowTitleEnabled(false);
+		actionBar.setDisplayShowTitleEnabled(true);
 		
 		Tab tab = actionBar
 				.newTab()
@@ -42,7 +42,45 @@ public class MainActivity extends Activity implements MainActivityFragment.ListI
 		
 	
 	}
-	
+	public static class MyTabListener<T extends Fragment> implements TabListener{
+		private Fragment mFragment;
+		private final Activity mActivity;
+		private final String mTag;
+		private final Class<T> mClass;
+		
+		//CONSTRUCTOR
+		public MyTabListener(Activity activity, String tag, Class<T> cls){
+			mActivity = activity;
+			mTag = tag;
+			mClass = cls;
+		}
+
+		@Override
+		public void onTabReselected(Tab tab, FragmentTransaction ft) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void onTabSelected(Tab tab, FragmentTransaction ft) {
+			if(mFragment == null){
+				//INSTANTIATE
+				mFragment = Fragment.instantiate(mActivity, mClass.getName());
+				ft.add(android.R.id.content, mFragment, mTag);
+			}else{
+				ft.attach(mFragment);
+			}
+			
+		}
+
+		@Override
+		public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+			if (mFragment != null) {
+		        ft.detach(mFragment);
+			
+		}
+	}
+}
 		@Override
 		public void onListItemSelected(int item){
 			ActorDetailsFragment imageViewer = (ActorDetailsFragment) getFragmentManager().findFragmentById(R.id.image_viewer_fragment);
