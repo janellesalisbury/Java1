@@ -1,4 +1,4 @@
-package com.appwidgetportion;
+package com.widget;
 
 import android.os.Bundle;
 import android.app.Activity;
