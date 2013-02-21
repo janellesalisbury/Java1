@@ -5,9 +5,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.Menu;
+import android.view.MenuInflater;
 
 public class ActorDetailsView extends Activity{
+	
 
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,17 +31,23 @@ public class ActorDetailsView extends Activity{
     	viewer.update(item);
     	}
 	
-	@Override
-    public boolean onOptionsItemSelected(MenuItem menuItem)
-    {       
-        startActivity(new Intent(ActorDetailsView.this, MainActivity.class)); 
-        return true;
-    }
+	 @Override
+	  public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.layout.mainmenu, menu);
+	    
 
-//	@Override
-//	public void onWebList() {
-//		// TODO Auto-generated method stub
-//		
-//	}
+	    // RETURN TRUE TO DISPLAY MENU
+	    return true;
 
-}
+	  }
+
+
+	 }
+	
+
+	
+    
+
+
+
