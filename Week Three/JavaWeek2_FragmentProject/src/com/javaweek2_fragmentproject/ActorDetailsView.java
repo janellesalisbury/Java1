@@ -1,6 +1,5 @@
 package com.javaweek2_fragmentproject;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -14,11 +13,6 @@ public class ActorDetailsView extends Activity{
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-      //SET UP ACTION BAR FOR TABS
-      		ActionBar actionBar = getActionBar();
-      		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-      		actionBar.setDisplayShowTitleEnabled(true);
-      		actionBar.setDisplayHomeAsUpEnabled(true);
 
         if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
         	finish();
@@ -34,7 +28,7 @@ public class ActorDetailsView extends Activity{
 	 @Override
 	  public boolean onCreateOptionsMenu(Menu menu) {
 	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.layout.mainmenu, menu);
+	    inflater.inflate(R.menu.mainmenu, menu);
 	    
 
 	    // RETURN TRUE TO DISPLAY MENU
