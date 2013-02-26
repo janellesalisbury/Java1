@@ -8,27 +8,54 @@
         <EditText android:layout_width="match_parent" android:layout_weight="2"
             android:layout_height="match_parent" android:id="@+id/etURL">
         </EditText>
-        <Button android:text="@string/go_" android:id="@+id/go_button"
+        <Button android:text="Go!" android:id="@+id/go_button"
             android:layout_weight="8" android:layout_width="fill_parent"
             android:layout_height="wrap_content"></Button>    
     </LinearLayout>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="horizontal" android:weightSum="8"
-        android:layout_width="match_parent" android:layout_height="wrap_content">
-        <Button android:text= "@string/back" android:id="@+id/back_button"
-            android:layout_weight="2" android:layout_width="fill_parent" 
-            android:layout_height="wrap_content"/>
-        <Button android:text= "@string/forward" android:id="@+id/forward_button"
-            android:layout_width="fill_parent" android:layout_weight="2"
-            android:layout_height="wrap_content"/>
-        <Button android:text= "@string/refresh" android:id="@+id/refresh_button"
-            android:layout_height="wrap_content" android:layout_weight="2"
-            android:layout_width="fill_parent"/>
-        <Button android:text= "@string/clear_history" android:id="@+id/clear_button"
-            android:layout_width="fill_parent" android:layout_weight="2"
-            android:layout_height="wrap_content"/>   
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="8" >
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Go Back a Page"
+            android:textSize="12dp" />
+
+        <Button
+            android:id="@+id/forward_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Go Forward"
+            android:textSize="12dp" />
+
+        <Button
+            android:id="@+id/refresh_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Refresh Page"
+            android:textSize="12dp" />
+
+        <Button
+            android:id="@+id/clear_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Clear History"
+            android:textSize="12dp" />
+
     </LinearLayout>
-    <WebView android:layout_width="fill_parent" android:layout_height="fill_parent"
-        android:id="@+id/wvBrowser"/>
+    <WebView
+            android:id="@+id/wvBrowser"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
    
 </LinearLayout>
