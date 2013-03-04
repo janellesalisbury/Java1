@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package com.mdf_weekone;
+package com.launcherapp;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;

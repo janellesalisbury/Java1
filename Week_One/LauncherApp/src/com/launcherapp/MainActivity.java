@@ -1,4 +1,4 @@
-package com.mdf_weekone;
+package com.launcherapp;
 
 import android.os.Bundle;
 import android.app.Activity;
