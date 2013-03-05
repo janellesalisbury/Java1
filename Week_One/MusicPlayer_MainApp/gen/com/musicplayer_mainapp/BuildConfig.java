@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package com.actualapp;
+package com.musicplayer_mainapp;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;

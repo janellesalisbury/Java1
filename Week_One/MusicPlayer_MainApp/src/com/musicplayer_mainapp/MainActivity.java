@@ -1,4 +1,4 @@
-package com.actualapp;
+package com.musicplayer_mainapp;
 
 import android.os.Bundle;
 import android.app.Activity;
