@@ -1,44 +1,42 @@
 package com.launcherapp;
 
-import android.os.Bundle;
-import android.app.ListActivity;
+import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 
-public class MainActivity extends ListActivity {
-	static final String[] Songs = new String[] {"Song 1", "Song 2", "Song 3", "Song 4",
-		"Song 5", "Song 6", "Song 7"};
-	String song;
+public class MainActivity extends Activity {
 	
-
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		//CREATE LIST ADAPTER 
-		setListAdapter(new ArrayAdapter<String>(this, R.layout.activity_main, Songs));
-		//GET LISTVIEW
-		ListView songsList = getListView();
-		songsList.setTextFilterEnabled(true);
+		setContentView(R.layout.activity_main);
 		
-		songsList.setOnItemClickListener(new OnItemClickListener() {
-
+		//FIND BUTTON AND EDIT TEXT
+		EditText et = (EditText) findViewById(R.id.editText1);
+		Button openPlayer = (Button) findViewById(R.id.button1);
+		//BUTTON CLICK OPENS VIDEO PLAYER APP
+		openPlayer.setOnClickListener(new OnClickListener() {
+			
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int pos,
-					long id) {
-				//CLICK BUTTON AND OPEN MUSIC PLAYER IN SECOND APP
-				Intent MusicLauncher = getPackageManager().getLaunchIntentForPackage("com.musicplayer_mainapp");
-				//Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
-				//MusicLauncher.setData(Uri.parse(song));
-				startActivity(MusicLauncher);
+			public void onClick(View v) {
+				Intent VideoIntent = getPackageManager().getLaunchIntentForPackage("com.videoplayer_mainapp");
+				startActivity(VideoIntent);
 				
 			}
 		});
 	}
-
 	
+
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.activity_main, menu);
+        return true;
+    }
 
 }
