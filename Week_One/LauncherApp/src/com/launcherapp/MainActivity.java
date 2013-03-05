@@ -28,7 +28,8 @@ public class MainActivity extends ListActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int pos,
 					long id) {
-				Intent MusicLauncher = getPackageManager().getLaunchIntentForPackage("com.");
+				Intent MusicLauncher = getPackageManager().getLaunchIntentForPackage("com.musicplayer_mainapp");
+				startActivity(MusicLauncher);
 				
 			}
 		});
