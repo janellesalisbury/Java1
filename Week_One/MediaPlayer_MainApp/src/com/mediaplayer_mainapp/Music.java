@@ -11,7 +11,7 @@ public class Music implements OnCompletionListener{
 	MediaPlayer mediaPlayer;
 	boolean isPrepared = false;
 	
-	//CREATE MUSIC PLAYER AND LOCATE FILES
+	//INSTANTIATE MEDIA PLAYER AND CONTROL IT
 	public Music(AssetFileDescriptor assetDescriptor){
 		mediaPlayer = new MediaPlayer();
 		try{
@@ -67,5 +67,37 @@ public class Music implements OnCompletionListener{
 		synchronized (this) {
 			isPrepared = false;
 		}
+	}
+	//SWITCH TRACK FUNCTIONALITY
+	public void switchTracks(){
+		mediaPlayer.seekTo(0);
+		mediaPlayer.pause();
+	}
+	//PAUSE FUNCTIONALITY
+	public void pause(){
+		mediaPlayer.pause();
+	}
+	//PLAYING TRUE OR FALSE?
+	public boolean isPlaying(){
+		return mediaPlayer.isPlaying();
+	}
+	//LOOPING SONGS?
+	public boolean isLooping(){
+		return mediaPlayer.isLooping();
+	}
+	//SET TRACK LOOPING HERE
+	public void setLooping(boolean isLooping){
+		mediaPlayer.setLooping(isLooping);
+	}
+	//VOLUME CONTROL
+	public void setVolume(float volumeLeft, float volumeRight){
+		mediaPlayer.setVolume(volumeRight, volumeLeft);
+	}
+	//STOP AND CLOSE
+	public void dispose(){
+		if(mediaPlayer.isPlaying()){
+			stop();
+		}
+		mediaPlayer.release();
 	}
 }
