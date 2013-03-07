@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.annotation.SuppressLint;
 import android.app.ListActivity;
 
 //CREATE CLASS TO HANDLE THE MP3 FILTER
@@ -37,6 +38,7 @@ import android.app.ListActivity;
  */
 public class MainActivity extends ListActivity {
 	//GLOBAL VARIABLES
+	@SuppressLint("SdCardPath")
 	private static final String MEDIA_PATH = new String("/sdcard/");
 	private List<String> songs = new ArrayList<String>();
 	private MediaPlayer mp = new MediaPlayer();
