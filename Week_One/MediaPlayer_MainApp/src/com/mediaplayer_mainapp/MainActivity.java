@@ -14,13 +14,19 @@ import java.util.List;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.annotation.SuppressLint;
 import android.app.ListActivity;
+import android.content.Context;
+import android.content.pm.ActivityInfo;
 
 //CREATE CLASS TO HANDLE THE MP3 FILTER
 	class Mp3Filter implements FilenameFilter{
@@ -43,15 +49,38 @@ public class MainActivity extends ListActivity {
 	private List<String> songs = new ArrayList<String>();
 	private MediaPlayer mp = new MediaPlayer();
 	private int currentPosition = 0;
-	
+
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//REMOVE TITLE AND FORCE PORTRAIT ORIENTATION
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		setContentView(R.layout.songlist);
 		updateSongList();
+		
+	}
+
+		public boolean isNetworkAvailable() {
+		    ConnectivityManager cm = (ConnectivityManager) 
+		      getSystemService(Context.CONNECTIVITY_SERVICE);
+		    NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+		    // if no network is available networkInfo will be null
+		    // otherwise check if we are connected
+		    if (networkInfo != null && networkInfo.isConnected()) {
+		        return true;
+		    }
+		    return false;
+	      
+        //DETECT NETWORK CONNECTIVITY
+//        connected = WebStuff.getConnectionStatus(_context);
+//        if(connected){
+//        	Log.i("NETWORK CONNECTION", WebStuff.getConnectionType(_context));
+//        }
 		
 	}
 	//UPDATE SONGS FUNCTIONALITY
