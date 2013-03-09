@@ -6,5 +6,9 @@
     <string name="menu_settings">Settings</string>
     <string name="open_player">Open Player</string>
     <string name="check_internet_status">Check Internet Status</string>
+    <string name="find_weather">Find Weather</string>
+    <string name="enter_a_zip_code">Enter a Zip Code</string>
+    <string name="_0000ff">0000FF</string>
+    <string name="open_webpage_now">Open Webpage Now</string>
 
 </resources>
