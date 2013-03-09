@@ -4,19 +4,13 @@ import java.net.URL;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Contacts.People;
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.webkit.WebView;
-import android.widget.Button;
 
 public class MainActivity extends Activity {
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -24,17 +18,18 @@ public class MainActivity extends Activity {
 		
 		//get intent data and show site
 		Intent intent = getIntent();
-        
         Uri data = intent.getData();
         URL url = null;
         
         try {
+        	//request http scheme and the path for the program to open
         	url = new URL(data.getScheme(), data.getHost(),
                                data.getPath());
         } catch (Exception e) {
         	e.printStackTrace();
         }
         
+        //load and display webview after user has selected which program to use to open it
         WebView webView = (WebView) findViewById(R.id.webView1);   
         webView.loadUrl(url.toString());
 		

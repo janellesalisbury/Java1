@@ -18,6 +18,7 @@
             android:name="com.implicitintent.MainActivity"
             android:label="@string/app_name" >
             <intent-filter >
+                <!-- action for the implicit intent !-->
                <action android:name="android.intent.action.VIEW" />
 
                <category android:name="android.intent.category.DEFAULT" />
