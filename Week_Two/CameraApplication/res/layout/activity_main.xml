@@ -4,4 +4,23 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity" >
 
+    <Button
+        android:id="@+id/photoBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="Snap Your Pic" />
+
+    <ImageView
+        android:id="@+id/capturedIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/photoBtn"
+        android:src="@drawable/ic_launcher" />
+
 </RelativeLayout>
