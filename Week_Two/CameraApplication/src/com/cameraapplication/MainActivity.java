@@ -119,15 +119,19 @@ public class MainActivity extends Activity implements SensorEventListener{
 	}
 	@Override
 	public void onSensorChanged(SensorEvent event) {
+		//DETECT LIGHTING CHANGES AND LOG OUT THE VALUE
 		if( event.sensor.getType() == Sensor.TYPE_LIGHT){
 			Log.i("Sensor Changed", "onSensor Change :" + event.values[0]);
 	}
+		//DETECT PROXIMITY TO USERS FACE OR IF IN POCKET 
 		if(event.sensor.getType()==Sensor.TYPE_PROXIMITY){
 		if(event.values[0] == 0){
+			//USE WINDOW MANAGER TO TURN OFF THE SCREEN IF TO CLOSE
 			WindowManager.LayoutParams params = getWindow().getAttributes();
 		      getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		          getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
 		      getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+		      //TURN OFF HERE
 		      params.screenBrightness = 0f;
 		      getWindow().setAttributes(params);
 		            } else {
