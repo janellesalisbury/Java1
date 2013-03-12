@@ -9,10 +9,13 @@ package com.cameraapplication;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -20,10 +23,12 @@ import android.widget.ImageView;
 /**
  * The Class MainActivity.
  */
-public class MainActivity extends Activity {
+public class MainActivity extends Activity{
 	
 	//GLOBAL VARIABLES
 	ImageView userPhoto;
+
+	
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -31,6 +36,10 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//SCREEN ORIENTATION
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+	    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		setContentView(R.layout.activity_main);
 		
 		//FIND IMAGE VIEW TO DISPLAY USERS CAPTURED PHOTO
@@ -44,21 +53,23 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// LAUNCH THE CAMERA APP TO TAKE A PHOTO
 				Intent camera = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-				//START CAMERA AND RETURN THE PHOTO THE USER TAKES
+
+				//START THE CAMERA AND RETURN THE PHOTO THE USER TAKES
 				startActivityForResult(camera, 0);
-				
+			
 			}
 		});
 	}
 	//TO CAPTURE THE RESULTING PHOTO
 	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent photo) {
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
-		super.onActivityResult(requestCode, resultCode, photo);
+		super.onActivityResult(requestCode, resultCode, data);
 		
 		//ACCESS SENT DATA AND USE BITMAP TO READ
-		Bitmap bitmap = (Bitmap) photo.getExtras().get("photo");
+		Bitmap bitmap = (Bitmap) data.getExtras().get("data");
 		userPhoto.setImageBitmap(bitmap);
+		
 	}
 
 	/* (non-Javadoc)
@@ -70,5 +81,7 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
-
+	
 }
+
+
