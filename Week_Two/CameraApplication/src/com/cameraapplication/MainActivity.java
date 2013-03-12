@@ -8,6 +8,10 @@ package com.cameraapplication;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
@@ -74,6 +78,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 		});
 	}
 	//TO CAPTURE THE RESULTING PHOTO
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
@@ -83,6 +88,20 @@ public class MainActivity extends Activity implements SensorEventListener{
 		Bitmap bitmap = (Bitmap) data.getExtras().get("data");
 		userPhoto.setImageBitmap(bitmap);
 		
+		//SEND NOTIFICATION TO THE USERS PHONE THE IMAGE HAS BEEN CAPTURED
+		NotificationManager noteMan = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		//create notification manager instance
+		@SuppressWarnings("deprecation")
+		Notification notifyCapture = new Notification(android.R.drawable.stat_notify_more, "Image Captured Successfully", System.currentTimeMillis());
+		Context context = MainActivity.this;
+		//notification text
+		CharSequence title = "Image Captured";
+		CharSequence detail = "Go back to camera";
+		Intent i = new Intent(context, MainActivity.class);
+		PendingIntent pi = PendingIntent.getActivity(context, 0, i, 0);
+		notifyCapture.setLatestEventInfo(context, title, detail, pi);
+		//send notification to phone upon image capture
+		noteMan.notify(0, notifyCapture);
 	}
 
 	/* (non-Javadoc)
