@@ -11,6 +11,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,11 +28,12 @@ import android.widget.ImageView;
 /**
  * The Class MainActivity.
  */
-public class MainActivity extends Activity{
+public class MainActivity extends Activity implements SensorEventListener{
 	
 	//GLOBAL VARIABLES
 	ImageView userPhoto;
-
+	private SensorManager sm;
+	private Sensor light;
 	
 
 	/* (non-Javadoc)
@@ -41,6 +47,10 @@ public class MainActivity extends Activity{
 	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		setContentView(R.layout.activity_main);
+		
+		//CREATE SENSOR MANAGER
+		sm = (SensorManager)getSystemService(SENSOR_SERVICE);
+		light = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
 		
 		//FIND IMAGE VIEW TO DISPLAY USERS CAPTURED PHOTO
 		userPhoto = (ImageView) findViewById(R.id.capturedIV);
@@ -58,6 +68,7 @@ public class MainActivity extends Activity{
 				startActivityForResult(camera, 0);
 			
 			}
+			
 		});
 	}
 	//TO CAPTURE THE RESULTING PHOTO
@@ -81,7 +92,34 @@ public class MainActivity extends Activity{
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
+	@Override
 	
+	 protected void onResume() {
+	  sm.registerListener(this, light, SensorManager.SENSOR_DELAY_NORMAL);
+	  super.onResume();
+	
+	 }
+	
+	 @Override
+	
+	 protected void onPause() {
+	  sm.unregisterListener(this);
+	  super.onPause();
+	
+	 }
+
+	@Override
+	public void onAccuracyChanged(Sensor sensor, int accuracy) {
+		if(sensor.getType() == Sensor.TYPE_LIGHT){
+			 Log.i("Sensor Changed", "Accuracy :" + accuracy);
+		}
+	}
+	@Override
+	public void onSensorChanged(SensorEvent event) {
+		if( event.sensor.getType() == Sensor.TYPE_LIGHT){
+			Log.i("Sensor Changed", "onSensor Change :" + event.values[0]);
+	}
+	}
 }
 
 
