@@ -34,6 +34,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 	ImageView userPhoto;
 	private SensorManager sm;
 	private Sensor light;
+	private Sensor dark;
 	
 
 	/* (non-Javadoc)
@@ -51,6 +52,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 		//CREATE SENSOR MANAGER
 		sm = (SensorManager)getSystemService(SENSOR_SERVICE);
 		light = sm.getDefaultSensor(Sensor.TYPE_LIGHT);
+		dark = sm.getDefaultSensor(Sensor.TYPE_PROXIMITY);
 		
 		//FIND IMAGE VIEW TO DISPLAY USERS CAPTURED PHOTO
 		userPhoto = (ImageView) findViewById(R.id.capturedIV);
@@ -96,6 +98,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 	
 	 protected void onResume() {
 	  sm.registerListener(this, light, SensorManager.SENSOR_DELAY_NORMAL);
+	  sm.registerListener(this, dark, SensorManager.SENSOR_DELAY_NORMAL);
 	  super.onResume();
 	
 	 }
@@ -119,6 +122,20 @@ public class MainActivity extends Activity implements SensorEventListener{
 		if( event.sensor.getType() == Sensor.TYPE_LIGHT){
 			Log.i("Sensor Changed", "onSensor Change :" + event.values[0]);
 	}
+		if(event.sensor.getType()==Sensor.TYPE_PROXIMITY){
+		if(event.values[0] == 0){
+			WindowManager.LayoutParams params = getWindow().getAttributes();
+		      getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		          getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+		      getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+		      params.screenBrightness = 0f;
+		      getWindow().setAttributes(params);
+		            } else {
+		          WindowManager.LayoutParams params = getWindow().getAttributes();
+		      params.screenBrightness = 1f;
+		      getWindow().setAttributes(params);
+		}
+		}
 	}
 }
 
