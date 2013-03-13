@@ -15,6 +15,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
+import android.graphics.Paint;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -39,6 +43,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 	private SensorManager sm;
 	private Sensor light;
 	private Sensor dark;
+
 	
 
 	/* (non-Javadoc)
@@ -52,6 +57,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		setContentView(R.layout.activity_main);
+		
 		
 		//CREATE SENSOR MANAGER
 		sm = (SensorManager)getSystemService(SENSOR_SERVICE);
@@ -67,6 +73,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 			
 			@Override
 			public void onClick(View v) {
+				
 				// LAUNCH THE CAMERA APP TO TAKE A PHOTO
 				Intent camera = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -74,7 +81,6 @@ public class MainActivity extends Activity implements SensorEventListener{
 				startActivityForResult(camera, 0);
 			
 			}
-			
 		});
 	}
 	//TO CAPTURE THE RESULTING PHOTO
@@ -83,15 +89,16 @@ public class MainActivity extends Activity implements SensorEventListener{
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
+	
 		
 		//ACCESS SENT DATA AND USE BITMAP TO READ
 		Bitmap bitmap = (Bitmap) data.getExtras().get("data");
 		userPhoto.setImageBitmap(bitmap);
+		 
 		
 		//SEND NOTIFICATION TO THE USERS PHONE THE IMAGE HAS BEEN CAPTURED
 		NotificationManager noteMan = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		//create notification manager instance
-		@SuppressWarnings("deprecation")
 		Notification notifyCapture = new Notification(android.R.drawable.stat_notify_more, "Image Captured Successfully", System.currentTimeMillis());
 		Context context = MainActivity.this;
 		//notification text
@@ -158,8 +165,15 @@ public class MainActivity extends Activity implements SensorEventListener{
 		      params.screenBrightness = 1f;
 		      getWindow().setAttributes(params);
 		}
-		}
 	}
+		
+		
+		}
 }
 
+		
+
+		
+		
+	
 
