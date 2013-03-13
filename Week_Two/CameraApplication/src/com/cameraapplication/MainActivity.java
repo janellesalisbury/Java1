@@ -6,7 +6,11 @@
  */
 package com.cameraapplication;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 import android.os.Bundle;
+import android.os.Environment;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Notification;
@@ -43,6 +47,8 @@ public class MainActivity extends Activity implements SensorEventListener{
 	private Sensor dark;
 	boolean isInternetConnected = false;
 	ConnectionDetection connDetct;
+	Bitmap bitmap;
+	View v = userPhoto;
 
 	
 
@@ -116,7 +122,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 		});
 		ad.show();
 	}
-	//TO CAPTURE THE RESULTING PHOTO
+	//TO CAPTURE THE RESULTING PHOTO AND SAVE IT
 	@SuppressWarnings("deprecation")
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -127,6 +133,9 @@ public class MainActivity extends Activity implements SensorEventListener{
 		//ACCESS SENT DATA AND USE BITMAP TO READ
 		Bitmap bitmap = (Bitmap) data.getExtras().get("data");
 		userPhoto.setImageBitmap(bitmap);
+		
+		
+
 		
 		//SEND NOTIFICATION TO THE USERS PHONE THE IMAGE HAS BEEN CAPTURED
 		NotificationManager noteMan = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -141,6 +150,21 @@ public class MainActivity extends Activity implements SensorEventListener{
 		notifyCapture.setLatestEventInfo(context, title, detail, pi);
 		//send notification to phone upon image capture
 		noteMan.notify(0, notifyCapture);
+	}
+	
+	//SAVE THE IMAGE TO THE SD CARD
+	public void saveImage(Bitmap outputImage){
+		File storage = new File(Environment.getExternalStorageDirectory() + "/mnt/sdcard/pictures");
+		File image = new File(storage, Long.toString(System.currentTimeMillis()) + ".jpg");
+		try{
+			FileOutputStream fos = new FileOutputStream(image);
+			outputImage.compress(Bitmap.CompressFormat.JPEG, 80, fos);
+			fos.flush();
+			fos.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	
 	}
 
 	/* (non-Javadoc)
