@@ -8,17 +8,15 @@ package com.cameraapplication;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
-import android.graphics.Paint;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -43,6 +41,8 @@ public class MainActivity extends Activity implements SensorEventListener{
 	private SensorManager sm;
 	private Sensor light;
 	private Sensor dark;
+	boolean isInternetConnected = false;
+	ConnectionDetection connDetct;
 
 	
 
@@ -57,6 +57,21 @@ public class MainActivity extends Activity implements SensorEventListener{
 	    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		setContentView(R.layout.activity_main);
+		
+		//DETERMINE NETWORK CONNECTION TO ALLOW SHARING IF PRESENT
+		connDetct = new ConnectionDetection(getApplicationContext());
+		//IF INTERNET IS PRESENT THEN ALLOW USER TO SHARE
+		 isInternetConnected = connDetct.isConnectingToInternet();
+		 //IF PRESENT START THE SHARE INTENT TO ALLOW SENDING OF PHOTO
+		 if(isInternetConnected){
+			 Intent share = new Intent(Intent.ACTION_SEND);
+			 share.setType("image/*");
+			 share.putExtra(android.content.Intent.EXTRA_TEXT, "Image sent from Janelle");
+			 startActivity(share);
+		 }else{
+			 //IF NOT PRESENT ALERT THE USER THEY WILL BE UNABLE TO SEND PHOTOS
+			 showAlertDialog(MainActivity.this, "No Internet Present", "You're unable to share images with no connection present", false);
+		 }
 		
 		
 		//CREATE SENSOR MANAGER
@@ -83,6 +98,24 @@ public class MainActivity extends Activity implements SensorEventListener{
 			}
 		});
 	}
+	
+	//CREATE ALERT FOR INTERNET CONNECTION (OR LACK OF)
+	@SuppressWarnings("deprecation")
+	public void showAlertDialog(Context context, String title, String message, Boolean status){
+		AlertDialog ad = new AlertDialog.Builder(context).create();
+		ad.setTitle(title);
+		ad.setMessage(message);
+		ad.setIcon((status) ? R.drawable.checkmark : R.drawable.fail);
+		ad.setButton("Dang It!", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				
+				
+			}
+		});
+		ad.show();
+	}
 	//TO CAPTURE THE RESULTING PHOTO
 	@SuppressWarnings("deprecation")
 	@Override
@@ -94,7 +127,6 @@ public class MainActivity extends Activity implements SensorEventListener{
 		//ACCESS SENT DATA AND USE BITMAP TO READ
 		Bitmap bitmap = (Bitmap) data.getExtras().get("data");
 		userPhoto.setImageBitmap(bitmap);
-		 
 		
 		//SEND NOTIFICATION TO THE USERS PHONE THE IMAGE HAS BEEN CAPTURED
 		NotificationManager noteMan = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
