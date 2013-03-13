@@ -60,19 +60,6 @@ public class MainActivity extends Activity implements SensorEventListener{
 		
 		//DETERMINE NETWORK CONNECTION TO ALLOW SHARING IF PRESENT
 		connDetct = new ConnectionDetection(getApplicationContext());
-		//IF INTERNET IS PRESENT THEN ALLOW USER TO SHARE
-		 isInternetConnected = connDetct.isConnectingToInternet();
-		 //IF PRESENT START THE SHARE INTENT TO ALLOW SENDING OF PHOTO
-		 if(isInternetConnected){
-			 Intent share = new Intent(Intent.ACTION_SEND);
-			 share.setType("image/*");
-			 share.putExtra(android.content.Intent.EXTRA_TEXT, "Image sent from Janelle");
-			 startActivity(share);
-		 }else{
-			 //IF NOT PRESENT ALERT THE USER THEY WILL BE UNABLE TO SEND PHOTOS
-			 showAlertDialog(MainActivity.this, "No Internet Present", "You're unable to share images with no connection present", false);
-		 }
-		
 		
 		//CREATE SENSOR MANAGER
 		sm = (SensorManager)getSystemService(SENSOR_SERVICE);
@@ -94,6 +81,19 @@ public class MainActivity extends Activity implements SensorEventListener{
 
 				//START THE CAMERA AND RETURN THE PHOTO THE USER TAKES
 				startActivityForResult(camera, 0);
+				
+				//IF INTERNET IS PRESENT THEN ALLOW USER TO SHARE
+				 isInternetConnected = connDetct.isConnectingToInternet();
+				 //IF PRESENT START THE SHARE INTENT TO ALLOW SENDING OF PHOTO
+				 if(isInternetConnected){
+					 Intent share = new Intent(Intent.ACTION_SEND);
+					 share.setType("image/*");
+					 share.putExtra(android.content.Intent.EXTRA_TEXT, "Image sent from Janelle");
+					 startActivity(share);
+				 }else{
+					 //IF NOT PRESENT ALERT THE USER THEY WILL BE UNABLE TO SEND PHOTOS
+					 showAlertDialog(MainActivity.this, "No Internet Present", "You're unable to share images with no connection present", false);
+				 }
 			
 			}
 		});
