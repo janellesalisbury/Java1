@@ -7,10 +7,14 @@
 package com.cameraapplication;
 
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Notification;
@@ -33,6 +37,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -47,8 +52,8 @@ public class MainActivity extends Activity implements SensorEventListener{
 	private Sensor dark;
 	boolean isInternetConnected = false;
 	ConnectionDetection connDetct;
-	Bitmap bitmap;
-	View v = userPhoto;
+	static int TAKE_PICTURE = 1;
+    Uri outputFileUri;
 
 	
 
@@ -84,9 +89,11 @@ public class MainActivity extends Activity implements SensorEventListener{
 				
 				// LAUNCH THE CAMERA APP TO TAKE A PHOTO
 				Intent camera = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-
+				//CREATE THE FILE TO SAVE
+				File file = new File(Environment.getExternalStorageDirectory(), "MyPhoto.jpg");
+				outputFileUri = Uri.fromFile(file);
 				//START THE CAMERA AND RETURN THE PHOTO THE USER TAKES
-				startActivityForResult(camera, 0);
+				startActivityForResult(camera, TAKE_PICTURE);
 				
 				//IF INTERNET IS PRESENT THEN ALLOW USER TO SHARE
 				 isInternetConnected = connDetct.isConnectingToInternet();
@@ -133,9 +140,10 @@ public class MainActivity extends Activity implements SensorEventListener{
 		//ACCESS SENT DATA AND USE BITMAP TO READ
 		Bitmap bitmap = (Bitmap) data.getExtras().get("data");
 		userPhoto.setImageBitmap(bitmap);
-		
-		
-
+		//IF THE PHOTO SAVED THEN SHOW THE USER THE URI
+		if(requestCode == TAKE_PICTURE && resultCode == RESULT_OK){
+			Toast.makeText(this, outputFileUri.toString(), Toast.LENGTH_LONG).show();
+		}
 		
 		//SEND NOTIFICATION TO THE USERS PHONE THE IMAGE HAS BEEN CAPTURED
 		NotificationManager noteMan = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -151,21 +159,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 		//send notification to phone upon image capture
 		noteMan.notify(0, notifyCapture);
 	}
-	
-	//SAVE THE IMAGE TO THE SD CARD
-	public void saveImage(Bitmap outputImage){
-		File storage = new File(Environment.getExternalStorageDirectory() + "/mnt/sdcard/pictures");
-		File image = new File(storage, Long.toString(System.currentTimeMillis()) + ".jpg");
-		try{
-			FileOutputStream fos = new FileOutputStream(image);
-			outputImage.compress(Bitmap.CompressFormat.JPEG, 80, fos);
-			fos.flush();
-			fos.close();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	
-	}
+
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
