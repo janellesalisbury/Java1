@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -153,6 +154,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 		//ACCESS SENT DATA AND USE BITMAP TO READ
 		//Bitmap bitmap = (Bitmap) data.getExtras().get("data");
 		//userPhoto.setImageBitmap(bitmap);
+
 		
 		//IF INTERNET IS PRESENT THEN ALLOW USER TO SHARE
 		 isInternetConnected = connDetct.isConnectingToInternet();
