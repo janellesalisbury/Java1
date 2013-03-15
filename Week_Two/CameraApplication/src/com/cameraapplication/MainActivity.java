@@ -7,10 +7,9 @@
 package com.cameraapplication;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import java.io.OutputStream;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -24,7 +23,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Bitmap;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -37,7 +35,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -52,10 +49,7 @@ public class MainActivity extends Activity implements SensorEventListener{
 	private Sensor dark;
 	boolean isInternetConnected = false;
 	ConnectionDetection connDetct;
-	static int TAKE_PICTURE = 1;
-    Uri outputFileUri;
-
-	
+    int imageNum = 0;
 
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -86,28 +80,47 @@ public class MainActivity extends Activity implements SensorEventListener{
 			
 			@Override
 			public void onClick(View v) {
-				
+
 				// LAUNCH THE CAMERA APP TO TAKE A PHOTO
 				Intent camera = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-				//CREATE THE FILE TO SAVE
-				File file = new File(Environment.getExternalStorageDirectory(), "MyPhoto.jpg");
-				outputFileUri = Uri.fromFile(file);
-				//START THE CAMERA AND RETURN THE PHOTO THE USER TAKES
-				startActivityForResult(camera, TAKE_PICTURE);
-				
-				//IF INTERNET IS PRESENT THEN ALLOW USER TO SHARE
-				 isInternetConnected = connDetct.isConnectingToInternet();
-				 //IF PRESENT START THE SHARE INTENT TO ALLOW SENDING OF PHOTO
-				 if(isInternetConnected){
-					 Intent share = new Intent(Intent.ACTION_SEND);
-					 share.setType("image/*");
-					 share.putExtra(android.content.Intent.EXTRA_TEXT, "Image sent from Janelle");
-					 startActivity(share);
-				 }else{
-					 //IF NOT PRESENT ALERT THE USER THEY WILL BE UNABLE TO SEND PHOTOS
-					 showAlertDialog(MainActivity.this, "No Internet Present", "You're unable to share images with no connection present", false);
-				 }
+				//SAVE THE IMAGE TO STORAGE
+				File imagesFolder = new File(Environment.getExternalStorageDirectory(), "MyImages");
+				if (!imagesFolder.exists()) {
+					imagesFolder.mkdirs();
+					}
+					else {
+		        String fileName = "image_" + String.valueOf(imageNum) + ".jpg";
+		        File output = new File(imagesFolder, fileName);
+		        while (output.exists()){
+		            imageNum++;
+		            fileName = "image_" + String.valueOf(imageNum) + ".jpg";
+		            output = new File(imagesFolder, fileName);
+		        }
+		        Uri uriSavedImage = Uri.fromFile(output);
+		        //PASS THE IMAGE TO STORAGE
+		        camera.putExtra(MediaStore.EXTRA_OUTPUT, uriSavedImage);
+
+		        OutputStream imageFileOS;
+		        try {
+		            imageFileOS = getContentResolver().openOutputStream(uriSavedImage);
+		            imageFileOS.write(0);
+		            imageFileOS.flush();
+		            imageFileOS.close();
+
+		         
+
+		        } catch (FileNotFoundException e) {
+		            // TODO Auto-generated catch block
+		            e.printStackTrace();
+		        } catch (IOException e) {
+		            // TODO Auto-generated catch block
+		            e.printStackTrace();
+		        }
 			
+				
+				//START THE CAMERA AND RETURN THE PHOTO THE USER TAKES
+				startActivityForResult(camera, 0);
+					}	
 			}
 		});
 	}
@@ -129,22 +142,31 @@ public class MainActivity extends Activity implements SensorEventListener{
 		});
 		ad.show();
 	}
-	//TO CAPTURE THE RESULTING PHOTO AND SAVE IT
+	//TO PASS RESULTING PHOTO TO IMAGE VIEW
 	@SuppressWarnings("deprecation")
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
-	
+		
 		
 		//ACCESS SENT DATA AND USE BITMAP TO READ
-		Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-		userPhoto.setImageBitmap(bitmap);
-		//IF THE PHOTO SAVED THEN SHOW THE USER THE URI
-		if(requestCode == TAKE_PICTURE && resultCode == RESULT_OK){
-			Toast.makeText(this, outputFileUri.toString(), Toast.LENGTH_LONG).show();
-		}
+		//Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+		//userPhoto.setImageBitmap(bitmap);
 		
+		//IF INTERNET IS PRESENT THEN ALLOW USER TO SHARE
+		 isInternetConnected = connDetct.isConnectingToInternet();
+		 //IF PRESENT START THE SHARE INTENT TO ALLOW SENDING OF PHOTO
+		 if(isInternetConnected){
+			 Intent share = new Intent(Intent.ACTION_SEND);
+			 share.setType("image/*");
+			 share.putExtra(android.content.Intent.EXTRA_TEXT, "Image sent from Janelle");
+			 startActivity(share);
+		 }else{
+			 //IF NOT PRESENT ALERT THE USER THEY WILL BE UNABLE TO SEND PHOTOS
+			 showAlertDialog(MainActivity.this, "No Internet Present", "You're unable to share images with no connection present", false);
+		 }
+
 		//SEND NOTIFICATION TO THE USERS PHONE THE IMAGE HAS BEEN CAPTURED
 		NotificationManager noteMan = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		//create notification manager instance
@@ -158,9 +180,8 @@ public class MainActivity extends Activity implements SensorEventListener{
 		notifyCapture.setLatestEventInfo(context, title, detail, pi);
 		//send notification to phone upon image capture
 		noteMan.notify(0, notifyCapture);
-	}
-
-
+	 }
+	
 	/* (non-Javadoc)
 	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
 	 */
