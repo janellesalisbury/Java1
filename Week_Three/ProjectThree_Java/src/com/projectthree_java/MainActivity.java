@@ -18,7 +18,6 @@ import android.view.View.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -27,7 +26,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 
@@ -126,6 +124,7 @@ public class MainActivity extends Activity {
 		switch(item.getItemId()){
 		case R.id.action_refresh:
 			//FOR TESTING PURPOSES, WILL CONTAIN ACTUAL FUNCTIONALITY SHORTLY
+			onRestart();
 			Toast.makeText(this, "Refresh Selected", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.action_search:
@@ -146,7 +145,13 @@ public class MainActivity extends Activity {
 		return true;
 		
 	}
-  
+  //REFRESH FUNCTIONALITY
+    public void onRestart(){
+    	super.onRestart();
+    	Intent restart = new Intent(_context, MainActivity.class);
+    	startActivity(restart);
+    	finish();
+    }
 
 
 	/**
