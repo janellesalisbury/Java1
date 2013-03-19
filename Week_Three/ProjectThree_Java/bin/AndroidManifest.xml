@@ -20,13 +20,16 @@
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
         <activity 
             android:name=".DetailView"
             android:label="@string/title_detail_view"></activity>
+        <activity android:name=".DeveloperInfo"
+            android:label="@string/title_developer_info"></activity>
+        
     </application>
 
 </manifest>

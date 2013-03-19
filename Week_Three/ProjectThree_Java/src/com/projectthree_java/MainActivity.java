@@ -17,21 +17,17 @@ import org.json.JSONException;
 import android.view.View.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.ActionBar;
-import android.app.ActionBar.Tab;
-import android.app.ActionBar.TabListener;
 import android.app.Activity;
-import android.app.FragmentTransaction;
-import android.app.TabActivity;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 
@@ -40,7 +36,6 @@ import android.widget.Toast;
 /**
  * The Class MainActivity.
  */
-@SuppressWarnings("deprecation")
 public class MainActivity extends Activity {
 	
 	Context _context;
@@ -49,7 +44,6 @@ public class MainActivity extends Activity {
 	StateDisplays _state;
 	Boolean connected = false;
 	HashMap<String, String> _history;
-	
 
     /* (non-Javadoc)
      * @see android.app.Activity#onCreate(android.os.Bundle)
@@ -117,6 +111,7 @@ public class MainActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.mainmenu, menu);
+        
         //REMOVE THE TITLE FROM THE MENU BAR
         getActionBar().setDisplayShowTitleEnabled(false);
         return true;
@@ -138,19 +133,23 @@ public class MainActivity extends Activity {
 			Toast.makeText(this, "Search Selected", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.action_share:
-			//FOR TESTING PURPOSES, WILL CONTAIN ACTUAL FUNCTIONALITY SHORTLY
+			//FOR TESTING PURPOSES ONLY(WILL NOT BE USED)
 			Toast.makeText(this, "Share Selected", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.action_user:
 			//FOR TESTING PURPOSES, WILL CONTAIN ACTUAL FUNCTIONALITY SHORTLY
+			Intent linkedIn = new Intent(_context, DeveloperInfo.class);
+			startActivity(linkedIn);
 			Toast.makeText(this, "Developer Info Selected", Toast.LENGTH_SHORT).show();
 			break;
 		}
 		return true;
 		
 	}
-    
-    /**
+  
+
+
+	/**
      * Gets the info.
      *
      * @param state the state
