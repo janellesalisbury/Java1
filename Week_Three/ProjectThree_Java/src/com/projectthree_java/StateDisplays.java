@@ -11,6 +11,7 @@ import org.json.JSONException;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
@@ -27,6 +28,7 @@ public class StateDisplays extends GridLayout{
 	static TextView _popHawaiian;
 	Context _context;
 	static JSONArray _statedata;
+	Button _moreDetails;
 	
 	/**
 	 * Instantiates a new state displays.
@@ -60,6 +62,9 @@ public class StateDisplays extends GridLayout{
 		populationHawiian.setText("Hawaiian and Other:");
 		_popHawaiian = new TextView(_context);
 		
+	    _moreDetails = new Button(_context);
+		_moreDetails.setText("More Details");
+		
 		this.addView(populationLabel);
 		this.addView(_population);
 		
@@ -74,6 +79,8 @@ public class StateDisplays extends GridLayout{
 		
 		this.addView(populationHawiian);
 		this.addView(_popHawaiian);
+		
+		this.addView(_moreDetails);
 	}
 	
 	/**
@@ -92,6 +99,10 @@ public class StateDisplays extends GridLayout{
 		} catch (JSONException e){
 			Log.i("JSON EXCEPTION", data.toString());
 		}
+	}
+	
+	public Button getButton(){
+		return _moreDetails;
 	}
 
 }

@@ -71,8 +71,7 @@ public class SearchForm extends LinearLayout{
 		_searchButton.setText("Search");
 		
 		this.addView(_stateList);
-		this.addView(_searchButton);
-		
+		this.addView(_searchButton);		
 		lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
 		this.setLayoutParams(lp);
 		
@@ -144,6 +143,7 @@ public class SearchForm extends LinearLayout{
 	public Button getButton(){
 		return _searchButton;
 	}
+	
 	
 	/**
 	 * Gets the selected item.

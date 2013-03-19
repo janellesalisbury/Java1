@@ -17,8 +17,15 @@ import org.json.JSONException;
 import android.view.View.OnClickListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.app.ActionBar;
+import android.app.ActionBar.Tab;
+import android.app.ActionBar.TabListener;
 import android.app.Activity;
+import android.app.FragmentTransaction;
+import android.app.TabActivity;
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,6 +40,7 @@ import android.widget.Toast;
 /**
  * The Class MainActivity.
  */
+@SuppressWarnings("deprecation")
 public class MainActivity extends Activity {
 	
 	Context _context;
@@ -69,15 +77,29 @@ public class MainActivity extends Activity {
         		getInfo(_search.getNumber().toString());
         	}
         });
-        
+       
         //DETECT NETWORK CONNECTIVITY
         connected = WebStuff.getConnectionStatus(_context);
         if(connected){
         	Log.i("NETWORK CONNECTION", WebStuff.getConnectionType(_context));
         }
         
+
         //ADD STATE DISPLAY
         _state = new StateDisplays(_context);
+        
+        //ADD CLICK EVENT FOR MORE DETAILS BUTTON
+        Button moreDetails = _state.getButton();
+        
+        moreDetails.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent detailIntent = new Intent(MainActivity.this, DetailView.class);
+				startActivity(detailIntent);
+				
+			}
+		});
 
          //ADD VIEWS
         _appLayout.addView(_search);
@@ -87,6 +109,7 @@ public class MainActivity extends Activity {
         setContentView(_appLayout);
         
     }
+    
 
     /* (non-Javadoc)
      * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
@@ -200,5 +223,8 @@ public class MainActivity extends Activity {
     		}
     	}
     }
+    
 }
+
+	
   
