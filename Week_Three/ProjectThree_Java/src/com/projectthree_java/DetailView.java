@@ -1,3 +1,9 @@
+/*
+ * project ProjectThree_Java
+ * package com.projectthree_java
+ * @author Janelle Salisbury
+ * date Mar 19, 2013
+ */
 package com.projectthree_java;
 
 import java.net.MalformedURLException;
@@ -17,6 +23,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DetailView.
+ */
 public class DetailView extends Activity{
 	//GLOBAL VARIABLES
 	Context _context;
@@ -27,7 +37,10 @@ public class DetailView extends Activity{
 	HashMap<String, String> _history;
 
 	
-	 @Override
+	 /* (non-Javadoc)
+ 	 * @see android.app.Activity#onCreate(android.os.Bundle)
+ 	 */
+ 	@Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        
@@ -70,7 +83,13 @@ public class DetailView extends Activity{
 	       
 	 }
 	 
-	 private void getInfo(String state){
+	 /**
+ 	 * Gets the info.
+ 	 *
+ 	 * @param state the state
+ 	 * @return the info
+ 	 */
+ 	private void getInfo(String state){
 	    	String baseURL = "http://api.census.gov/data/1990/sf1?key=e44eee8f8d8583f1b0854a96fcbe580d59164a54&get=P0010001,P0060001,P0060002,P0060003,P0060005&for=state:"+state;
 	    	Log.i("GET INFO CALL", baseURL);
 	    	URL finalURL;

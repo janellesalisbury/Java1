@@ -1,3 +1,9 @@
+/*
+ * project ProjectThree_Java
+ * package com.projectthree_java
+ * @author Janelle Salisbury
+ * date Mar 19, 2013
+ */
 package com.projectthree_java;
 
 import org.json.JSONArray;
@@ -9,7 +15,7 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 
 public class StateDisplaysTwo extends GridLayout{
-	
+	//GLOBAL VARIABLES
 	static TextView _population;
 	static TextView _popWhite;
 	static TextView _popBlack;
@@ -28,7 +34,7 @@ public class StateDisplaysTwo extends GridLayout{
 		super(context);
 		
 		_context = context;
-		
+		//set up columns to display the information
 		this.setColumnCount(2);
 		
 		TextView populationLabel = new TextView(_context);
@@ -51,7 +57,7 @@ public class StateDisplaysTwo extends GridLayout{
 		populationHawiian.setText("Hawaiian and Other:");
 		_popHawaiian = new TextView(_context);
 	
-		
+		//add the views
 		this.addView(populationLabel);
 		this.addView(_population);
 		
