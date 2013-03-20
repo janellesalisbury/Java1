@@ -1,4 +1,4 @@
-package com.appwidget_weekthree;
+package com.appwidget;
 
 import android.os.Bundle;
 import android.app.Activity;
