@@ -63,7 +63,7 @@ public class StateDisplays extends GridLayout{
 		_popHawaiian = new TextView(_context);
 		
 	    _moreDetails = new Button(_context);
-		_moreDetails.setText("More Details");
+		_moreDetails.setText("1990 Census Here");
 		
 		this.addView(populationLabel);
 		this.addView(_population);

@@ -71,7 +71,7 @@ public class DetailView extends Activity{
 	 }
 	 
 	 private void getInfo(String state){
-	    	String baseURL = "http://api.census.gov/data/2010/sf1?key=e44eee8f8d8583f1b0854a96fcbe580d59164a54&get=P0030001,P0030002,P0030003,P0030004,P0030006&for=state:"+state;
+	    	String baseURL = "http://api.census.gov/data/1990/sf1?key=e44eee8f8d8583f1b0854a96fcbe580d59164a54&get=P0010001,P0060001,P0060002,P0060003,P0060005&for=state:"+state;
 	    	Log.i("GET INFO CALL", baseURL);
 	    	URL finalURL;
 	    	try{
@@ -130,7 +130,7 @@ public class DetailView extends Activity{
 	    			JSONArray json = new JSONArray(result);
 	    			JSONArray results = json.getJSONArray(1);
 	    			Log.i("JSON Array", results.toString());
-	    			StateDisplays.updateData(results);
+	    			StateDisplaysTwo.updateData(results);
 	    		}catch(JSONException e){
 	    			Log.e("JSON", "JSON OBJECT EXPECTION");
 	    		
