@@ -3,7 +3,12 @@ package com.hybridapp_week4;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.view.Menu;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class MainActivity extends Activity {
@@ -13,6 +18,29 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		//FORCE PORTRAIT ORIENTATION
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		
+		//CREATE AND GET REFERENCE TO WEBVIEW AND ADD JAVASCRIPT COMPATIBILITY
+		WebView myWebView = (WebView) findViewById(R.id.webView1);
+		WebSettings myWebSettings = myWebView.getSettings();
+		myWebSettings.setJavaScriptEnabled(true);
+		myWebView.addJavascriptInterface(new WebAppInterface(this), "Android");
+		myWebView.loadUrl("file:///android_asset/taskteller.html");
+		
+		
+	}
+	
+	public class WebAppInterface{
+		Context _context;
+		WebAppInterface(Context c){
+			_context = c;
+		}
+		
+		@JavascriptInterface
+		public void displayTaskInfo(){
+			//DO I PUT ONCLICK FUNCTIONALITY AND INTENT TO OPEN SECOND ACTIVITY HERE??
+		}
 		
 	}
 
