@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.view.Menu;
 import android.webkit.JavascriptInterface;
@@ -38,8 +39,9 @@ public class MainActivity extends Activity {
 		}
 		
 		@JavascriptInterface
-		public void displayTaskInfo(){
-			//DO I PUT ONCLICK FUNCTIONALITY AND INTENT TO OPEN SECOND ACTIVITY HERE??
+		public void displayTaskInfo(Intent intent){
+			intent = new Intent(MainActivity.this, DetailView.class);
+			startActivity(intent);
 		}
 		
 	}

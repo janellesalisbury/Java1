@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<form name="input" action="DisplayActivity" method="get">
+<form name="input" action="DetailActivity" method="get">
 <h1 id="title">Task Teller</h1>
 <p id="text">Task Information</p>
 Task Name:<input type="text" name="TaskName" value=""><br/>
@@ -18,8 +18,8 @@ Free Activity:<input type="radio" value="FreeActivity" name="free"><br/>
 <input id="save" type="button" value="Save Activity" onclick="displayInfo()" />
 
 <script type="text/javascript">
-function displayInfo(){
-	Android.displayTaskInfo();
+function displayInfo(Intent){
+	Android.displayTaskInfo(Intent);
 };
 
 function callFromActivity(message){

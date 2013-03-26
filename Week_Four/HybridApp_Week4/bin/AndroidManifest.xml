@@ -24,6 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
+        <activity 
+            android:name=".DetailView"
+            android:label="@string/title_task_details"></activity>    
+        </application>
 
 </manifest>
