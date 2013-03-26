@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Task Teller</title>
+</head>
+<body>
+
+<form name="input" action="DisplayActivity" method="get">
+<h1 id="title">Task Teller</h1>
+<p id="text">Task Information</p>
+Task Name:<input type="text" name="TaskName" value=""><br/>
+Task Location:<input type="text" name="TaskLoc" value=""><br/>
+Task Date:<input type="date" name="TaskDate" value=""><br/>
+Monetary Cost:<br/>
+Costs Money:<input type="radio" value="CostsMoney" name="money"><br/>
+Free Activity:<input type="radio" value="FreeActivity" name="free"><br/>
+
+<input id="save" type="button" value="Save Activity" onclick="displayInfo()" />
+
+<script type="text/javascript">
+function displayInfo(){
+	Android.displayTaskInfo();
+};
+
+function callFromActivity(message){
+	document.getElementById("text").innerHTML = message;
+};
+
+</script>
+	<style type="text/css">
+		body{
+			background-color: silver;
+		}
+		h1{
+			font-family: "Calisto MT";
+			font-size: medium;
+			text-align: center;
+			
+		}
+		#title{
+			color: fuchsia;
+			font-weight: bold;
+		}
+		#text{
+			color: green;
+			font-weight: normal;
+		}
+		#save{
+			width: 100%;
+		}
+	
+	
+	
+	</style>
+
+</form>
+
+</body>
+
+</html>
