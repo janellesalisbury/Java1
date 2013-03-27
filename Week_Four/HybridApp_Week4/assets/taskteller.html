@@ -22,11 +22,16 @@ function displayInfo(intent){
 	Android.displayTaskInfo(intent);
 };
 
-function callFromActivity(message){
-	document.getElementById("text").innerHTML = message;
-};
+
 
 </script>
+<div id="myOutputDiv">
+	var results = document.getElementById("TaskName") + "</br>" + document.getElementById("TaskLoc")
+	+ "</br>" + document.getElementById("TaskDate").value + "</br>";
+	
+	document.getElementById("myOutputDiv").innerHTML = results;
+
+</div>
 	<style type="text/css">
 		body{
 			background-color: silver;
