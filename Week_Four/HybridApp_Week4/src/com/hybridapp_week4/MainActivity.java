@@ -13,7 +13,7 @@ import android.webkit.WebView;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class MainActivity extends Activity {
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
 		
 	}
 	
+	//CREATE WEB INTERFACE TO HANDLE JAVASCRIPT FUNCTIONALITY
 	public class WebAppInterface{
 		Context _context;
 		WebAppInterface(Context c){
@@ -40,6 +41,7 @@ public class MainActivity extends Activity {
 		
 		@JavascriptInterface
 		public void displayTaskInfo(Intent intent){
+			//START DETAIL ACTIVITY AND PASS DATA FOR THE TASK NAME AND LOCATION TO DETAILS VIEW
 			intent = new Intent(MainActivity.this, DetailView.class);
 			startActivity(intent);
 		}
