@@ -47,13 +47,15 @@ public class MainActivity extends Activity {
 		}
 		
 		@JavascriptInterface
-		public boolean displayTaskInfo(String theTask, String theLoc){
+		public boolean displayTaskInfo(String theTask, String theLoc, String theDate){
 			//START DETAIL ACTIVITY AND PASS DATA FOR THE TASK NAME AND LOCATION TO DETAILS VIEW
 			Log.i("TaskName", theTask);
 			Log.i("TaskLoc", theLoc);
+			Log.i("TaskDate", theDate);
 			Intent intent = new Intent(MainActivity.this, DetailView.class);
 			intent.putExtra("TaskName",  theTask); 
 			intent.putExtra("TaskLoc", theLoc);
+			intent.putExtra("TaskDate", theDate);
 	        startActivity(intent);
 			
 			return true;
