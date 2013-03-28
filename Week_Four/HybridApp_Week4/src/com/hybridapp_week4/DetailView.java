@@ -18,6 +18,9 @@ public class DetailView extends Activity{
 		TextView tv2 = (TextView) findViewById(R.id.locale);
 		tv2.setText(getIntent().getExtras().getString("TaskLoc"));
 		
+		
+		
+		
 	}
 
 }
