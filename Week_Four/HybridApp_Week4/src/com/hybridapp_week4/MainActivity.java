@@ -27,7 +27,8 @@ public class MainActivity extends Activity {
 		WebView myWebView = (WebView) findViewById(R.id.webView1);
 		WebSettings myWebSettings = myWebView.getSettings();
 		myWebSettings.setJavaScriptEnabled(true);
-		myWebView.addJavascriptInterface(new WebAppInterface(this), "Android");	
+		myWebView.addJavascriptInterface(new WebAppInterface(this), "Android");
+		myWebView.loadUrl("file:///android_asset/taskteller.html");
 		
 		
 	}
