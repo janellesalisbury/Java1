@@ -18,8 +18,10 @@ Free Activity:<input type="radio" value="FreeActivity" name="free"><br/>
 <input id="save" type="button" value="Save Activity" onclick="displayInfo()" />
 
 <script type="text/javascript">
-function displayInfo(intent){
-	Android.displayTaskInfo(intent);
+function displayInfo(){
+	var theName = document.input.TaskName.value;
+    var theAddress = document.input.TaskLoc.value;
+    var result = Android.displayTaskInfo(theName, theAddress);
 
 };
 
