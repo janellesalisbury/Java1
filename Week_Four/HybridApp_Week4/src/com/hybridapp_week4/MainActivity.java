@@ -11,16 +11,10 @@ import android.view.Menu;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.EditText;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class MainActivity extends Activity {
-	
-	EditText input;
-	String inputSent;
-	WebView myWebView;
-	//updating
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
