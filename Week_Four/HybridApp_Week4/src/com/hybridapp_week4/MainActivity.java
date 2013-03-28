@@ -6,13 +6,20 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.util.Log;
 import android.view.Menu;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.EditText;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class MainActivity extends Activity {
+	
+	EditText input;
+	String inputSent;
+	WebView myWebView;
+	//updating
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +33,7 @@ public class MainActivity extends Activity {
 		WebView myWebView = (WebView) findViewById(R.id.webView1);
 		WebSettings myWebSettings = myWebView.getSettings();
 		myWebSettings.setJavaScriptEnabled(true);
-		myWebView.addJavascriptInterface(new WebAppInterface(this), "Android");
-		myWebView.loadUrl("file:///android_asset/taskteller.html");
+		myWebView.addJavascriptInterface(new WebAppInterface(this), "Android");	
 		
 		
 	}
@@ -42,6 +48,8 @@ public class MainActivity extends Activity {
 		@JavascriptInterface
 		public void displayTaskInfo(Intent intent){
 			//START DETAIL ACTIVITY AND PASS DATA FOR THE TASK NAME AND LOCATION TO DETAILS VIEW
+			Log.i("TaskName", "TaskName");
+			
 			intent = new Intent(MainActivity.this, DetailView.class);
 			startActivity(intent);
 		}
