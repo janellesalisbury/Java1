@@ -1,3 +1,9 @@
+/*
+ * project HybridApp_Week4
+ * package com.hybridapp_week4
+ * @author Janelle Salisbury
+ * date Mar 28, 2013
+ */
 package com.hybridapp_week4;
 
 import android.os.Bundle;
@@ -13,6 +19,10 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.EditText;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MainActivity.
+ */
 @SuppressLint("SetJavaScriptEnabled")
 public class MainActivity extends Activity {
 	
@@ -21,6 +31,9 @@ public class MainActivity extends Activity {
 	WebView myWebView;
 	//updating
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,12 +53,28 @@ public class MainActivity extends Activity {
 	}
 	
 	//CREATE WEB INTERFACE TO HANDLE JAVASCRIPT FUNCTIONALITY
+	/**
+	 * The Class WebAppInterface.
+	 */
 	public class WebAppInterface{
 		Context _context;
+		
+		/**
+		 * Instantiates a new web app interface.
+		 *
+		 * @param c the c
+		 */
 		WebAppInterface(Context c){
 			_context = c;
 		}
 		
+		/**
+		 * Display task info.
+		 *
+		 * @param theTask the the task
+		 * @param theLoc the the loc
+		 * @return true, if successful
+		 */
 		@JavascriptInterface
 		public boolean displayTaskInfo(String theTask, String theLoc){
 			//START DETAIL ACTIVITY AND PASS DATA FOR THE TASK NAME AND LOCATION TO DETAILS VIEW
@@ -61,6 +90,9 @@ public class MainActivity extends Activity {
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

@@ -1,3 +1,9 @@
+/*
+ * project HybridApp_Week4
+ * package com.hybridapp_week4
+ * @author Janelle Salisbury
+ * date Mar 28, 2013
+ */
 package com.hybridapp_week4;
 
 import java.io.File;
@@ -11,9 +17,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DetailView.
+ */
 public class DetailView extends Activity{
 
 	
+	/* (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -46,6 +59,11 @@ public class DetailView extends Activity{
 	}
 	
 	//CHECK FOR EXTERNAL STORAGE
+	/**
+	 * Checks if is storage available.
+	 *
+	 * @return true, if is storage available
+	 */
 	public boolean isStorageAvailable(){
 		String available = Environment.getExternalStorageState();
 		if(available.equals(Environment.MEDIA_MOUNTED)){
